@@ -1,10 +1,7 @@
 class WelcomeController < ApplicationController
   before_action :authenticate_user!
 
-
-
   def index
-    byebug
     redirect_to users_roles_new_path if current_user.zero?
   end
 

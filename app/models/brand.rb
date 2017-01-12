@@ -1,2 +1,3 @@
-class Brand < ActiveRecord::Base
+class Brand < User
+  devise :omniauthable
 end
