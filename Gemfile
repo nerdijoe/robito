@@ -30,6 +30,24 @@ gem 'omniauth-facebook'
 gem 'omniauth-instagram'
 gem 'instagram'
 
+gem 'bootstrap-sass', '~> 3.3.6'
+
+gem 'acts-as-taggable-on', '~> 4.0'
+gem 'will_paginate', '~> 3.1.0'
+gem 'ffaker'
+
+gem 'carrierwave', github: 'carrierwaveuploader/carrierwave'
+gem "mini_magick"
+# image upload to cloud
+gem "fog-aws"
+
+gem "letter_opener", :group => :development
+
+gem 'sidekiq'
+
+gem 'pg_search'
+
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
