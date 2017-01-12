@@ -4,8 +4,12 @@ Rails.application.routes.draw do
   devise_scope :user do
     get '/users/auth/:provider/upgrade' => 'omniauth_callbacks#upgrade', as: :user_omniauth_upgrade
     get '/users/auth/:provider/setup', :to => 'omniauth_callbacks#setup'
-  end
 
+  end
+ 
+   resources :campaigns, only: [:index, :new, :create, :edit, :update, :destroy]
+
+    
   root 'welcome#index'
   get 'welcome/index'
 
