@@ -6,6 +6,8 @@ class User < ActiveRecord::Base
 
   has_many :identities
 
+  enum role: [ :brand, :influencer, :superadmin ]
+
   def twitter
     identities.where( :provider => "twitter" ).first
   end
