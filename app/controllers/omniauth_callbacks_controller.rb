@@ -20,7 +20,11 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
     @user = @identity.user || current_user
     if @user.nil?
-      @user = User.create( email: @identity.email || "" )
+      byebug
+      temp_email = @identity.email
+      temp_email = "#{@identity.uid}@instagram.com"if provider == "instagram"
+
+      @user = User.create( email: temp_email || "" )
       @identity.update_attribute( :user_id, @user.id )
     end
 
