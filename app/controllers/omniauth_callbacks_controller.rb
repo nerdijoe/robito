@@ -35,7 +35,9 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
       @identity.update_attribute( :user_id, @user.id )
       # This is because we've created the user manually, and Device expects a
       # FormUser class (with the validations)
-      @user = FormUser.find @user.id
+      byebug
+      # @user = FormUser.find @user.id
+      @user = User.find @user.id
       sign_in_and_redirect @user, event: :authentication
       set_flash_message(:notice, :success, kind: provider.capitalize) if is_navigational_format?
     else

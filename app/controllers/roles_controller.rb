@@ -4,8 +4,8 @@ class RolesController < ApplicationController
   end
 
   def create
+    current_user.update_attributes( role: params[:role][:role], type: params[:role][:role])
     byebug
-    current_user.update_attribute( :role, params[:role][:role])
     redirect_to root_path
   end
 end

@@ -4,6 +4,7 @@ class WelcomeController < ApplicationController
 
 
   def index
+    byebug
     redirect_to users_roles_new_path if current_user.zero?
   end
 
