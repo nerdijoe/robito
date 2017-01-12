@@ -20,7 +20,6 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
     @user = @identity.user || current_user
     if @user.nil?
-      byebug
       temp_email = @identity.email
       temp_email = "#{@identity.uid}@instagram.com"if provider == "instagram"
 

@@ -4,7 +4,7 @@ class WelcomeController < ApplicationController
 
 
   def index
-
+    redirect_to users_roles_new_path if current_user.zero?
   end
 
   def user_recent_media
