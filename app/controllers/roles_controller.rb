@@ -4,8 +4,11 @@ class RolesController < ApplicationController
   end
 
   def create
-    current_user.update_attributes( role: params[:role][:role], type: params[:role][:role])
-    
+    current_user.update_attributes( role: params[:role][:role])
+    byebug
+    current_user.brand.create()
+    byebug
+
     redirect_to root_path
   end
 end

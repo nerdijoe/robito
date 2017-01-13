@@ -4,6 +4,11 @@
   <%= devise_error_messages! %>
 
   <div class="field">
+    <%= form.label :role, "Who are you? " %><br />
+    <%= form.select :role, [ 'Brand','Influencer' ], :prompt => 'Select One' %>
+  </div>
+
+  <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true %>
   </div>
