@@ -7,3 +7,12 @@
 <p>
   <%= link_to "Instagram user recent media", user_recent_media_path %>
 </p>
+<p>
+  <%= link_to "users index", users_path  %>
+</p>
+<p>
+  <%= link_to "See Influencers", influencers_list_path %>
+</p>
+
+<p>  <%= current_user.identities.where(provider:'instagram').first.nickname %> </p>
+<p>  User is a <%= current_user.type %> </p>
