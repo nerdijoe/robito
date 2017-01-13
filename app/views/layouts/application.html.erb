@@ -7,7 +7,14 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<%= link_to "Create a Campaign", new_campaign_path %>
+
+
+ <% if signed_in? %>
+
+         <%= link_to "Home", root_path %>
+        	<%= link_to "Campaign", user_campaigns_path(current_user) %>
+
+        <% end %>
  <%= yield %>
 
 </body>

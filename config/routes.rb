@@ -5,9 +5,14 @@ Rails.application.routes.draw do
     get '/users/auth/:provider/upgrade' => 'omniauth_callbacks#upgrade', as: :user_omniauth_upgrade
     get '/users/auth/:provider/setup', :to => 'omniauth_callbacks#setup'
 
+
   end
  
-   resources :campaigns, only: [:index, :new, :create, :edit, :update, :destroy]
+  resources :users do
+    resources :campaigns
+
+    # resources :campaigns, only: [:index, :new, :create, :edit, :update, :destroy]
+  end
 
     
   root 'welcome#index'

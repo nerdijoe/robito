@@ -1,10 +1,10 @@
-<h3> Hello this Create Page </h3>
-<% if current_user %>
+ <% if current_user %>
 
- <%= form_for [current_user, @campaign], url:user_campaigns_path do |u| %>
+ <%= form_for [current_user, @campaign], url: user_campaign_path(current_user, @campaign)  do |u| %>
 
 <div class="form-control">
-<%= u.check_box :product_category %>Fashin
+<%= u.label :product_category %> 
+<%= u.text_field :product_category %>
  </div>
 
 <div class="form-control">
