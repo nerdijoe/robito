@@ -6,11 +6,17 @@ class WelcomeController < ApplicationController
   end
 
   def user_recent_media
-    byebug
+
     if current_user.identities.where(provider: 'instagram').count > 0
       @client = Instagram.client(access_token: current_user.instagram.accesstoken)
       @recent = @client.user_recent_media
     end
 
   end
+
+  def influencers
+    @influencers = User.where(type: "Influencer")
+    byebug
+  end
+
 end

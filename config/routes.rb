@@ -13,5 +13,8 @@ Rails.application.routes.draw do
   get 'welcome/index'
 
   get 'welcome/user_recent_media' => 'welcome#user_recent_media', as: :user_recent_media
+  get 'welcome/influencers' => 'welcome#influencers', as: :influencers_list
+
+
 
 end
