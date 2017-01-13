@@ -9,6 +9,10 @@ Rails.application.routes.draw do
     post 'users/roles' => 'roles#create'
   end
 
+  resources :users, only: [:index, :show]
+  resources :brands, only: [ :show]
+  resources :influencers, only: [:show]
+
   root 'welcome#index'
   get 'welcome/index'
 
