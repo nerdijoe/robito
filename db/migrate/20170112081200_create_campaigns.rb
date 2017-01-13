@@ -1,6 +1,9 @@
 class CreateCampaigns < ActiveRecord::Migration
   def change
     create_table :campaigns do |t|
+
+            t.belongs_to :user, index: true
+
     	t.text :description
     	t.string :product_category
     	t.string :product_name

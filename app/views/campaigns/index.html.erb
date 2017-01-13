@@ -1,0 +1,21 @@
+<h3> Hey this is the INDEX of Campaigns </h3> 
+<% if current_user %>
+   <%= link_to "Create a Campaign", new_user_campaign_path(current_user) %>
+    <br></br>
+   <% @campaign.each do |u| %>
+
+
+   <tr>
+   <td>Product Category: <%= u.product_category %></br><%= link_to 'Edit', edit_user_campaign_path(user_id: current_user.id, id: u.id) %></td>
+   <td>Description     : <%= u.description%></br></td>
+   <td>Product Name    : <%= u.product_name%></br></td>
+   <td>Phone           : <%= u.phone_number%></br></td>
+   <td>Address 		     : <%= u.address%></br></td>
+   <td>Email           : <%= u.email%></br></td>
+   <p>================<p>
+
+<% end %>
+		 
+
+ 	<% end %> 	
+ 

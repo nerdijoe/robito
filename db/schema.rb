@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 20170112155712) do
   end
 
   create_table "campaigns", force: :cascade do |t|
+    t.integer  "user_id"
     t.text     "description"
     t.string   "product_category"
     t.string   "product_name"
@@ -34,6 +35,8 @@ ActiveRecord::Schema.define(version: 20170112155712) do
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
   end
+
+  add_index "campaigns", ["user_id"], name: "index_campaigns_on_user_id", using: :btree
 
   create_table "identities", force: :cascade do |t|
     t.integer  "user_id"

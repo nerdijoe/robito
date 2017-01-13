@@ -9,7 +9,10 @@ Rails.application.routes.draw do
     post 'users/roles' => 'roles#create'
   end
 
-  resources :users, only: [:index, :show]
+  resources :users, only: [:index, :show] do
+    resources :campaigns
+  end
+  
   resources :brands, only: [ :show]
   resources :influencers, only: [:show]
 
@@ -18,7 +21,5 @@ Rails.application.routes.draw do
 
   get 'welcome/user_recent_media' => 'welcome#user_recent_media', as: :user_recent_media
   get 'welcome/influencers' => 'welcome#influencers', as: :influencers_list
-
-
 
 end

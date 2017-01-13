@@ -1,0 +1,54 @@
+ <% if current_user %>
+
+ <%= form_for [current_user, @campaign], url: user_campaign_path(current_user, @campaign)  do |u| %>
+
+<div class="form-control">
+<%= u.label :product_category %> 
+<%= u.text_field :product_category %>
+ </div>
+
+<div class="form-control">
+<%= u.label :description %>
+<%= u.text_field :description %>
+</div>
+
+<div class="form-control">
+<%= u.label :product_name %>
+<%= u.text_field :product_name %>
+</div>
+<div class="form-control">
+<%= u.label :company_name %>
+<%= u.text_field :company_name %>
+</div>
+
+<div class="form-group">
+ <%= u.label :email %> 
+ <%= u.text_field :email %>
+</div>
+
+<div class="form-group">
+ <%= u.label :phone_number %> 
+ <%= u.text_field :phone_number %>
+</div>
+
+<div class="form-control">
+	<%= u.label :address %>
+	<%= u.text_field :address %>
+</div>
+
+	<div class="form-control">
+	<%= u.label :link %>
+	<%= u.text_field :link %>
+</div>
+ 
+<div class="form-control">
+ <%= u.file_field :image, multiple: true %>
+</div> 
+<div class="modal-title">
+<%= u.submit %>
+</div>
+
+<% end %>
+<% else %>
+
+<% end %>
