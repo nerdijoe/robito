@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170113153207) do
+ActiveRecord::Schema.define(version: 20170113160414) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -62,7 +62,10 @@ ActiveRecord::Schema.define(version: 20170113153207) do
   create_table "influencers", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "user_id"
   end
+
+  add_index "influencers", ["user_id"], name: "index_influencers_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -87,4 +90,5 @@ ActiveRecord::Schema.define(version: 20170113153207) do
   add_foreign_key "brands", "users"
   add_foreign_key "campaigns", "brands"
   add_foreign_key "identities", "users"
+  add_foreign_key "influencers", "users"
 end
