@@ -12,7 +12,6 @@
  <% if signed_in? %>
 
          <%= link_to "Home", root_path %>
-        	<%= link_to "Campaign", user_campaigns_path(current_user) %>
 
         <% end %>
  <%= yield %>

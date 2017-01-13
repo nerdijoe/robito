@@ -10,10 +10,11 @@ Rails.application.routes.draw do
   end
 
   resources :users, only: [:index, :show] do
-      resources :campaigns
   end
 
-  resources :brands, only: [ :show]
+  resources :brands, only: [ :show] do
+    resources :campaigns
+  end
   resources :influencers, only: [:show]
 
   root 'welcome#index'

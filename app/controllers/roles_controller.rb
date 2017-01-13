@@ -6,7 +6,7 @@ class RolesController < ApplicationController
   def create
     current_user.update_attributes( role: params[:role][:role])
     byebug
-    current_user.brand.create()
+    Brand.create(user_id: current_user.id)
     byebug
 
     redirect_to root_path
