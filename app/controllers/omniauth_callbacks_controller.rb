@@ -22,14 +22,12 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
     if @user.nil?
       temp_email = @identity.email
       temp_email = "#{@identity.uid}@instagram.com"if provider == "instagram"
-      temp_password = "hahaha" if provider == "instagram"
+      temp_password = SecureRandom.hex(3) if provider == "instagram"
 
-      byebug
       @user = User.create( email: temp_email || "" , password: temp_password)
       # @user = User.create( email: @identity.email || "" )
       byebug
       @identity.update_attribute( :user_id, @user.id )
-      byebug
     end
 
     if @user.email.blank? && @identity.email
@@ -45,7 +43,6 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
       sign_in_and_redirect @user, event: :authentication
       set_flash_message(:notice, :success, kind: provider.capitalize) if is_navigational_format?
     else
-      byebug
       session["devise.#{provider}_data"] = env["omniauth.auth"]
       redirect_to new_user_registration_url
     end
