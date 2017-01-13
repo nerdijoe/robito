@@ -1,67 +1,22 @@
-// Place all the styles related to the welcome controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
-
-
-.body {
-
-   background-image: url("http://onestepforwards.com/wp-content/uploads/2016/04/header_background_30.jpeg");
-}
-
-.header {
-   margin: 0 auto;
-   margin-top: 100px; 
-   text-align: center;
-   width: 400px;
-   font-size: 25px;
-   z-index: 1;
-   background: rgba(255,255,255,0.7);
-}
-
-.actions {
- display: inline-block;
- border-radius: 4px;
- background-color: orange ;
- border: none;
- color: #FFFFFF ;
- text-align: center;
- font-size: 15px;
- padding: 5px;
- font-family: 'Quantico', sans-serif;
- transition: all 0.5s;
- cursor: pointer;
- margin: 5px;
- border-radius: 50px;
-}
-
-.field {
-   font-size: 20px;
-   font-family: 'Alegreya Sans SC', sans-serif;
-   z-index: 1;
-}
-
-.field_length {
-   width: 300px;
-   height: 30px;
-}
-
-
 element.style {
    font-size: 13px;
 }
-
-.instagram-login-btn {
-   background: #3F729B ;
-   color: white;
-   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+.btn.btn-lg {
+   padding: 11px 26px 9px 26px;
 }
-
-.facebook-login-btn {
-   background: #3b5998;
-   color: white;
-   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+.google-login-btn:hover {
+   box-shadow: 0 5px 11px 0 rgba(0,0,0,0.18), 0 4px 15px 0 rgba(0,0,0,0.15);
+   border: 2px solid #3b5998 ;
+   background: white;
+   color: black;
+   
 }
-
+.btn-lg {
+   padding: 10px 16px;
+   font-size: 18px;
+   line-height: 1.3333333;
+   border-radius: 6px;
+}
 .btn {
    display: inline-block;
    margin-bottom: 0;
@@ -99,8 +54,48 @@ element.style {
    -webkit-transition: all .3s ease-out;
    transition: all .3s ease-out;
 }
-
-
+.btn {
+   border-radius: 3px;
+   font-size: 13px;
+   border-color: transparent;
+   -webkit-appearance: none;
+   outline: none !important;
+   -webkit-transition: all 0.1s;
+   transition: all 0.1s;
+}
+.btn-lg, .btn-group-lg>.btn {
+   padding: 10px 20px;
+   font-size: 18px;
+   line-height: 1.33;
+   border-radius: 6px;
+}
+.btn {
+   display: inline-block;
+   margin-bottom: 0;
+   font-weight: normal;
+   text-align: center;
+   vertical-align: middle;
+   -ms-touch-action: manipulation;
+   touch-action: manipulation;
+   cursor: pointer;
+   background-image: none;
+   border: 1px solid transparent;
+   white-space: nowrap;
+   padding: 6px 16px;
+   font-size: 14px;
+   line-height: 1.52857;
+   border-radius: 4px;
+   -webkit-user-select: none;
+   -moz-user-select: none;
+   -ms-user-select: none;
+   user-select: none;
+}
+.btn-lg, .btn-group-lg>.btn {
+   padding: 10px 20px;
+   font-size: 18px;
+   line-height: 1.33;
+   border-radius: 6px;
+}
 
 .btn {
    outline: none !important;
@@ -110,6 +105,12 @@ element.style {
    -ms-transition: all 0.2s ease-out;
    padding: 6px 20px 4px 20px;
    font-size: 16px;
+}
+.btn-lg, .btn-group-lg>.btn {
+   padding: 10px 16px;
+   font-size: 18px;
+   line-height: 1.3333333;
+   border-radius: 4px;
 }
 
 .btn {
@@ -143,15 +144,9 @@ element.style {
    -moz-osx-font-smoothing: grayscale;
 }
 
-.fa-instagram:before {
-   content: "\f16d";
+.fa-google:before {
+   content: "\f09a";
 }
-
 *:before, *:after {
    box-sizing: border-box;
 }
-
-
-
-
-a {text-decoration: none; }
