@@ -1,0 +1,19 @@
+<h2>Influencers#index</h2>
+
+<% @influencers.each do |i| %>
+  <p><%= i.user.id %></p>
+  <p><%= link_to i.user.email, influencer_path(i) %></p>
+  <p><%= i.user.type %></p>
+
+  <% if i.user.identities.present? %>
+    <% i.user.identities.each do |u| %>
+      <p><%= u.provider %></p>
+      <p><%= u.nickname %></p>
+    <% end %>
+  <% end %>
+
+  <p>
+    ---------------
+  </p>
+
+<% end %>

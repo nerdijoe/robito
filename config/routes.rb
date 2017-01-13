@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   resources :brands, only: [ :show] do
     resources :campaigns
   end
-  resources :influencers, only: [:show]
+  resources :influencers, only: [:index, :show]
 
   root 'welcome#index'
   get 'welcome/index'
