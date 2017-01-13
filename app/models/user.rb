@@ -5,9 +5,20 @@ has_many :campaigns, dependent: :destroy
 
 
   devise :omniauthable, :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable
+         :recoverable, :rememberable, :trackable, :validatable
 
   has_many :identities
+
+  enum role: [ :zero, :Brand, :Influencer, :Superadmin ]
+
+
+# ----------------------------------
+# ----------------------------------
+
+
+
+
+
 
   def twitter
     identities.where( :provider => "twitter" ).first
