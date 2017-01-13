@@ -10,9 +10,9 @@ Rails.application.routes.draw do
   end
 
   resources :users, only: [:index, :show] do
-    resources :campaigns
+      resources :campaigns
   end
-  
+
   resources :brands, only: [ :show]
   resources :influencers, only: [:show]
 
