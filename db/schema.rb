@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170113160414) do
+ActiveRecord::Schema.define(version: 20170113162221) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -66,6 +66,16 @@ ActiveRecord::Schema.define(version: 20170113160414) do
   end
 
   add_index "influencers", ["user_id"], name: "index_influencers_on_user_id", using: :btree
+
+  create_table "requests", force: :cascade do |t|
+    t.integer  "campaign_id"
+    t.integer  "influencer_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_index "requests", ["campaign_id"], name: "index_requests_on_campaign_id", using: :btree
+  add_index "requests", ["influencer_id"], name: "index_requests_on_influencer_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
