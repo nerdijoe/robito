@@ -1,7 +1,5 @@
 <h2>brand#show</h2>
 
-
-
   <p><%= @campaign.id %></p>
   <p>Image: </p>
   <div class="campaign">
@@ -18,3 +16,22 @@
 
 
 <h2>Influencers</h2>
+
+<% @influencers.each do |i| %>
+  <% if i.user.identities.present? %>
+    <% insta = i.user.identities.first %>
+      <p><%= image_tag insta.image %></p>
+
+      <p><%= insta.name %></p>
+      <p><%= insta.nickname %></p>
+  <% end %>
+
+
+  <p><%= i.user.id %></p>
+  <p><%= link_to i.user.email, influencer_path(i) %></p>
+  <p><%= i.user.role %></p>
+
+
+  <p> ---------------</p>
+
+<% end %>

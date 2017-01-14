@@ -4,20 +4,18 @@
 <p> <%= link_to "My Profile", brand_path(current_user.brand) %> </p>
 
 
+<h2>Your Campaigns:</h2>
+
 <% @campaigns.each_with_index do |c| %>
 
-  <p><%= c.id %></p>
-  <p>Image: </p>
-
+    <% c.image.each do |photo| %>
+      <div class="campaign">
+         <%= image_tag photo.url(:thumb) %>
+      </div>
+    <% end %>
   <p>Product name: <%= c.product_name %></p>
   <p>Description: <%= c.description %></p>
   <p>Product Category<%= c.product_category %></p>
   <p> <%= link_to 'See Details', brand_campaign_path(brand_id: current_user.brand.id, id: c.id) %> </p>
-  <div class="campaign">
-    <% c.image.each do |photo| %>
-       <%= image_tag photo.url(:thumb) %>
-    <% end %>
-  </div>
   <p>-------</p>
-
 <% end %>
