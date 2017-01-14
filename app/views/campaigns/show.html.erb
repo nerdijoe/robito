@@ -4,6 +4,11 @@
 
   <p><%= @campaign.id %></p>
   <p>Image: </p>
+  <div class="campaign">
+    <% @campaign.image.each do |photo| %>
+       <%= image_tag photo.url(:thumb) %>
+    <% end %>
+  </div>
 
   <p>Product name: <%=  @campaign.product_name %></p>
   <p>Description: <%=  @campaign.description %></p>

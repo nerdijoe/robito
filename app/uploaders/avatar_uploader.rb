@@ -34,9 +34,9 @@ class AvatarUploader < CarrierWave::Uploader::Base
   #   process resize_to_fit: [50, 50]
   # end
   version :thumb do
-    process resize_to_limit: [300, 300]
-    process resize_to_fit: [200, 200]
-    process convert: 'png'
+    # process resize_to_limit: [100, 100]
+    process resize_to_fit: [300, 300]
+    # process convert: 'png'
   end
   def filename
     super.chomp(File.extname(super)) + '.png' if original_filename.present?
