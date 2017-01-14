@@ -13,6 +13,15 @@
    <td>Address 		     : <%= u.address%></br></td>
    <td>Email           : <%= u.email%></br></td>
    <p>================<p>
+   <div class="campaign">
+            <% u.image.each do |photo| %>
+               <%= image_tag photo.url(:thumb) %>
+            <% end %>
+               <div class="actions">
+            <%= link_to "remove",{ action: :destroy, id: t.image }, method: :delete, data: { confirm: 'Are you sure?' } %>
+               </div>
+      </div>
+
 
 <% end %>
 

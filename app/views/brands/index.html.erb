@@ -9,5 +9,10 @@
   <p>c.product_name</p>
   <p>c.description</p>
   <p>-------</p>
-
+<div class="campaign">
+            <% c.image.each do |photo| %>
+               <%= image_tag photo.url(:thumb) %>
+            <% end %>
+               
+      </div>
 <% end %>
