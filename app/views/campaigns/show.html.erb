@@ -11,13 +11,24 @@
   <p>Product name: <%=  @campaign.product_name %></p>
   <p>Description: <%=  @campaign.description %></p>
   <p>Product Category<%=  @campaign.product_category %></p>
-  <p> <%= link_to 'Edit', edit_brand_campaign_path(brand_id: current_user.brand.id, id: @campaign.id) %> </p>
+  <% if current_user.brand.present? %>
+    <p> <%= link_to 'Edit', edit_brand_campaign_path(brand_id: current_user.brand.id, id: @campaign.id) %> </p>
+  <% end %>
   <p>-------</p>
 
+  <% if current_user.influencer.present? %>
+  Button to accept
+
+
+  <% end %>
+
+<% if current_user.brand.present? %>
 
 <h2>Influencers</h2>
 
 <% @influencers.each do |i| %>
+  <p><%= i.user.role %></p>
+
   <% if i.user.identities.present? %>
     <% insta = i.user.identities.first %>
       <p><%= image_tag insta.image %></p>
@@ -26,12 +37,16 @@
       <p><%= insta.nickname %></p>
   <% end %>
 
-
-  <p><%= i.user.id %></p>
+  <p>Influencer id: <%= i.id %>  </p>
+  <p>User id:<%= i.user.id %></p>
   <p><%= link_to i.user.email, influencer_path(i) %></p>
-  <p><%= i.user.role %></p>
-
-
+  <% if @campaign.requests.where(influencer_id: i.id).present? %>
+    <%= link_to "Delete", campaign_request_path(campaign_id: @campaign, influencer_id: i.id), method: :delete  %>
+  <% else %>
+    <%= link_to "Pick Me", campaign_requests_path(campaign_id: @campaign, influencer_id: i.id), method: :post  %>
+  <% end %>
   <p> ---------------</p>
+
+<% end %>
 
 <% end %>
