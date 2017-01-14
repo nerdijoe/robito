@@ -13,8 +13,12 @@ Rails.application.routes.draw do
   end
 
   resources :brands, only: [:index, :show] do
-    resources :campaigns
-  end
+    resources :campaigns 
+    end
+   resources :campaigns, only: [] do
+    resources :rewards
+ end
+
   resources :influencers, only: [:index, :show]
 
   root 'welcome#index'
