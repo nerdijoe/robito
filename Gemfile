@@ -37,8 +37,8 @@ gem 'will_paginate', '~> 3.1.0'
 gem 'ffaker'
 
 gem 'carrierwave', github: 'carrierwaveuploader/carrierwave'
-# gem "mini_magick"
-gem 'rmagick'
+gem "mini_magick"
+# gem 'rmagick'
 # image upload to cloud
 gem "fog-aws"
 
