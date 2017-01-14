@@ -9,16 +9,22 @@ Rails.application.routes.draw do
     post 'users/roles' => 'roles#create'
   end
 
-  resources :users, only: [:index, :show] do
-  end
+  resources :users, only: [:index, :show]
 
   resources :brands, only: [:index, :show] do
-    resources :campaigns 
-    end
-   resources :campaigns, only: [] do
-    resources :rewards
- end
+    resources :campaigns
+  end
 
+  resources :influencers, only: [:index, :show] do
+    resources :campaigns, only: [:show]
+    resources :requests, only: [:update]
+  end
+
+  resources :campaigns, only: [:show] do
+    resources :rewards
+    resources :requests, only: [:create, :destroy]
+  end
+ 
   resources :influencers, only: [:index, :show]
 
   root 'welcome#index'

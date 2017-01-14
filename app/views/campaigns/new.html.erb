@@ -8,15 +8,17 @@
 <%= u.select :product_category, ['option1', 'option2']%>
  </div>
 
-<div class="form-control">
-<%= u.label :description %>
-<%= u.text_field :description %>
-</div>
+ <div class="form-control">
+ <%= u.label :product_name %>
+ <%= u.text_field :product_name %>
+ </div>
 
-<div class="form-control">
-<%= u.label :product_name %>
-<%= u.text_field :product_name %>
-</div>
+  <div class="form-control">
+  <%= u.label :description %>
+  <%= u.text_field :description %>
+  </div>
+
+
 <div class="form-control">
 <%= u.label :company_name %>
 <%= u.text_field :company_name %>

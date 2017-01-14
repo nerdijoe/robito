@@ -3,7 +3,8 @@ class InfluencersController < ApplicationController
     @influencers = Influencer.all
     # @user = current_user
     # @campaigns = current_user.influencer.campaigns
-    
+    @campaigns = current_user.influencer.campaigns.order(created_at: :desc)
+
   end
 
   def show
