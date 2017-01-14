@@ -11,7 +11,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema.define(version: 20170114041605) do
+
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -70,8 +72,9 @@ ActiveRecord::Schema.define(version: 20170114041605) do
   create_table "requests", force: :cascade do |t|
     t.integer  "campaign_id"
     t.integer  "influencer_id"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+    t.integer  "status",        default: 0, null: false
   end
 
   add_index "requests", ["campaign_id"], name: "index_requests_on_campaign_id", using: :btree

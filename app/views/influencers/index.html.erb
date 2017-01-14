@@ -16,8 +16,23 @@
     <% end %>
   <% end %>
 
-  <p>
-    ---------------
-  </p>
+  <p> ---------------</p>
 
+<% end %>
+
+
+<h2>Your Campaigns:</h2>
+
+<% @campaigns.each_with_index do |c| %>
+
+    <% c.image.each do |photo| %>
+      <div class="campaign">
+         <%= image_tag photo.url(:thumb) %>
+      </div>
+    <% end %>
+  <p>Product name: <%= c.product_name %></p>
+  <p>Description: <%= c.description %></p>
+  <p>Product Category<%= c.product_category %></p>
+  <p> <%= link_to 'See Details', influencer_campaign_path(influencer_id: current_user.influencer.id, id: c.id) %> </p>
+  <p>-------</p>
 <% end %>

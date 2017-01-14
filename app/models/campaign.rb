@@ -4,6 +4,6 @@ class Campaign < ActiveRecord::Base
 	has_many :influencers, through: :requests
   	has_many :rewards
 
-  	mount_uploaders :image, AvatarUploader
+	mount_uploaders :image, AvatarUploader
 
 end
