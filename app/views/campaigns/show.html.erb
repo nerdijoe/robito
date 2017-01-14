@@ -1,0 +1,15 @@
+<h2>brand#show</h2>
+
+
+
+  <p><%= @campaign.id %></p>
+  <p>Image: </p>
+
+  <p>Product name: <%=  @campaign.product_name %></p>
+  <p>Description: <%=  @campaign.description %></p>
+  <p>Product Category<%=  @campaign.product_category %></p>
+  <p> <%= link_to 'Edit', edit_brand_campaign_path(brand_id: current_user.brand.id, id: @campaign.id) %> </p>
+  <p>-------</p>
+
+
+<h2>Influencers</h2>

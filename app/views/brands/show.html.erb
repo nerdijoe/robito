@@ -1,10 +1,11 @@
 <h2>Brand Profile</h2>
-<p><%= @user.id %></p>
-<p><%= @user.email %></p>
-<p><%= @user.type %></p>
+
+<p><%= @brand.user.id %></p>
+<p><%= @brand.user.email %></p>
+<p><%= @brand.user.type %></p>
 <p>
-  <% if @user.identities.present? %>
-    <% @user.identities.each do |i| %>
+  <% if @brand.user.identities.present? %>
+    <% @brand.user.identities.each do |i| %>
       <p><%= i.provider %></p>
       <p><%= i.nickname %></p>
     <% end %>

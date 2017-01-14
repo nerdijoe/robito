@@ -2,7 +2,8 @@ class CampaignsController < ApplicationController
 
 
 	def show
-	@campaign = Campaign.where(user_id: current_user.id)
+		# @campaign = Campaign.where(brand_id: params[:brand_id])
+		@campaign = Campaign.find(params[:id])
 	end
 
 
@@ -16,7 +17,6 @@ class CampaignsController < ApplicationController
 
 	def new
 		# @campaign = Campaign.new
-		byebug
 		@campaign = current_user.brand.campaigns.new
 	end
 
@@ -29,7 +29,7 @@ class CampaignsController < ApplicationController
 		@campaign.brand_id = current_user.brand.id
 		byebug
 		if @campaign.save
-			redirect_to welcome_index_path
+			redirect_to brands_path
 			flash[:notice] = "successfully Added Campaign"
  		else
  			redirect_to root_path
@@ -40,13 +40,15 @@ class CampaignsController < ApplicationController
 
 	def edit
 		@campaign = Campaign.find(params[:id])
-		@user = User.find_by_id(params[:user_id])
+		# @user = User.find_by_id(params[:user_id])
 	end
 
 	def update
 		@campaign = Campaign.find(params[:id])
 		if @campaign.update(campaigns_params_edit)
-		redirect_to user_campaigns_path(current_user)
+			# redirect_to user_campaigns_path(current_user)
+			# byebug
+			redirect_to brand_campaign_path(id: params[:id])
 		else
 			root_path
 		end
