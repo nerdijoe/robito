@@ -4,7 +4,8 @@
  <%= form_for [current_user.brand, @campaign] do |u| %>
 
 <div class="form-control">
-<%= u.check_box :product_category %>Fashin
+<%= u.label :product_category %>
+<%= u.select :product_category, ['option1', 'option2']%>
  </div>
 
 <div class="form-control">

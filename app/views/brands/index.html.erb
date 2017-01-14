@@ -14,5 +14,10 @@
   <p>Product Category<%= c.product_category %></p>
   <p> <%= link_to 'See Details', brand_campaign_path(brand_id: current_user.brand.id, id: c.id) %> </p>
   <p>-------</p>
-
+<div class="campaign">
+            <% c.image.each do |photo| %>
+               <%= image_tag photo.url(:thumb) %>
+            <% end %>
+               
+      </div>
 <% end %>
