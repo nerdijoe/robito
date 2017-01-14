@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :show] do
   end
 
-  resources :brands, only: [ :show] do
+  resources :brands, only: [:index, :show] do
     resources :campaigns
   end
   resources :influencers, only: [:index, :show]

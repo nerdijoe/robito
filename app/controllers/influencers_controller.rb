@@ -1,6 +1,9 @@
 class InfluencersController < ApplicationController
   def index
     @influencers = Influencer.all
+    # @user = current_user
+    # @campaigns = current_user.influencer.campaigns
+    
   end
 
   def show
@@ -9,6 +12,7 @@ class InfluencersController < ApplicationController
     @client = Instagram.client(access_token: @influencer.user.instagram.accesstoken)
     @recent = @client.user_recent_media
 
+    byebug
     # find a post with specified hastag
     @tag = "yatai"
     # @found_post = nil
@@ -22,6 +26,7 @@ class InfluencersController < ApplicationController
     end
 
 
-    byebug
   end
+
+
 end
