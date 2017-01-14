@@ -15,8 +15,9 @@
       </div>
     <% end %>
   <p>Product name: <%= c.product_name %></p>
-  <p>Description: <%= c.description %></p>
-  <p>Product Category<%= c.product_category %></p>
+  <p>Product Category <%= c.product_category %></p>
+  <p>Hash Tag #<%= c.tag %></p>
+
   <p> <%= link_to 'See Details', brand_campaign_path(brand_id: current_user.brand.id, id: c.id) %> </p>
   <p>-------</p>
 <% end %>
