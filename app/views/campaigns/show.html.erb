@@ -11,6 +11,7 @@
   <p>Product name: <%=  @campaign.product_name %></p>
   <p>Description: <%=  @campaign.description %></p>
   <p>Product Category<%=  @campaign.product_category %></p>
+
   <% if current_user.brand.present? %>
     <p> <%= link_to 'Edit', edit_brand_campaign_path(brand_id: current_user.brand.id, id: @campaign.id) %> </p>
   <% end %>
@@ -27,6 +28,18 @@
   <% end %>
 
 <% if current_user.brand.present? %>
+
+  <p> <%= link_to 'Create Reward', new_campaign_reward_path(@campaign.id) %> </p>
+  <% @rewards.each do |t| %>
+
+  Target        : <%= t.target %><%= link_to 'Edit', edit_campaign_reward_path(@campaign.id, t.id) %></br>
+  Prize         : <%= t.prize %></br>
+  description   : <%= t.description %></br>
+  Post Date     : <%= t.post_date %></br>
+  Dead Line Date: <%= t.deadline %></br>
+  <p>-------</p>
+
+   <% end %>
 
 <h2>Influencers</h2>
 
