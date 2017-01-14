@@ -1,84 +1,102 @@
- <% if current_user %>
 
- <%= form_for [current_user.brand, @campaign]  do |u| %>
-
-<div class="form-control">
-<%= u.label :product_category %>
-<%= u.text_field :product_category %>
- </div>
-
- <div class="form-control">
- <%= u.label :product_name %>
- <%= u.text_field :product_name %>
- </div>
-
-<div class="form-control">
-<%= u.label :description %>
-<%= u.text_field :description %>
-</div>
-
-<div class="form-control">
-<%= u.label :company_name %>
-<%= u.text_field :company_name %>
+<div class="form-group">
+  <%= form.label :product_name, 'Product Name', class:'col-sm-2 control-label' %>
+  <div class="col-sm-10">
+    <%= form.text_field :product_name , class: 'form-control'%>
+  </div>
 </div>
 
 <div class="form-group">
- <%= u.label :email %>
- <%= u.text_field :email %>
+  <%= form.label :product_category, 'Product Category', class:'col-sm-2 control-label' %>
+  <div class="col-sm-10">
+    <%= form.text_field :product_category , class: 'form-control'%>
+  </div>
 </div>
 
 <div class="form-group">
- <%= u.label :phone_number %>
- <%= u.text_field :phone_number %>
+  <%= form.label :description, 'Description', class:'col-sm-2 control-label' %>
+  <div class="col-sm-10">
+    <%= form.text_field :description , class: 'form-control'%>
+  </div>
 </div>
 
-<div class="form-control">
-	<%= u.label :address %>
-	<%= u.text_field :address %>
+<div class="form-group">
+  <%= form.label :company_name, 'Company Name', class:'col-sm-2 control-label' %>
+  <div class="col-sm-10">
+    <%= form.text_field :company_name , class: 'form-control'%>
+  </div>
 </div>
 
-	<div class="form-control">
-	<%= u.label :link %>
-	<%= u.text_field :link %>
+<div class="form-group">
+  <%= form.label :email, 'Email', class:'col-sm-2 control-label' %>
+  <div class="col-sm-10">
+    <%= form.text_field :email , class: 'form-control'%>
+  </div>
 </div>
 
-<div class="form-control">
- <%= u.file_field :image, multiple: true %>
+<div class="form-group">
+  <%= form.label :phone_number, 'Phone Number', class:'col-sm-2 control-label' %>
+  <div class="col-sm-10">
+    <%= form.text_field :phone_number , class: 'form-control'%>
+  </div>
 </div>
 
-<div class="form-control">
-<%= u.label :tag %>
-<%= u.text_field :tag %>
+<div class="form-group">
+  <%= form.label :address, 'Address', class:'col-sm-2 control-label' %>
+  <div class="col-sm-10">
+    <%= form.text_field :address , class: 'form-control'%>
+  </div>
 </div>
 
-<div class="form-control">
-<%= u.label :location %>
-<%= u.text_field :location %>
+<div class="form-group">
+  <%= form.label :link, 'Website Link', class:'col-sm-2 control-label' %>
+  <div class="col-sm-10">
+    <%= form.text_field :link , class: 'form-control'%>
+  </div>
 </div>
 
-<div class="form-control">
-<%= u.label :age %>
-<%= u.text_field :age %>
+<div class="form-group">
+  <%= form.label :link, 'Website Link', class:'col-sm-2 control-label' %>
+  <div class="col-sm-10">
+    <%= form.text_field :link , class: 'form-control'%>
+  </div>
 </div>
 
-<div class="form-control">
-<%= u.label :gender %>
-<%= u.text_field :gender %>
+<div class="form-group">
+ <%= form.file_field :image, multiple: true %>
 </div>
 
-<div class="form-control">
-<%= u.label :interests %>
-<%= u.text_field :interests %>
+<div class="form-group">
+  <%= form.label :tag, 'Hash Tag', class:'col-sm-2 control-label' %>
+  <div class="col-sm-10">
+    <%= form.text_field :tag , class: 'form-control'%>
+  </div>
 </div>
 
-
-
-
-<div class="modal-title">
-<%= u.submit %>
+<div class="form-group">
+  <%= form.label :location, 'Target Location', class:'col-sm-2 control-label' %>
+  <div class="col-sm-10">
+    <%= form.text_field :location , class: 'form-control'%>
+  </div>
 </div>
 
-<% end %>
-<% else %>
+<div class="form-group">
+  <%= form.label :age, 'Target Age', class:'col-sm-2 control-label' %>
+  <div class="col-sm-10">
+    <%= form.select :age, ['Younger than 20', '20 to 30', '30 to 40', '50 and above'], class: 'form-control'%>
+  </div>
+</div>
 
-<% end %>
+<div class="form-group">
+  <%= form.label :gender, 'Target Gender', class:'col-sm-2 control-label' %>
+  <div class="col-sm-10">
+    <%= form.select :gender, [ 'Male', 'Female', 'Both'], class: 'form-control'%>
+  </div>
+</div>
+
+<div class="form-group">
+  <%= form.label :interests, 'Target Interests', class:'col-sm-2 control-label' %>
+  <div class="col-sm-10">
+    <%= form.text_field :interests , class: 'form-control'%>
+  </div>
+</div>
