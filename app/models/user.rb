@@ -8,8 +8,9 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :identities
-  has_many :campaigns , foreign_key: "user_id"
-
+  # has_many :campaigns , foreign_key: "user_id"
+  has_one :brand
+  has_one :influencer
   enum role: [ :zero, :Brand, :Influencer, :Superadmin ]
 
 

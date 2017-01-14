@@ -1,24 +1,23 @@
 class CampaignsController < ApplicationController
 
 
-def show
-@campaign = Campaign.where(user_id: current_user.id)
-end
-
-
-def index
-	# @user = User.find_by_id(params[:user_id])
+	def show
 	@campaign = Campaign.where(user_id: current_user.id)
-	 # byebug
-# @user = User.find_by_id(params[:user_id])
-# @campaign = Campaign.user
-end
+	end
+
+
+	def index
+		# @user = User.find_by_id(params[:user_id])
+		@campaign = Campaign.where(brand_id: current_user.brand.id)
+		# byebug
+		# @user = User.find_by_id(params[:user_id])
+		# @campaign = Campaign.user
+	end
+
 	def new
 		# @campaign = Campaign.new
 		byebug
-		@campaign = current_user.campaigns.new
-
-
+		@campaign = current_user.brand.campaigns.new
 	end
 
 
@@ -27,7 +26,7 @@ end
 
 		# @campaign = current_user.campaigns.new(campaigns_params)
 		@campaign = Campaign.new(campaigns_params)
-		@campaign.user_id = current_user.id
+		@campaign.brand_id = current_user.brand.id
 		byebug
 		if @campaign.save
 			redirect_to welcome_index_path

@@ -1,0 +1,13 @@
+<h2>Brand#Index</h2>
+<p>
+  <%= link_to "Signout", destroy_user_session_path, method: :delete %>
+</p>
+
+
+<% @campaigns.each do |c| %>
+  <p>c.id</p>
+  <p>c.product_name</p>
+  <p>c.description</p>
+  <p>-------</p>
+
+<% end %>

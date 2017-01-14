@@ -1,18 +1,21 @@
 <h1>Welcome#index</h1>
 <p>
   <%= link_to "Signout", destroy_user_session_path, method: :delete %>
-
 </p>
 
-<p>
-  <%= link_to "Instagram user recent media", user_recent_media_path %>
-</p>
-<p>
-  <%= link_to "users index", users_path  %>
-</p>
-<p>
-  <%= link_to "See Influencers", influencers_list_path %>
-</p>
 
-<p>  <%= current_user.identities.where(provider:'instagram').first.nickname %> </p>
-<p>  User is a <%= current_user.type %> </p>
+<p> <%= link_to "Instagram user recent media", user_recent_media_path %> </p>
+<p> <%= link_to "users index", users_path  %> </p>
+<p> <%= link_to "See Influencers", influencers_path %> </p>
+
+<p>
+  <% insta = current_user.identities.where(provider:'instagram').first %>
+  <%= insta.nickname if insta.present? %> </p>
+<p>  User is a <%= current_user.role %> </p>
+
+
+<p>
+  <% if current_user.brand.present? %>
+    <%= link_to "Campaign", brand_campaigns_path(current_user.brand) %>
+  <% end %>
+</p>
