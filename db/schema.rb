@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170113162221) do
+ActiveRecord::Schema.define(version: 20170114041605) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -77,6 +77,19 @@ ActiveRecord::Schema.define(version: 20170113162221) do
   add_index "requests", ["campaign_id"], name: "index_requests_on_campaign_id", using: :btree
   add_index "requests", ["influencer_id"], name: "index_requests_on_influencer_id", using: :btree
 
+  create_table "rewards", force: :cascade do |t|
+    t.integer  "campaign_id"
+    t.integer  "target"
+    t.string   "prize"
+    t.text     "description"
+    t.date     "post_date"
+    t.date     "deadline"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "rewards", ["campaign_id"], name: "index_rewards_on_campaign_id", using: :btree
+
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
@@ -101,4 +114,5 @@ ActiveRecord::Schema.define(version: 20170113162221) do
   add_foreign_key "campaigns", "brands"
   add_foreign_key "identities", "users"
   add_foreign_key "influencers", "users"
+  add_foreign_key "rewards", "campaigns"
 end

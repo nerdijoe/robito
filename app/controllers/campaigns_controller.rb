@@ -4,6 +4,8 @@ class CampaignsController < ApplicationController
 	def show
 		# @campaign = Campaign.where(brand_id: params[:brand_id])
 		@campaign = Campaign.find(params[:id])
+		@rewards = @campaign.rewards
+		 
 	end
 
 
