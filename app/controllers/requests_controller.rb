@@ -7,7 +7,6 @@ class RequestsController < ApplicationController
   end
 
   def update
-    byebug
     request = Request.find(params[:id])
 
     if params[:request][:status] == 'Yes'
@@ -17,7 +16,6 @@ class RequestsController < ApplicationController
     end
     request.save
 
-    byebug
     redirect_to influencer_campaign_path(id: request.campaign_id, influencer_id: current_user.influencer.id)
   end
 

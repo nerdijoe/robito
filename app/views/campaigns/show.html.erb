@@ -17,22 +17,13 @@
   <p>-------</p>
 
   <% if current_user.influencer.present? %>
-  Button to accept
+    <% request = @campaign.requests.find_by(influencer_id: current_user.influencer.id) %>
+    <%  %>
+      <%= render "/requests/update_status" if request.status == 'pending' %>
 
-  <%= form_for [current_user.influencer, @campaign.requests.find_by(influencer_id: current_user.influencer.id)], html: {class: 'form-horizontal'} do |form| %>
-
-  <div class="field">
-    <%= form.label :status, "Do you want to do this campaign? " %><br />
-    <%= form.select :status, [ 'Yes','No' ], :prompt => 'Select One' %>
-  </div>
-
-  <div class="form-group">
-    <div class="col-sm-offset-2 col-sm-10">
-      <%= form.submit 'Submit' %>
-    </div>
-  </div>
-  <% end %>
-
+  <p>
+    Status: <%= @campaign.requests.find_by(influencer_id: current_user.influencer.id).status %>
+  </p>
   <% end %>
 
 <% if current_user.brand.present? %>
