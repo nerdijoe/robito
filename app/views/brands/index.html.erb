@@ -1,13 +1,18 @@
 <h2>Brand#Index</h2>
-<p>
-  <%= link_to "Signout", destroy_user_session_path, method: :delete %>
-</p>
+<p> <%= link_to "Signout", destroy_user_session_path, method: :delete %> </p>
+<p> <%= link_to "Create a Campaign", new_brand_campaign_path(current_user.brand) %> </p>
+<p> <%= link_to "My Profile", brand_path(current_user.brand) %> </p>
 
 
-<% @campaigns.each do |c| %>
-  <p>c.id</p>
-  <p>c.product_name</p>
-  <p>c.description</p>
+<% @campaigns.each_with_index do |c| %>
+
+  <p><%= c.id %></p>
+  <p>Image: </p>
+
+  <p>Product name: <%= c.product_name %></p>
+  <p>Description: <%= c.description %></p>
+  <p>Product Category<%= c.product_category %></p>
+  <p> <%= link_to 'See Details', brand_campaign_path(brand_id: current_user.brand.id, id: c.id) %> </p>
   <p>-------</p>
 
 <% end %>

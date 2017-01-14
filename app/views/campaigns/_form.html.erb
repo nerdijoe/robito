@@ -1,9 +1,9 @@
  <% if current_user %>
 
- <%= form_for [current_user, @campaign], url: user_campaign_path(current_user, @campaign)  do |u| %>
+ <%= form_for [current_user.brand, @campaign]  do |u| %>
 
 <div class="form-control">
-<%= u.label :product_category %> 
+<%= u.label :product_category %>
 <%= u.text_field :product_category %>
  </div>
 
@@ -22,12 +22,12 @@
 </div>
 
 <div class="form-group">
- <%= u.label :email %> 
+ <%= u.label :email %>
  <%= u.text_field :email %>
 </div>
 
 <div class="form-group">
- <%= u.label :phone_number %> 
+ <%= u.label :phone_number %>
  <%= u.text_field :phone_number %>
 </div>
 
@@ -40,10 +40,10 @@
 	<%= u.label :link %>
 	<%= u.text_field :link %>
 </div>
- 
+
 <div class="form-control">
  <%= u.file_field :image, multiple: true %>
-</div> 
+</div>
 <div class="modal-title">
 <%= u.submit %>
 </div>

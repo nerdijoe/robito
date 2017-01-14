@@ -3,7 +3,7 @@ class BrandsController < ApplicationController
 
   def index
     @user = current_user
-    @campaigns = current_user.brand.campaigns
+    @campaigns = current_user.brand.campaigns.order(created_at: :desc)
   end
 
   def create
@@ -13,6 +13,6 @@ class BrandsController < ApplicationController
   end
 
   def show
-    @user = Brand.find(params[:id])
+    @brand = Brand.find(params[:id])
   end
 end
