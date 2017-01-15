@@ -5,7 +5,7 @@ class RewardsController < ApplicationController
 		@reward = Reward.all
 	end
 	def show
-
+	@reward = Reward.find(params[:id])
 	end
 
 	def new
@@ -37,14 +37,13 @@ class RewardsController < ApplicationController
 	end
 
 	def destroy
-		@reward = Reward.destroy(params[:id])
-		if @reward.destroy
-		# redirect_to rewards_path
-		flash[:notice] = "Gone Bro!!!!!"
-		else
-			redirect_to reward_path
-		end
-	end
+		 # @campaign = Campaign.find(params[:campaign_id])
+		# @campaign = Campaign.find(params[:id])
+ 		@reward = Reward.destroy(params[:id])
+  		# redirect_to brand_campaign_path(brand_id: current_user.brand.id)
+  		redirect_to root_path 
+ 		flash[:notice] = "Gone Bro!!!!!"
+ 	end
 
 	private
 	def rewards_params_update
