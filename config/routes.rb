@@ -15,7 +15,7 @@ Rails.application.routes.draw do
     resources :campaigns
   end
 
-  resources :influencers, only: [:index, :show] do
+  resources :influencers, only: [:index, :show, :edit, :update] do
     resources :campaigns, only: [:show]
     resources :requests, only: [:update]
   end
@@ -24,8 +24,8 @@ Rails.application.routes.draw do
     resources :rewards
     resources :requests, only: [:create, :destroy]
   end
- 
-  resources :influencers, only: [:index, :show]
+
+  # resources :influencers, only: [:index, :show]
 
   root 'welcome#index'
   get 'welcome/index'
