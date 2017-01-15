@@ -1,0 +1,18 @@
+
+<% @requests.each do |i| %>
+  <p>influencer_id: <%= i.influencer_id %></p>
+
+
+  <% if i.influencer.user.identities.present? %>
+
+    <% insta = i.influencer.user.identities.first %>
+    <p><%= insta.name %></p>
+    <p><%= insta.nickname %></p>
+    <p><%= image_tag insta.image %></p>
+  <% else %>
+    <p> This user doesn't have an instagram account </p>
+
+  <% end %>
+
+
+<% end %>

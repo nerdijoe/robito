@@ -6,6 +6,7 @@ class CampaignsController < ApplicationController
 		@campaign = Campaign.find(params[:id])
 
 		@influencers = Influencer.all
+		# @influencers = Influencer.where(location: @campaign.location)
 		@rewards = @campaign.rewards
 
 	end
@@ -33,7 +34,7 @@ class CampaignsController < ApplicationController
 		# byebug
 		if @campaign.save
 			redirect_to brands_path
-			flash[:notice] = "successfully Added Campaign"
+			flash[:notice] = "Successfully Added a new campaign"
  		else
  			redirect_to root_path
 			byebug
@@ -51,15 +52,20 @@ class CampaignsController < ApplicationController
 		if @campaign.update(campaigns_params_edit)
 			# redirect_to user_campaigns_path(current_user)
 			# byebug
-			redirect_to brand_campaign_path(id: params[:id])
+			redirect_to brand_campaign_path(id: params[:id]), notice: "Successfully updated your campaign"
 		else
 			root_path
 		end
 	end
 
 	def destroy
-		@campaign = Campaign.destroy(params[:id])	
+		@campaign = Campaign.destroy(params[:id])
 		redirect_to root_path
+	end
+
+
+	def influencers
+		@campaign = Campaign.find(params[:id])
 	end
 
 private

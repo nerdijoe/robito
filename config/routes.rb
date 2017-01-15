@@ -29,6 +29,8 @@ Rails.application.routes.draw do
 
   resources :searches, only: [:new, :create, :show]
 
+  get "/campaigns/:id/influencers" => "campaigns#influencers", as: 'see_influencers'
+
   root 'welcome#index'
   get 'welcome/index'
 
