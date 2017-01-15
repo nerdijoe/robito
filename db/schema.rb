@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170115060302) do
+ActiveRecord::Schema.define(version: 20170115073306) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -72,6 +72,7 @@ ActiveRecord::Schema.define(version: 20170115060302) do
     t.integer  "product_category"
     t.integer  "location"
     t.integer  "gender"
+    t.string   "interests"
   end
 
   add_index "influencers", ["user_id"], name: "index_influencers_on_user_id", using: :btree
