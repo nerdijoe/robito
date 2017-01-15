@@ -13,7 +13,6 @@ class InfluencersController < ApplicationController
     @client = Instagram.client(access_token: @influencer.user.instagram.accesstoken)
     @recent = @client.user_recent_media
 
-    byebug
     # find a post with specified hastag
     @tag = "yatai"
     # @found_post = nil
@@ -26,6 +25,27 @@ class InfluencersController < ApplicationController
       end
     end
 
+  end
+
+  def edit
+    @influencer = current_user.influencer
+  end
+
+  def update
+    @influencer = current_user.influencer
+
+    if @influencer.update_attributes(influencer_params)
+      redirect_to influencers_path
+    else
+      flash[:alert] = "Sorry, we cannot update your profile"
+      render 'edit'
+    end
+
+  end
+
+  private
+  def influencer_params
+    params.require(:influencer).permit(:age)
 
   end
 
