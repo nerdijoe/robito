@@ -13,8 +13,9 @@ class InfluencersController < ApplicationController
     @client = Instagram.client(access_token: @influencer.user.instagram.accesstoken)
     @recent = @client.user_recent_media
 
+    byebug
     # find a post with specified hastag
-    @tag = "yatai"
+    @tag = "relaxing"
     # @found_post = nil
     @recent.each do |m|
 
@@ -45,7 +46,7 @@ class InfluencersController < ApplicationController
 
   private
   def influencer_params
-    params.require(:influencer).permit(:age)
+    params.require(:influencer).permit(:product_category, :location, :age, :gender )
 
   end
 

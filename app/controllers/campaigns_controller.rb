@@ -6,7 +6,7 @@ class CampaignsController < ApplicationController
 		@campaign = Campaign.find(params[:id])
 
 		@influencers = Influencer.all
-		@rewards = @campaign.rewards		 
+		@rewards = @campaign.rewards
 
 	end
 
