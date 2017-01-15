@@ -29,7 +29,7 @@ class CampaignsController < ApplicationController
 		# @campaign = current_user.campaigns.new(campaigns_params)
 		@campaign = Campaign.new(campaigns_params)
 		@campaign.brand_id = current_user.brand.id
-		byebug
+		# byebug
 		if @campaign.save
 			redirect_to brands_path
 			flash[:notice] = "successfully Added Campaign"
