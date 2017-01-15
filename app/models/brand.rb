@@ -3,4 +3,6 @@ class Brand < ActiveRecord::Base
   # has_many :campaigns , foreign_key: "user_id"
   belongs_to :user
   has_many :campaigns
+  mount_uploaders :image, AvatarUploader
+
 end
