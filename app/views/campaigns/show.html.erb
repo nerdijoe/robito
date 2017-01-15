@@ -17,7 +17,10 @@
   <p>Interests <%=  @campaign.interests %></p>
 
   <% if current_user.brand.present? %>
-    <p> <%= link_to 'Edit', edit_brand_campaign_path(brand_id: current_user.brand.id, id: @campaign.id) %> </p>
+    <p><%= link_to 'Edit', edit_brand_campaign_path(brand_id: current_user.brand.id, id: @campaign.id) %> </p>
+
+<p><%= link_to "Delete", brand_campaign_path(brand_id: current_user.brand.id), method: :delete, data: { confirm: 'Are you sure?' } %>
+</p>
   <% end %>
   <p>-------</p>
 

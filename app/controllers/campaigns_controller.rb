@@ -27,7 +27,6 @@ class CampaignsController < ApplicationController
 
 	def create
 		# @campaign = Campaign.new(campaigns_params)
-
 		# @campaign = current_user.campaigns.new(campaigns_params)
 		@campaign = Campaign.new(campaigns_params)
 		@campaign.brand_id = current_user.brand.id
@@ -59,7 +58,8 @@ class CampaignsController < ApplicationController
 	end
 
 	def destroy
-
+		@campaign = Campaign.destroy(params[:id])	
+		redirect_to root_path
 	end
 
 private

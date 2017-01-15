@@ -3,8 +3,6 @@
    <%= link_to "Create a Campaign", new_brand_campaign_path(current_user.brand) %>
     <br></br>
    <% @campaign.each do |u| %>
-
-
    <tr>
    <td>Product Category: <%= u.product_category %></br><%= link_to 'Edit', edit_brand_campaign_path(brand_id: current_user.brand.id, id: u.id) %></td>
    <td>Description     : <%= u.description%></br></td>
