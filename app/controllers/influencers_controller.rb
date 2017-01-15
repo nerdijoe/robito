@@ -13,7 +13,6 @@ class InfluencersController < ApplicationController
     @client = Instagram.client(access_token: @influencer.user.instagram.accesstoken)
     @recent = @client.user_recent_media
 
-    byebug
     # find a post with specified hastag
     @tag = "relaxing"
     # @found_post = nil
@@ -36,7 +35,7 @@ class InfluencersController < ApplicationController
     @influencer = current_user.influencer
 
     if @influencer.update_attributes(influencer_params)
-      redirect_to influencers_path
+      redirect_to influencer_path(@influencer.id)
     else
       flash[:alert] = "Sorry, we cannot update your profile"
       render 'edit'
@@ -46,7 +45,7 @@ class InfluencersController < ApplicationController
 
   private
   def influencer_params
-    params.require(:influencer).permit(:product_category, :location, :age, :gender )
+    params.require(:influencer).permit(:product_category, :location, :age, :gender, :interests )
 
   end
 

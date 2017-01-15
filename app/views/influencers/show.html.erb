@@ -1,5 +1,12 @@
 <h2>Influencer Profile</h2>
 
+<p>
+  <% if current_user.influencer.present? %>
+  <%= link_to "Edit Profile", edit_influencer_path(current_user.influencer) if current_user.influencer.id == @influencer.id%>
+  <% end %>
+</p>
+
+
 <p>  <img src='<%= @client.user.profile_picture %>'> </p>
 <p><strong><%= @client.user.full_name %></strong></p>
 <p>Userid: <%= @influencer.user.id %>, Influencerid: <%= @influencer.id %></p>
@@ -41,6 +48,13 @@
   <strong>Audience Gender: </strong>
   <pre>
     <%= @influencer.gender %>
+  </pre>
+</p>
+
+<p>
+  <strong>My Interests: </strong>
+  <pre>
+    <%= @influencer.interests %>
   </pre>
 </p>
 
