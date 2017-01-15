@@ -1,8 +1,9 @@
 <h2>Influencer Profile</h2>
 
-<p><%= @influencer.user.id %></p>
-<p><%= @influencer.user.email %></p>
-<p><%= @influencer.user.type %></p>
+<p>  <img src='<%= @client.user.profile_picture %>'> </p>
+<p><strong><%= @client.user.full_name %></strong></p>
+<p>Userid: <%= @influencer.user.id %>, Influencerid: <%= @influencer.id %></p>
+<p><%= @influencer.user.role %></p>
 <p>
   <% if @influencer.user.identities.present? %>
     <% @influencer.user.identities.each do |i| %>
@@ -14,6 +15,22 @@
 
 
 <p>
+  <strong>My Product Category: </strong>
+  <pre>
+    <%= @influencer.product_category %>
+  </pre>
+</p>
+
+
+<p>
+  <strong>My Location: </strong>
+  <pre>
+    <%= @influencer.location %>
+  </pre>
+</p>
+
+
+<p>
   <strong>Audience Age: </strong>
   <pre>
     <%= @influencer.age %>
@@ -21,9 +38,13 @@
 </p>
 
 <p>
-  Profile Picture
-  <img src='<%= @client.user.profile_picture %>'>
+  <strong>Audience Gender: </strong>
+  <pre>
+    <%= @influencer.gender %>
+  </pre>
 </p>
+
+
 
 <p>
 <h3>#<%= @tag %></h3>

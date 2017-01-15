@@ -22,7 +22,7 @@ Rails.application.routes.draw do
 
   resources :campaigns, only: [:show] do
     resources :rewards
-    resources :requests, only: [:create, :destroy]
+    resources :requests, only: [:create, :destroy, :show]
   end
 
   # resources :influencers, only: [:index, :show]
