@@ -2,36 +2,18 @@
 
 
 
-<%= form_for [@campaign,@reward] do |u| %>
-
-<div class="form-control">
-	<%= u.label :target %>
-	<%= u.text_field :target %>
-</div>
-
-
-<div class="form-control">
-	<%= u.label :prize %>
-	<%= u.text_field :prize %>
- </div>
-
-<div class="form-control">
-	<%= u.label :post_date %>
-	<%= u.text_field :post_date %>
-</div>
-
-<div class="form-control">
-	<%= u.label :deadline %>
-	<%= u.text_field :deadline %>
-</div>
-
-<div class="form-control">
-	<%= u.label :description %>
-	<%= u.text_field :description %>
-</div>
-<div >
-<%= u.submit %>
-</div>
-
-	<% end %>
+<%= form_for [@campaign,@reward], html: {class: 'form-horizontal'} do |form| %>
  
+<%= render partial: '/rewards/form', object: form %>
+
+
+
+<div calss="form-group">
+  <div class="col-sm-offset-2 col-sm-10">
+    <%= form.submit %>
+  </div>
+</div>
+
+  <% end %>
+
+  
