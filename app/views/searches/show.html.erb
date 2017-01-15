@@ -1,0 +1,43 @@
+<div class="container">
+
+<h2>Influencer index</h2>
+
+
+<% if @influencers.blank? %>
+  <p>
+    Sorry, no matches.
+  </p>
+<% else %>
+
+
+  <p>
+    <strong>Total influencers: </strong><%= @influencers.count %>
+  </p>
+
+
+  <ul id='listings'>
+    <% @influencers.each do |i| %>
+      <li>
+
+          <p><%= i.user.role %></p>
+
+          <% if i.user.identities.present? %>
+            <% insta = i.user.identities.first %>
+              <p><%= image_tag insta.image %></p>
+
+              <p><%= insta.name %></p>
+              <p><%= insta.nickname %></p>
+          <% end %>
+
+          <p>Influencer id: <%= i.id %>  </p>
+          <p>User id:<%= i.user.id %></p>
+          <p><%= link_to "See Profile", influencer_path(i.id) %></p>
+
+      </li>
+    <% end %>
+  </ul>
+
+
+<% end %>
+
+<p><%= link_to 'Back', new_search_path %></p>

@@ -15,7 +15,6 @@ class Influencer < ActiveRecord::Base
   scope :location,    -> (city) { where(location: city) }
   scope :age,         -> (age) { where(age: age) }
 
-
   include PgSearch
   pg_search_scope :search_by_keyword, :against => [:product_category, :location, :age, :gender, :interests]
 

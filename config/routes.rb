@@ -27,6 +27,8 @@ Rails.application.routes.draw do
 
   # resources :influencers, only: [:index, :show]
 
+  resources :searches, only: [:new, :create, :show]
+
   root 'welcome#index'
   get 'welcome/index'
 

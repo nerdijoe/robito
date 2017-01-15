@@ -1,7 +1,9 @@
 <h2>Influencer Profile</h2>
 
 <p>
-  <%= link_to "Edit Profile", edit_influencer_path(current_user.influencer) %>
+  <% if current_user.influencer.present? %>
+  <%= link_to "Edit Profile", edit_influencer_path(current_user.influencer) if current_user.influencer.id == @influencer.id%>
+  <% end %>
 </p>
 
 
