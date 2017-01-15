@@ -10,10 +10,15 @@
 
 
  <% if signed_in? %>
+  <%= link_to "Home", root_path %>
+ <% end %>
 
-         <%= link_to "Home", root_path %>
+ <div class="container">
+   <% flash.each do |name, msg| %>
+     <%= content_tag :div, msg, class: "alert alert-info" %>
+   <% end %>
+ </div>
 
-        <% end %>
  <%= yield %>
 
 </body>
