@@ -1,0 +1,6 @@
+<div class="form-group">
+  <%= form.label :age, 'Audience Age', class:'col-sm-2 control-label' %>
+  <div class="col-sm-10">
+    <%= form.select :age, Influencer.ages.map{ |a| [a.first,a.first] } , class: 'form-control'%>
+  </div>
+</div>
