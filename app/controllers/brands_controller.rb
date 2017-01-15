@@ -11,9 +11,9 @@ class BrandsController < ApplicationController
   end
 
   def create
-    byebug
+    # byebug
     Brand.create()
-    byebug
+    # byebug
   end
 
   def edit
@@ -24,7 +24,13 @@ class BrandsController < ApplicationController
     @brand = Brand.find(params[:id])
     @brand.update(edit_brand_params)
     redirect_to brand_path(current_user.brand)
-      
+  end
+
+  def destroy
+    @brand = Brand.find(params[:id])
+    @brand.destroy
+    current_user.zero!
+    redirect_to root_path
   end
 
   private
