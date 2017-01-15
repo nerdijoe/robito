@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170114103149) do
+ActiveRecord::Schema.define(version: 20170115032758) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,7 +26,6 @@ ActiveRecord::Schema.define(version: 20170114103149) do
 
   create_table "campaigns", force: :cascade do |t|
     t.text     "description"
-    t.string   "product_category"
     t.string   "product_name"
     t.string   "company_name"
     t.string   "email"
@@ -38,10 +37,11 @@ ActiveRecord::Schema.define(version: 20170114103149) do
     t.datetime "updated_at",       null: false
     t.integer  "brand_id"
     t.string   "tag"
-    t.string   "location"
     t.integer  "age"
     t.integer  "gender"
     t.string   "interests"
+    t.integer  "location"
+    t.integer  "product_category"
   end
 
   add_index "campaigns", ["brand_id"], name: "index_campaigns_on_brand_id", using: :btree

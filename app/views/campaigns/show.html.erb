@@ -8,9 +8,13 @@
     <% end %>
   </div>
 
-  <p>Product name: <%=  @campaign.product_name %></p>
-  <p>Description: <%=  @campaign.description %></p>
-  <p>Product Category<%=  @campaign.product_category %></p>
+  <p>Product name <%=  @campaign.product_name %></p>
+  <p>Description <%=  @campaign.description %></p>
+  <p>Product Category <%=  @campaign.product_category %></p>
+  <p>Location <%=  @campaign.location %></p>
+  <p>Target Age <%=  @campaign.age %></p>
+  <p>Target Gender <%=  @campaign.gender %></p>
+  <p>Interests <%=  @campaign.interests %></p>
 
   <% if current_user.brand.present? %>
     <p> <%= link_to 'Edit', edit_brand_campaign_path(brand_id: current_user.brand.id, id: @campaign.id) %> </p>
@@ -58,7 +62,7 @@
   <p>User id:<%= i.user.id %></p>
   <p><%= link_to i.user.email, influencer_path(i) %></p>
   <% if @campaign.requests.where(influencer_id: i.id).present? %>
-    <%= link_to "Delete", campaign_request_path(campaign_id: @campaign, influencer_id: i.id), method: :delete  %>
+    <%= link_to "Cancel Request", campaign_request_path(campaign_id: @campaign, influencer_id: i.id), method: :delete  %>
   <% else %>
     <%= link_to "Pick Me", campaign_requests_path(campaign_id: @campaign, influencer_id: i.id), method: :post  %>
   <% end %>
