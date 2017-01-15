@@ -5,7 +5,7 @@
   <p> <%= link_to "My Profile", brand_path(current_user.brand) %> </p>
 
 
-  <h2>Your Campaigns:</h2>
+  <h4>Your Campaigns <span class="badge"><%= @campaigns.count %></span></h4>
 
 
   <% @campaigns.each_with_index do |c| %>

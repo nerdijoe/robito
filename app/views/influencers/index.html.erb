@@ -1,14 +1,7 @@
 <div class="container">
 
   <h2>Influencers#index</h2>
-  <p>
-    <%= link_to "Signout", destroy_user_session_path, method: :delete %>
-  </p>
-
-  <p>
-    <%= link_to "My Profile", influencer_path(current_user.influencer) %>
-  </p>
-
+  <p> <%= link_to "My Profile", influencer_path(current_user.influencer) %> </p>
 
   <% @influencers.each do |i| %>
     <p><%= i.user.id %></p>
