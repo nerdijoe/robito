@@ -4,8 +4,10 @@ class CampaignsController < ApplicationController
 	def show
 		# @campaign = Campaign.where(brand_id: params[:brand_id])
 		@campaign = Campaign.find(params[:id])
-		@rewards = @campaign.rewards
-		 
+
+		@influencers = Influencer.all
+		@rewards = @campaign.rewards		 
+
 	end
 
 
@@ -62,11 +64,11 @@ class CampaignsController < ApplicationController
 
 private
 	def campaigns_params_edit
-		params.require(:campaign).permit(:product_category, :description, :product_name, :company_name, :email, :phone_number, :address, :link, {image: []})
+		params.require(:campaign).permit(:product_category, :description, :product_name, :company_name, :email, :phone_number, :address, :link, {image: []}, :tag, :location, :age, :gender, :interests)
 	end
 
 	def campaigns_params
-		params.require(:campaign).permit(:product_category, :description, :product_name, :company_name, :email, :phone_number, :address, :link, {image: []}, :brand_id, :influencer_id)
+		params.require(:campaign).permit(:product_category, :description, :product_name, :company_name, :email, :phone_number, :address, :link, {image: []}, :brand_id, :tag, :location, :age, :gender, :interests)
  	end
 
 end
