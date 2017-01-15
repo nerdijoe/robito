@@ -1,84 +1,88 @@
-<h2>Influencer Profile</h2>
+<div class="container">
 
-<p>
-  <% if current_user.influencer.present? %>
-  <%= link_to "Edit Profile", edit_influencer_path(current_user.influencer) if current_user.influencer.id == @influencer.id%>
+  <h2>Influencer Profile</h2>
+
+  <p>
+    <% if current_user.influencer.present? %>
+    <%= link_to "Edit Profile", edit_influencer_path(current_user.influencer) if current_user.influencer.id == @influencer.id%>
+    <% end %>
+  </p>
+
+
+  <p>  <img src='<%= @client.user.profile_picture %>'> </p>
+  <p><strong><%= @client.user.full_name %></strong></p>
+  <p>Userid: <%= @influencer.user.id %>, Influencerid: <%= @influencer.id %></p>
+  <p><%= @influencer.user.role %></p>
+  <p>
+    <% if @influencer.user.identities.present? %>
+      <% @influencer.user.identities.each do |i| %>
+        <p><%= i.provider %></p>
+        <p><%= i.nickname %></p>
+      <% end %>
+    <% end %>
+  </p>
+
+
+  <p>
+    <strong>My Product Category: </strong>
+    <pre>
+      <%= @influencer.product_category %>
+    </pre>
+  </p>
+
+
+  <p>
+    <strong>My Location: </strong>
+    <pre>
+      <%= @influencer.location %>
+    </pre>
+  </p>
+
+
+  <p>
+    <strong>Audience Age: </strong>
+    <pre>
+      <%= @influencer.age %>
+    </pre>
+  </p>
+
+  <p>
+    <strong>Audience Gender: </strong>
+    <pre>
+      <%= @influencer.gender %>
+    </pre>
+  </p>
+
+  <p>
+    <strong>My Interests: </strong>
+    <pre>
+      <%= @influencer.interests %>
+    </pre>
+  </p>
+
+
+
+  <p>
+  <h3>#<%= @tag %></h3>
+  <% if @found_post.present? %>
+    <p> <%= image_tag @found_post.images.low_resolution.url %> </p>
+    <p> <%= @found_post.tags %></p>
+    <p> Likes: <%= @found_post.likes.fetch(:count) %></p>
   <% end %>
-</p>
-
-
-<p>  <img src='<%= @client.user.profile_picture %>'> </p>
-<p><strong><%= @client.user.full_name %></strong></p>
-<p>Userid: <%= @influencer.user.id %>, Influencerid: <%= @influencer.id %></p>
-<p><%= @influencer.user.role %></p>
-<p>
-  <% if @influencer.user.identities.present? %>
-    <% @influencer.user.identities.each do |i| %>
-      <p><%= i.provider %></p>
-      <p><%= i.nickname %></p>
+  </p>
+  <% a = false %>
+  <% if a %>
+    <% for media_item in @client.user_recent_media %>
+        <div style='float:left;'>
+          <img src='<%= media_item.images.low_resolution.url %>'>
+          <br/>
+          <%= media_item.tags %>
+          <a href='/media_like/<%= media_item.id %>'>Like</a>
+          <a href='/media_unlike/<%= media_item.id %>'>Un-Like</a>
+          <br/>
+          Likes: <%= media_item.likes[:count] %>
+        </div>
     <% end %>
   <% end %>
-</p>
 
-
-<p>
-  <strong>My Product Category: </strong>
-  <pre>
-    <%= @influencer.product_category %>
-  </pre>
-</p>
-
-
-<p>
-  <strong>My Location: </strong>
-  <pre>
-    <%= @influencer.location %>
-  </pre>
-</p>
-
-
-<p>
-  <strong>Audience Age: </strong>
-  <pre>
-    <%= @influencer.age %>
-  </pre>
-</p>
-
-<p>
-  <strong>Audience Gender: </strong>
-  <pre>
-    <%= @influencer.gender %>
-  </pre>
-</p>
-
-<p>
-  <strong>My Interests: </strong>
-  <pre>
-    <%= @influencer.interests %>
-  </pre>
-</p>
-
-
-
-<p>
-<h3>#<%= @tag %></h3>
-<% if @found_post.present? %>
-  <p> <%= image_tag @found_post.images.low_resolution.url %> </p>
-  <p> <%= @found_post.tags %></p>
-  <p> Likes: <%= @found_post.likes.fetch(:count) %></p>
-<% end %>
-</p>
-<% a = false %>
-<% if a %>
-  <% for media_item in @client.user_recent_media %>
-      <div style='float:left;'>
-        <img src='<%= media_item.images.low_resolution.url %>'>
-        <br/>
-        <%= media_item.tags %>
-        <a href='/media_like/<%= media_item.id %>'>Like</a>
-        <a href='/media_unlike/<%= media_item.id %>'>Un-Like</a>
-        <br/>
-        Likes: <%= media_item.likes[:count] %>
-      </div>
-  <% end %>
-<% end %>
+</div>

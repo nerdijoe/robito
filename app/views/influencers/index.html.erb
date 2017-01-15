@@ -1,42 +1,46 @@
-<h2>Influencers#index</h2>
-<p>
-  <%= link_to "Signout", destroy_user_session_path, method: :delete %>
-</p>
+<div class="container">
 
-<p>
-  <%= link_to "My Profile", influencer_path(current_user.influencer) %>
-</p>
+  <h2>Influencers#index</h2>
+  <p>
+    <%= link_to "Signout", destroy_user_session_path, method: :delete %>
+  </p>
+
+  <p>
+    <%= link_to "My Profile", influencer_path(current_user.influencer) %>
+  </p>
 
 
-<% @influencers.each do |i| %>
-  <p><%= i.user.id %></p>
-  <p><%= link_to i.user.email, influencer_path(i) %></p>
-  <p><%= i.user.type %></p>
+  <% @influencers.each do |i| %>
+    <p><%= i.user.id %></p>
+    <p><%= link_to i.user.email, influencer_path(i) %></p>
+    <p><%= i.user.type %></p>
 
-  <% if i.user.identities.present? %>
-    <% i.user.identities.each do |u| %>
-      <p><%= u.provider %></p>
-      <p><%= u.nickname %></p>
+    <% if i.user.identities.present? %>
+      <% i.user.identities.each do |u| %>
+        <p><%= u.provider %></p>
+        <p><%= u.nickname %></p>
+      <% end %>
     <% end %>
+
+    <p> ---------------</p>
+
   <% end %>
 
-  <p> ---------------</p>
 
-<% end %>
+  <h2>Your Campaigns:</h2>
 
+  <% @campaigns.each_with_index do |c| %>
 
-<h2>Your Campaigns:</h2>
+      <% c.image.each do |photo| %>
+        <div class="campaign">
+           <%= image_tag photo.url(:thumb) %>
+        </div>
+      <% end %>
+    <p>Product name: <%= c.product_name %></p>
+    <p>Description: <%= c.description %></p>
+    <p>Product Category<%= c.product_category %></p>
+    <p> <%= link_to 'See Details', influencer_campaign_path(influencer_id: current_user.influencer.id, id: c.id) %> </p>
+    <p>-------</p>
+  <% end %>
 
-<% @campaigns.each_with_index do |c| %>
-
-    <% c.image.each do |photo| %>
-      <div class="campaign">
-         <%= image_tag photo.url(:thumb) %>
-      </div>
-    <% end %>
-  <p>Product name: <%= c.product_name %></p>
-  <p>Description: <%= c.description %></p>
-  <p>Product Category<%= c.product_category %></p>
-  <p> <%= link_to 'See Details', influencer_campaign_path(influencer_id: current_user.influencer.id, id: c.id) %> </p>
-  <p>-------</p>
-<% end %>
+</div>
