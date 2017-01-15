@@ -11,4 +11,12 @@ class Influencer < ActiveRecord::Base
   enum age: { 'Younger than 20' => 0, '20 to 30' => 1, '30 to 40' => 2, '50 and above' => 3 }
 	enum gender: [ :Male, :Female, :Both ]
 
+
+  scope :location,    -> (city) { where(location: city) }
+  scope :age,         -> (age) { where(age: age) }
+
+  include PgSearch
+  pg_search_scope :search_by_keyword, :against => [:product_category, :location, :age, :gender, :interests]
+
+
 end

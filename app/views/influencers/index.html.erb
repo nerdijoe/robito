@@ -8,12 +8,6 @@
 </p>
 
 
-<p>
-  <%= link_to "Edit Profile", edit_influencer_path(current_user.influencer) %>
-</p>
-
-
-
 <% @influencers.each do |i| %>
   <p><%= i.user.id %></p>
   <p><%= link_to i.user.email, influencer_path(i) %></p>
