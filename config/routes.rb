@@ -11,7 +11,7 @@ Rails.application.routes.draw do
 
   resources :users, only: [:index, :show]
 
-  resources :brands, only: [:index, :show] do
+  resources :brands, only: [:index, :show, :edit, :update] do
     resources :campaigns
   end
 
