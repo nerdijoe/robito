@@ -12,5 +12,20 @@
     <p> Likes: <%= @found_post.likes.fetch(:count) %> </p>
     <p> Post date: <%= Time.at(@found_post.created_time.to_i).to_date %></p>
     <p> Likes: <%= @found_post.likes.fetch(:count) %></p>
+
+    <% if @found_post.likes.fetch(:count) >= 50  %>
+      <!-- show "get rewards" button -->
+      <!-- if influencer have already got the reward -->
+          <p>
+            You have claimed this reward.
+          </p>
+      <!-- else -->
+
+      <%= link_to "Get Rewards", root_path, class: "btn btn-default" %>
+
+      <!-- end -->
+    <% else %>
+      <%= link_to "Get Rewards", root_path, class: "btn btn-default", disabled: "disabled" %>
+    <% end %>
   <% end %>
   </p>
