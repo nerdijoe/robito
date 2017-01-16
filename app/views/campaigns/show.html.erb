@@ -1,3 +1,116 @@
+<div class="row">
+  <div class="col-md-12">
+      <% if current_user.brand.present? %>
+        <div class="btn-group_pull-left">
+          <%= link_to 'Edit', edit_brand_campaign_path(brand_id: current_user.brand.id, id: @campaign.id), class: "btn btn-default" %>
+          <%= link_to "Delete", brand_campaign_path(brand_id: current_user.brand.id), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default" %>
+        </div>
+      <% end %>
+      <h1> <%= @campaign.id %> </h1>
+    </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <div class="thumbnail">
+      <div class="campaign">
+        <% @campaign.image.each do |photo| %>
+          <%= image_tag photo.url(:thumb) %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="about_product">
+    <div class="col-md-6">
+      <div class="left-caption">
+        <p>Product name : <%=  @campaign.product_name %></p>
+        <p>Product Category : <%=  @campaign.product_category %></p>
+        <p>Location : <%=  @campaign.location %></p>
+        <p>Target Age : <%=  @campaign.age %></p>
+      </div>
+  </div>
+  <div class="col-md-6">
+    <div class="right-caption">
+      <p>Target Gender : <%=  @campaign.gender %></p>
+      <p>Interests : <%=  @campaign.interests %></p>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="description">
+      <p><%=  @campaign.description %></p>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+                        <div class="row">
+                            <div class="col-md-12">
+                              <div class="influencer-container">
+                              <% @influencers.each do |i| %>
+                                <p><%= i.user.role %></p>
+
+                                <% if i.user.identities.present? %>
+                                  <% insta = i.user.identities.first %>
+                                    <p><%= image_tag insta.image %></p>
+
+                                    <p><%= insta.name %></p>
+                                    <p><%= insta.nickname %></p>
+                                    <%end%>
+                                    <%end%>
+                            </div>
+                        </div>
+
+                        <hr>
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <span class="glyphicon glyphicon-star"></span>
+                                <span class="glyphicon glyphicon-star"></span>
+                                <span class="glyphicon glyphicon-star"></span>
+                                <span class="glyphicon glyphicon-star"></span>
+                                <span class="glyphicon glyphicon-star-empty"></span>
+                                Anonymous
+                                <span class="pull-right">12 days ago</span>
+                                <p>I've alredy ordered another one!</p>
+                            </div>
+                        </div>
+
+                        <hr>
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <span class="glyphicon glyphicon-star"></span>
+                                <span class="glyphicon glyphicon-star"></span>
+                                <span class="glyphicon glyphicon-star"></span>
+                                <span class="glyphicon glyphicon-star"></span>
+                                <span class="glyphicon glyphicon-star-empty"></span>
+                                Anonymous
+                                <span class="pull-right">15 days ago</span>
+                                <p>I've seen some better than this, but not at this price. I definitely recommend this item.</p>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
 
 <h2>brand#show</h2>
 
@@ -5,20 +118,20 @@
 
 
   <p><%= @campaign.id %></p>
-  <p>Image: </p>
+  <!-- <p>Image: </p>
   <div class="campaign">
     <% @campaign.image.each do |photo| %>
        <%= image_tag photo.url(:thumb) %>
     <% end %>
-  </div>
+  </div> -->
 
-  <p>Product name <%=  @campaign.product_name %></p>
-  <p>Description <%=  @campaign.description %></p>
-  <p>Product Category <%=  @campaign.product_category %></p>
-  <p>Location <%=  @campaign.location %></p>
-  <p>Target Age <%=  @campaign.age %></p>
-  <p>Target Gender <%=  @campaign.gender %></p>
-  <p>Interests <%=  @campaign.interests %></p>
+  <p>Product name : <%=  @campaign.product_name %></p>
+  <p>Description : <%=  @campaign.description %></p>
+  <p>Product Category : <%=  @campaign.product_category %></p>
+  <p>Location : <%=  @campaign.location %></p>
+  <p>Target Age : <%=  @campaign.age %></p>
+  <p>Target Gender : <%=  @campaign.gender %></p>
+  <p>Interests : <%=  @campaign.interests %></p>
 
   <% if current_user.brand.present? %>
       <div class="btn-group pull-left">
