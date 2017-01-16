@@ -16,7 +16,7 @@ class InfluencersController < ApplicationController
     @user_info = @client.user
     @recent = @client.user_recent_media
 
-    byebug
+    # byebug
     # find a post with specified hastag
     @tag = "relaxing"
     # @found_post = nil

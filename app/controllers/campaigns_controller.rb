@@ -64,7 +64,9 @@ class CampaignsController < ApplicationController
 			# redirect_to user_campaigns_path(current_user)
  			redirect_to brand_campaign_path(id: params[:id]), notice: "Successfully updated your campaign"
 		else
-			redirect_to root_path, notice: "Error"
+ 			redirect_to edit_brand_campaign_path(current_user.brand,id: params[:id])
+		 	flash[:notice] = "Product Name, Email, Company Name: can't be blank."
+
 		end
 	end
 
@@ -73,6 +75,7 @@ class CampaignsController < ApplicationController
 			redirect_to root_path, notice: "Successfully Deleled campaign"
 		else
 			redirect_to root_path, notice: "Error"
+
 		end
 	end
 
