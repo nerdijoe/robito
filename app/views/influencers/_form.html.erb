@@ -1,0 +1,34 @@
+<div class="form-group">
+  <%= form.label :product_category, 'My Product Category', class:'col-sm-2 control-label' %>
+  <div class="col-sm-10">
+    <%= form.select :product_category, Influencer.product_categories.map{ |a| [a.first,a.first] } , class: 'form-control'%>
+  </div>
+</div>
+
+<div class="form-group">
+  <%= form.label :location, 'My Location', class:'col-sm-2 control-label' %>
+  <div class="col-sm-10">
+    <%= form.select :location, Influencer.locations.map{ |a| [a.first,a.first] } , class: 'form-control'%>
+  </div>
+</div>
+
+<div class="form-group">
+  <%= form.label :age, 'Audience Age', class:'col-sm-2 control-label' %>
+  <div class="col-sm-10">
+    <%= form.select :age, Influencer.ages.map{ |a| [a.first,a.first] } , class: 'form-control'%>
+  </div>
+</div>
+
+<div class="form-group">
+  <%= form.label :gender, 'Audience Gender', class:'col-sm-2 control-label' %>
+  <div class="col-sm-10">
+    <%= form.select :gender, Influencer.genders.map{ |a| [a.first,a.first] }, class: 'form-control'%>
+  </div>
+</div>
+
+<div class="form-group">
+  <%= form.label :interests, 'My Interests', class:'col-sm-2 control-label' %>
+  <div class="col-sm-10">
+    <%= form.text_field :interests , class: 'form-control'%>
+  </div>
+</div>

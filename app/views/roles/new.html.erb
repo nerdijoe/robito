@@ -1,0 +1,11 @@
+
+  <%= form_for :role, url: "/users/roles" do |form| %>
+    <%= render partial: '/roles/form', object: form %>
+
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-10">
+        <%= form.submit 'Submit' %>
+      </div>
+    </div>
+
+  <% end %>

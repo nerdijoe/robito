@@ -1,0 +1,14 @@
+
+<h3>Reward#Edit </h3>
+
+<%= form_for [@campaign,@reward], html: {class: 'form-horizontal'} do |form| %>
+
+  <%= render partial: '/rewards/form', object: form %>
+
+  <div calss="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <%= form.submit %>
+    </div>
+  </div>
+
+<% end %>

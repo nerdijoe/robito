@@ -1,0 +1,87 @@
+
+<h2>brand#show</h2>
+
+<p> <%= link_to "Search Influencers", new_search_path %> </p>
+
+
+  <p><%= @campaign.id %></p>
+  <p>Image: </p>
+  <div class="campaign">
+    <% @campaign.image.each do |photo| %>
+       <%= image_tag photo.url(:thumb) %>
+    <% end %>
+  </div>
+
+  <p>Product name <%=  @campaign.product_name %></p>
+  <p>Description <%=  @campaign.description %></p>
+  <p>Product Category <%=  @campaign.product_category %></p>
+  <p>Location <%=  @campaign.location %></p>
+  <p>Target Age <%=  @campaign.age %></p>
+  <p>Target Gender <%=  @campaign.gender %></p>
+  <p>Interests <%=  @campaign.interests %></p>
+
+  <% if current_user.brand.present? %>
+      <div class="btn-group pull-left">
+        <%= link_to 'Edit', edit_brand_campaign_path(brand_id: current_user.brand.id, id: @campaign.id), class: "btn btn-default" %>
+        <%= link_to "Delete", brand_campaign_path(brand_id: current_user.brand.id), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default" %>
+      </div>
+  <% end %>
+
+  <% if current_user.influencer.present? %>
+    <% request = @campaign.requests.find_by(influencer_id: current_user.influencer.id) %>
+
+    <%= render "/requests/update_status" if request.status == 'pending' %>
+
+    <p> Status: <%= @campaign.requests.find_by(influencer_id: current_user.influencer.id).status %> </p>
+  <% end %>
+
+<br><br>
+
+<% if current_user.brand.present? %>
+  <h3>Rewards</h3>
+  <%= link_to 'Create Reward', new_campaign_reward_path(@campaign.id), class: "btn btn-info" %>
+
+  <br><br>
+
+  <% @rewards.each do |t| %>
+
+    Target : <%= t.target %></br>
+    Prize         : <%= t.prize %></br>
+    description   : <%= t.description %></br>
+    Post Date     : <%= t.post_date %></br>
+    Dead Line Date: <%= t.deadline %></br>
+
+    <div class="btn-group pull-left">
+      <%= link_to 'Edit', edit_campaign_reward_path(@campaign.id, t.id), class: "btn btn-default" %>
+      <%= link_to 'Destroy', campaign_reward_path(@campaign.id, t.id), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default" %>
+    </div>
+
+    <br><br><br>
+  <% end %>
+
+<h2>Influencers</h2>
+
+<% @influencers.each do |i| %>
+  <p><%= i.user.role %></p>
+
+  <% if i.user.identities.present? %>
+    <% insta = i.user.identities.first %>
+      <p><%= image_tag insta.image %></p>
+
+      <p><%= insta.name %></p>
+      <p><%= insta.nickname %></p>
+  <% end %>
+
+  <p>Influencer id: <%= i.id %>  </p>
+  <p>User id:<%= i.user.id %></p>
+  <p><%= link_to i.user.email, influencer_path(i) %></p>
+  <% if @campaign.requests.where(influencer_id: i.id).present? %>
+    <%= link_to "Cancel Request", campaign_request_path(campaign_id: @campaign, influencer_id: i.id), method: :delete  %>
+  <% else %>
+    <%= link_to "Pick Me", campaign_requests_path(campaign_id: @campaign, influencer_id: i.id), method: :post  %>
+  <% end %>
+  <p> ---------------</p>
+
+<% end %>
+
+<% end %>

@@ -1,0 +1,152 @@
+element.style {
+   font-size: 13px;
+}
+.btn.btn-lg {
+   padding: 11px 26px 9px 26px;
+}
+.google-login-btn:hover {
+   box-shadow: 0 5px 11px 0 rgba(0,0,0,0.18), 0 4px 15px 0 rgba(0,0,0,0.15);
+   border: 2px solid #3b5998 ;
+   background: white;
+   color: black;
+   
+}
+.btn-lg {
+   padding: 10px 16px;
+   font-size: 18px;
+   line-height: 1.3333333;
+   border-radius: 6px;
+}
+.btn {
+   display: inline-block;
+   margin-bottom: 0;
+   font-weight: normal;
+   text-align: center;
+   vertical-align: middle;
+   -ms-touch-action: manipulation;
+   touch-action: manipulation;
+   cursor: pointer;
+   background-image: none;
+   border: 1px solid transparent;
+   white-space: nowrap;
+   padding: 6px 12px;
+   font-size: 14px;
+   line-height: 1.42857143;
+   border-radius: 4px;
+   -webkit-user-select: none;
+   -moz-user-select: none;
+   -ms-user-select: none;
+   user-select: none;
+}
+.waves-effect {
+   position: relative;
+   cursor: pointer;
+   display: inline-block;
+   overflow: hidden;
+   -webkit-user-select: none;
+   -moz-user-select: none;
+   -ms-user-select: none;
+   user-select: none;
+   -webkit-tap-highlight-color: transparent;
+   vertical-align: middle;
+   z-index: 1;
+   will-change: opacity, transform;
+   -webkit-transition: all .3s ease-out;
+   transition: all .3s ease-out;
+}
+.btn {
+   border-radius: 3px;
+   font-size: 13px;
+   border-color: transparent;
+   -webkit-appearance: none;
+   outline: none !important;
+   -webkit-transition: all 0.1s;
+   transition: all 0.1s;
+}
+.btn-lg, .btn-group-lg>.btn {
+   padding: 10px 20px;
+   font-size: 18px;
+   line-height: 1.33;
+   border-radius: 6px;
+}
+.btn {
+   display: inline-block;
+   margin-bottom: 0;
+   font-weight: normal;
+   text-align: center;
+   vertical-align: middle;
+   -ms-touch-action: manipulation;
+   touch-action: manipulation;
+   cursor: pointer;
+   background-image: none;
+   border: 1px solid transparent;
+   white-space: nowrap;
+   padding: 6px 16px;
+   font-size: 14px;
+   line-height: 1.52857;
+   border-radius: 4px;
+   -webkit-user-select: none;
+   -moz-user-select: none;
+   -ms-user-select: none;
+   user-select: none;
+}
+.btn-lg, .btn-group-lg>.btn {
+   padding: 10px 20px;
+   font-size: 18px;
+   line-height: 1.33;
+   border-radius: 6px;
+}
+
+.btn {
+   outline: none !important;
+   -webkit-transition: all 0.2s ease-out;
+   -moz-transition: all 0.2s ease-out;
+   -o-transition: all 0.2s ease-out;
+   -ms-transition: all 0.2s ease-out;
+   padding: 6px 20px 4px 20px;
+   font-size: 16px;
+}
+.btn-lg, .btn-group-lg>.btn {
+   padding: 10px 16px;
+   font-size: 18px;
+   line-height: 1.3333333;
+   border-radius: 4px;
+}
+
+.btn {
+   display: inline-block;
+   margin-bottom: 0;
+   font-weight: normal;
+   text-align: center;
+   vertical-align: middle;
+   -ms-touch-action: manipulation;
+   touch-action: manipulation;
+   cursor: pointer;
+   background-image: none;
+   border: 1px solid transparent;
+   white-space: nowrap;
+   padding: 6px 12px;
+   font-size: 14px;
+   line-height: 1.42857143;
+   border-radius: 3px;
+   -webkit-user-select: none;
+   -moz-user-select: none;
+   -ms-user-select: none;
+   user-select: none;
+}
+
+.fa {
+   display: inline-block;
+   font: normal normal normal 14px/1 FontAwesome;
+   font-size: inherit;
+   text-rendering: auto;
+   -webkit-font-smoothing: antialiased;
+   -moz-osx-font-smoothing: grayscale;
+}
+
+.fa-google:before {
+   content: "\f09a";
+}
+*:before, *:after {
+   box-sizing: border-box;
+}

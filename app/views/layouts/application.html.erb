@@ -18,6 +18,9 @@
 
 
   <title>Robito</title>
+  <link href='https://fonts.googleapis.com/css?family=Alegreya+Sans+SC' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Quantico' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
@@ -62,7 +65,19 @@
   </nav>
 
 
-<%= yield %>
+ <div class="container">
+  <% if signed_in? %>
+    <%= link_to "Home", root_path %>  <%= link_to "Signout", destroy_user_session_path, method: :delete %>
+  <% end %>
+
+  <% flash.each do |name, msg| %>
+    <%= content_tag :div, msg, class: "alert alert-info" %>
+  <% end %>
+ </div>
+
+  <div class="container">
+     <%= yield %>
+  </div>
 
 </body>
 

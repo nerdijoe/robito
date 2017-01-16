@@ -1,0 +1,13 @@
+
+<h2>Influencers</h2>
+
+<% @influencers.each do |user| %>
+  <p>
+    <%= user.email %>
+    <br/>
+    <% byebug %>
+    <% a =  user.identities.where(provider: 'instagram').first %>
+    <%= a.name if a.present? %>
+  </p>
+
+<% end %>

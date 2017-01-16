@@ -1,0 +1,23 @@
+
+<h2>Brand#Index</h2>
+<p> <%= link_to "Create a Campaign", new_brand_campaign_path(current_user.brand) %> </p>
+<p> <%= link_to "My Profile", brand_path(current_user.brand) %> </p>
+
+
+<h4>Your Campaigns <span class="badge"><%= @campaigns.count %></span></h4>
+
+
+<% @campaigns.each_with_index do |c| %>
+
+    <% c.image.each do |photo| %>
+      <div class="campaign">
+        <%= link_to (image_tag photo.url(:thumb)), brand_campaign_path(brand_id: current_user.brand.id, id: c.id) %>
+      </div>
+    <% end %>
+  <p>Product name: <%= c.product_name %></p>
+  <p>Product Category <%= c.product_category %></p>
+  <p>Hash Tag #<%= c.tag %></p>
+  <p> <%= link_to 'Influencers', see_influencers_path(c.id) %>  </p>
+  <p> <%= link_to 'See Details', brand_campaign_path(brand_id: current_user.brand.id, id: c.id) %> </p>
+  <p>-------</p>
+<% end %>

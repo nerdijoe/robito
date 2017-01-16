@@ -1,0 +1,30 @@
+<h2>Brand Profile</h2>
+
+<p><%= @brand.user.id %></p>
+<p><%= @brand.user.email %></p>
+<p><%= @brand.user.type %></p>
+
+<p><%= @brand.brand_name %></p>
+<p><%= @brand.description %></p>
+<p><%= @brandcompany_name %></p>
+<p><%= @brand.email %></p>
+<p><%= @brand.phone_number %></p>
+<p><%= @brand.address %></p>
+<p><%= @brand.link %></p>
+
+<div class="brand">
+  <% @brand.image.each do |photo| %>
+   	<%= image_tag photo.url(:thumb) %>
+  		<% end %>
+ 			</div>
+
+<%= link_to "Edit Profile",  edit_brand_path(@brand.id)%>
+
+<p>
+  <% if @brand.user.identities.present? %>
+    <% @brand.user.identities.each do |i| %>
+      <p><%= i.provider %></p>
+      <p><%= i.nickname %></p>
+    <% end %>
+  <% end %>
+</p>
