@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     get '/users/auth/:provider/setup', :to => 'omniauth_callbacks#setup'
   end
 
-  root 'welcome#index'
+  root 'landing_page#index'
   get 'welcome/index'
 
   get 'welcome/user_recent_media' => 'welcome#user_recent_media', as: :user_recent_media
