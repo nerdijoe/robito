@@ -35,7 +35,7 @@ body {
     margin: 10px 20px 10px 0px;
     background-color: #fff!important;
     padding: 10px;
-    min-height: 1200px;
+    min-height: 2500px;
 }
 
 .page-head-line {
@@ -239,7 +239,7 @@ body {
     #page-wrapper {
         margin: 0 0 0 260px;
         padding: 15px 30px;
-        min-height: 1200px;
+        min-height: 2500px;
     }
 
 
@@ -263,4 +263,29 @@ body {
 .side_bar {
     text-align: center;
     font-size: 15px;
+}
+
+
+.font_size {
+    font-size: 50px;
+}
+
+.box {
+   font-size: 16px;
+   padding-left: 7px;
+   padding-top: 15px;
+   border: 1px solid #ccc ;
+   padding: 9,5px;
+   background: #f5f5f5 ;
+   width: 500px;
+   height: 60px;
+   border-radius: 4px;
+}
+
+.list-heading {
+    font-size: 23px; 
+}
+
+.list-headings {
+    font-size: 18px;
 }

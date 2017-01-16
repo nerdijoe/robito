@@ -21,7 +21,7 @@
 
 <%- if devise_mapping.omniauthable? %>  
   <%- resource_class.omniauth_providers.each do |provider| %>
-	 <a class="btn btn-lg <%= OmniAuth::Utils.camelize(provider).downcase %>-login-btn waves-effect waves-<%= OmniAuth::Utils.camelize(provider).downcase %>-login-blue" style="font-size: 15px" href="<%= omniauth_authorize_path(resource_name, provider) %>"><i class="fa fa-<%= OmniAuth::Utils.camelize(provider).downcase %>"></i> <span style="padding-left: 25px;">Login with <%= OmniAuth::Utils.camelize(provider) %></span></a>
+	 <a class="btn btn-lg <%= OmniAuth::Utils.camelize(provider).downcase %>-login-btn waves-effect waves-<%= OmniAuth::Utils.camelize(provider).downcase %>-login-blue" style="font-size: 15px" href="<%= omniauth_authorize_path(resource_name, provider) %>"><i class="fa fa-<%= OmniAuth::Utils.camelize(provider).downcase %>" aria-hidden="true"></i> <span style="padding-left: 5px;">Login with <%= OmniAuth::Utils.camelize(provider) %></span></a>
 	  <br><br>
   <% end %>
 <% end %>

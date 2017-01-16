@@ -1213,9 +1213,7 @@ a.bg-warning:hover {
 a.bg-danger:hover {
   background-color: #e4b9b9;
 }
-.edit_page {
- a {color :red;}  
-}
+
 
 .page-header {
   padding-bottom: 9px;
