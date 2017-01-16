@@ -6,6 +6,11 @@ class Campaign < ActiveRecord::Base
 
 	mount_uploaders :image, AvatarUploader
 
+	validates :product_name,
+	          :presence => {:message => "Title can't be blank." }
+	          
+	validates :company_name, :presence => true
+	validates :email, :presence => true
 
 	enum product_category: { 'Fashion' => 0, 'Beauty Products'=> 2, 'Food' => 3, 'Other' => 4 }
 	enum location: { 'Malaysia' => 0, 'Indonesia' => 1, 'Singapore' => 2, 'Vietnam' => 3, 'Thailand' => 4 , 'Cambodia' => 5 }
@@ -21,3 +26,5 @@ class Campaign < ActiveRecord::Base
 	end
 
 end
+
+ 

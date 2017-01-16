@@ -36,8 +36,8 @@ class CampaignsController < ApplicationController
 			redirect_to brands_path
 			flash[:notice] = "Successfully Added a new campaign"
  		else
- 			redirect_to root_path
-			byebug
+ 			redirect_to new_brand_campaign_path(current_user.brand)
+			# byebug
 			flash[:notice] = "Error"
 		end
 	end
@@ -54,13 +54,16 @@ class CampaignsController < ApplicationController
 			# byebug
 			redirect_to brand_campaign_path(id: params[:id]), notice: "Successfully updated your campaign"
 		else
-			root_path
+			redirect_to root_path, notice: "Error"
 		end
 	end
 
 	def destroy
-		@campaign = Campaign.destroy(params[:id])
-		redirect_to root_path
+		 if @campaign = Campaign.destroy(params[:id])
+			redirect_to root_path, notice: "Successfully Deleled campaign"
+		else
+			redirect_to root_path, notice: "Error"
+		end
 	end
 
 
