@@ -14,9 +14,16 @@ class Influencer < ActiveRecord::Base
 
   scope :location,    -> (city) { where(location: city) }
   scope :age,         -> (age) { where(age: age) }
+  scope :gender,         -> (gender) { where(gender: gender) }
+  scope :interests,         -> (interests) { where("interests like ? ", "%#{interests}%") }
 
   include PgSearch
   pg_search_scope :search_by_keyword, :against => [:product_category, :location, :age, :gender, :interests]
 
+  pg_search_scope :search_by_keyword_all, :against => [:product_category, :location, :age, :gender, :interests], :using => { :tsearch => {:any_word => true}  }
 
+
+  def search_male
+
+  end
 end

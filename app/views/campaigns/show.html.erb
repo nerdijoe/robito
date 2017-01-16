@@ -1,5 +1,6 @@
 
-<h2>Brand Show</h2>
+
+<h2>Campaign#show</h2>
 
 <p> <%= link_to "Search Influencers", new_search_path %> </p>
 </br>
@@ -21,12 +22,17 @@
   <p>Target Age <%=  @campaign.age %></p>
   <p>Target Gender <%=  @campaign.gender %></p>
   <p>Interests <%=  @campaign.interests %></p>
+  <p>Hash Tag <%=  @campaign.tag %></p>
 
   <% if current_user.brand.present? %>
+    <p> <%= link_to 'See Influencers', see_influencers_path(@campaign.id) %>  </p>
+
       <div class="btn-group pull-left">
         <%= link_to 'Edit', edit_brand_campaign_path(brand_id: current_user.brand.id, id: @campaign.id), class: "btn btn-default" %>
         <%= link_to "Delete", brand_campaign_path(brand_id: current_user.brand.id), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default" %>
       </div>
+
+
   <% end %>
 
   <% if current_user.influencer.present? %>
