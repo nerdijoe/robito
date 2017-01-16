@@ -13,7 +13,8 @@
     <!-- show the influencer post that matches the campaign hashtag -->
 
     <% if i.ongoing? %>
-    <p> <%= link_to 'See Influencer post', see_influencers_posts_path(influencer_id: i.influencer_id) %>  </p>
+    <p> <%= link_to 'See Progress', see_influencers_posts_path(influencer_id: i.influencer_id), :class => "btn btn-success" %>
+    </p>
     <% end %>
 
 
