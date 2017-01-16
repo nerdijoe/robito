@@ -4,8 +4,14 @@ class Reward < ActiveRecord::Base
 
 	# validates :target, presence: true, :message => "can't be empty"
 	validates :target, 
-          :presence => {:message => "Title can't be blank." }
+          :presence => {:message => "Target can't be blank." }
     
     validates :prize, :presence => true
     validates :prize, :length => {:minimum => 2}
+
+#     def a_method_used_for_validation_purposes
+#     errors.add(:target, :invalid_characters)
+# end
+ 
+
 end
