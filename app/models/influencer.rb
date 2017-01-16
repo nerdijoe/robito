@@ -3,7 +3,7 @@ class Influencer < ActiveRecord::Base
   # has_many :campaigns, foreign_key: "influencer_id"
   belongs_to :user
 
-  has_many :requests
+  has_many :requests, dependent: :destroy
   has_many :campaigns, through: :requests
 
   enum product_category: { 'Fashion' => 0, 'Beauty Products'=> 2, 'Food' => 3, 'Other' => 4 }

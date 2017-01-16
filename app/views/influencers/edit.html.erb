@@ -3,6 +3,8 @@
 
 <div class="row">
 
+  <%= link_to "Destroy an account", influencer_path(@influencer.id), method: :delete, data: { confirm: 'Are you SURE!!Everything will be gone?'}%>
+ 
   <%= form_for @influencer, html: {class: 'form-horizontal'} do |form| %>
 
     <%= render partial: '/influencers/form', object: form %>
