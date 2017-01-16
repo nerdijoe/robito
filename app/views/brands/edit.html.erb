@@ -1,19 +1,15 @@
- <h3>This is Your Edit Page</h3>
+<h3>Brand Profile Edit</h3>
 
+<%= form_for @brand, html: {class: 'form-horizontal'} do |form| %>
 
- <%= form_for @brand, html: {class: 'form-horizontal'} do |form| %>
- 
-<%= render partial: '/brands/form', object: form %>
+  <%= render partial: '/brands/form', object: form %>
 
-
-
-<div calss="form-group">
-  <div class="col-sm-offset-2 col-sm-10">
-    <%= form.submit %>
+  <div calss="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <%= form.submit %>
+    </div>
   </div>
-</div>
 
-  <% end %>
+<% end %>
 
  <%= link_to "Destroy Account",  brand_path(@brand.id), method: :delete, data: { confirm: 'Are you sure? Everything will be gone?' }%>
-

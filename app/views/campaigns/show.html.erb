@@ -1,4 +1,3 @@
-<div class="container">
 
 <h2>brand#show</h2>
 
@@ -22,36 +21,43 @@
   <p>Interests <%=  @campaign.interests %></p>
 
   <% if current_user.brand.present? %>
-    <p><%= link_to 'Edit', edit_brand_campaign_path(brand_id: current_user.brand.id, id: @campaign.id) %> </p>
-
-<p><%= link_to "Delete", brand_campaign_path(brand_id: current_user.brand.id), method: :delete, data: { confirm: 'Are you sure?' } %>
-</p>
+      <div class="btn-group pull-left">
+        <%= link_to 'Edit', edit_brand_campaign_path(brand_id: current_user.brand.id, id: @campaign.id), class: "btn btn-default" %>
+        <%= link_to "Delete", brand_campaign_path(brand_id: current_user.brand.id), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default" %>
+      </div>
   <% end %>
-  <p>-------</p>
 
   <% if current_user.influencer.present? %>
     <% request = @campaign.requests.find_by(influencer_id: current_user.influencer.id) %>
-    <%  %>
-      <%= render "/requests/update_status" if request.status == 'pending' %>
 
-  <p>
-    Status: <%= @campaign.requests.find_by(influencer_id: current_user.influencer.id).status %>
-  </p>
+    <%= render "/requests/update_status" if request.status == 'pending' %>
+
+    <p> Status: <%= @campaign.requests.find_by(influencer_id: current_user.influencer.id).status %> </p>
   <% end %>
 
-<% if current_user.brand.present? %>
+<br><br>
 
-  <p> <%= link_to 'Create Reward', new_campaign_reward_path(@campaign.id) %> </p>
+<% if current_user.brand.present? %>
+  <h3>Rewards</h3>
+  <%= link_to 'Create Reward', new_campaign_reward_path(@campaign.id), class: "btn btn-info" %>
+
+  <br><br>
+
   <% @rewards.each do |t| %>
 
-  Target : <%= t.target %><%= link_to 'Edit', edit_campaign_reward_path(@campaign.id, t.id)%></br>
-  Prize         : <%= link_to 'Destroy', campaign_reward_path(@campaign.id, t.id),  method: :delete, data: { confirm: 'Are you sure?' } %></br>
-  description   : <%= t.description %></br>
-  Post Date     : <%= t.post_date %></br>
-  Dead Line Date: <%= t.deadline %></br>
-  <p>-------</p>
+    Target : <%= t.target %></br>
+    Prize         : <%= t.prize %></br>
+    description   : <%= t.description %></br>
+    Post Date     : <%= t.post_date %></br>
+    Dead Line Date: <%= t.deadline %></br>
 
-   <% end %>
+    <div class="btn-group pull-left">
+      <%= link_to 'Edit', edit_campaign_reward_path(@campaign.id, t.id), class: "btn btn-default" %>
+      <%= link_to 'Destroy', campaign_reward_path(@campaign.id, t.id), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default" %>
+    </div>
+
+    <br><br><br>
+  <% end %>
 
 <h2>Influencers</h2>
 
@@ -79,5 +85,3 @@
 <% end %>
 
 <% end %>
-
-</div>
