@@ -20,8 +20,7 @@ class SearchesController < ApplicationController
     @influencers = @influencers.location(@search.location) if @search.location.present?
     @influencers = @influencers.age(@search.age) if @search.age.present?
 
-    byebug
-  end
+    end
 
 
   private
