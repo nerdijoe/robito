@@ -8,7 +8,9 @@ class CampaignsController < ApplicationController
 		# @influencers = Influencer.all
 		# @influencers = Influencer.where(location: @campaign.location)
 
+		# show relevant influencers
 		if current_user.brand.present?
+
 			@influencers = Influencer.all.order(created_at: :asc)
 			@influencers = @influencers.location(@campaign[:location]) if @campaign.location.present?
 			@influencers = @influencers.age(@campaign[:age]) if @campaign.age.present?
