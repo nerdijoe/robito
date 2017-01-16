@@ -63,7 +63,6 @@ class CampaignsController < ApplicationController
 			# redirect_to user_campaigns_path(current_user)
  			redirect_to brand_campaign_path(id: params[:id]), notice: "Successfully updated your campaign"
 		else
-			byebug
 			redirect_to root_path, notice: "Error"
 		end
 	end
@@ -98,7 +97,7 @@ class CampaignsController < ApplicationController
 
 			if m.tags.include?(@tag)
 				@found_post = m
-				byebug
+				# byebug
 				return
 			end
 		end
