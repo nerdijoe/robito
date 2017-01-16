@@ -9,6 +9,8 @@
   <% if @found_post.present? %>
     <p> <%= image_tag @found_post.images.low_resolution.url %> </p>
     <p> <%= @found_post.tags %></p>
+    <p> Likes: <%= @found_post.likes.fetch(:count) %> </p>
+    <p> Post date: <%= Time.at(@found_post.created_time.to_i).to_date %></p>
     <p> Likes: <%= @found_post.likes.fetch(:count) %></p>
   <% end %>
   </p>

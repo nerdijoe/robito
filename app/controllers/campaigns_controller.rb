@@ -88,17 +88,8 @@ class CampaignsController < ApplicationController
 		@influencer = Influencer.find(params[:influencer_id])
 		@campaign = Campaign.find(params[:id])
 
-		byebug
-		# get request from influencer that already accepted this campaign
-		# @request = @influencer.requests.find_by(campaign_id: @campaign.id, influencer_id: @influencer.id, status: 1)
-
 		@client = Instagram.client(access_token: @influencer.user.instagram.accesstoken)
-
-		byebug
-
 		@recent = @client.user_recent_media
-
-		byebug
 
 		# find a post with specified hastag
 		@tag = @campaign.tag
