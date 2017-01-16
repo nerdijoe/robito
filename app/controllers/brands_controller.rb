@@ -22,15 +22,23 @@ class BrandsController < ApplicationController
 
   def update
     @brand = Brand.find(params[:id])
-    @brand.update(edit_brand_params)
-    redirect_to brand_path(current_user.brand)
+    if  @brand.update(edit_brand_params)
+    redirect_to brand_path(current_user.brand), notice: "Successfully updated your BRAND"
+      else
+        redirect_to root_path
+        flash[:notice] = "Error"
+      end
   end
 
   def destroy
     @brand = Brand.find(params[:id])
-    @brand.destroy
+   if @brand.destroy
     current_user.zero!
-    redirect_to root_path
+    redirect_to root_path, notice: "Successfully account DELETED"
+  else
+    redirect_to brand_path(current_user.brand), notice: "Unuccessfully account Deleted"
+
+  end
   end
 
   private
