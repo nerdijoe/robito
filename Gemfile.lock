@@ -58,7 +58,10 @@ GEM
     bootstrap-sass (3.3.7)
       autoprefixer-rails (>= 5.2.1)
       sass (>= 3.3.4)
+    builder (3.2.2)
+
     builder (3.2.3)
+
     byebug (9.0.6)
     coffee-rails (4.1.1)
       coffee-script (>= 2.2.0)
@@ -208,7 +211,11 @@ GEM
     sdoc (0.4.2)
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
+
+    sidekiq (4.2.8)
+
     sidekiq (4.2.9)
+
       concurrent-ruby (~> 1.0)
       connection_pool (~> 2.2, >= 2.2.0)
       rack-protection (>= 1.5.0)
@@ -275,4 +282,7 @@ DEPENDENCIES
   will_paginate (~> 3.1.0)
 
 BUNDLED WITH
-   1.13.7
+
+   1.13.6
+
+
