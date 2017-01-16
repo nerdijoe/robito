@@ -1,0 +1,14 @@
+
+  <h2>Campaign Progress</h2>
+
+  <%= render partial: '/shared/campaign_details', object: @campaign %>
+
+
+  <p>
+  <h3>#<%= @tag %></h3>
+  <% if @found_post.present? %>
+    <p> <%= image_tag @found_post.images.low_resolution.url %> </p>
+    <p> <%= @found_post.tags %></p>
+    <p> Likes: <%= @found_post.likes.fetch(:count) %></p>
+  <% end %>
+  </p>

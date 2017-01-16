@@ -9,6 +9,14 @@
     <p><%= insta.name %></p>
     <p><%= insta.nickname %></p>
     <p><%= image_tag insta.image %></p>
+
+    <!-- show the influencer post that matches the campaign hashtag -->
+
+    <% if i.ongoing? %>
+    <p> <%= link_to 'See Influencer post', see_influencers_posts_path(influencer_id: i.influencer_id) %>  </p>
+    <% end %>
+
+
   <% else %>
     <p> This user doesn't have an instagram account </p>
 

@@ -8,11 +8,13 @@ class CampaignsController < ApplicationController
 		# @influencers = Influencer.all
 		# @influencers = Influencer.where(location: @campaign.location)
 
-		@influencers = Influencer.all.order(created_at: :asc)
-
-    @influencers = @influencers.location(@campaign.location) if @campaign.location.present?
-    # @influencers = @influencers.age(@campaign.age) if @campaign.age.present?
-
+		if current_user.brand.present?
+			@influencers = Influencer.all.order(created_at: :asc)
+			@influencers = @influencers.location(@campaign[:location]) if @campaign.location.present?
+			@influencers = @influencers.age(@campaign[:age]) if @campaign.age.present?
+	    @influencers = @influencers.gender(@campaign[:gender]) if @campaign.gender.present?
+	    # @influencers = @influencers.interests(@campaign.interests) if @campaign.interests.present?
+		end
 
 		@rewards = @campaign.rewards
 
@@ -61,12 +63,13 @@ class CampaignsController < ApplicationController
 			# byebug
 			redirect_to brand_campaign_path(id: params[:id]), notice: "Successfully updated your campaign"
 		else
+			byebug
 			redirect_to root_path, notice: "Error"
 		end
 	end
 
 	def destroy
-		 if @campaign = Campaign.destroy(params[:id])
+		if @campaign = Campaign.destroy(params[:id])
 			redirect_to root_path, notice: "Successfully Deleled campaign"
 		else
 			redirect_to root_path, notice: "Error"
@@ -76,6 +79,39 @@ class CampaignsController < ApplicationController
 
 	def influencers
 		@campaign = Campaign.find(params[:id])
+
+
+	end
+
+	def influencersposts
+		# get influencer
+		@influencer = Influencer.find(params[:influencer_id])
+		@campaign = Campaign.find(params[:id])
+
+		byebug
+		# get request from influencer that already accepted this campaign
+		# @request = @influencer.requests.find_by(campaign_id: @campaign.id, influencer_id: @influencer.id, status: 1)
+
+		@client = Instagram.client(access_token: @influencer.user.instagram.accesstoken)
+
+		byebug
+
+		@recent = @client.user_recent_media
+
+		byebug
+
+		# find a post with specified hastag
+		@tag = @campaign.tag
+		# @found_post = nil
+		@recent.each do |m|
+
+			if m.tags.include?(@tag)
+				@found_post = m
+				byebug
+				return
+			end
+		end
+
 	end
 
 private
