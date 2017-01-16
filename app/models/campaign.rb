@@ -7,7 +7,7 @@ class Campaign < ActiveRecord::Base
 	mount_uploaders :image, AvatarUploader
 
 	validates :product_name,
-	          :presence => {:message => "Title can't be blank." }
+	          :presence => {:message => "Product Name can't be blank." }
 	          
 	validates :company_name, :presence => true
 	validates :email, :presence => true
