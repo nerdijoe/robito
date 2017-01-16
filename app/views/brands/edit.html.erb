@@ -1,5 +1,7 @@
 <h3>Brand Profile Edit</h3>
 
+<p> <%= link_to "Back", brand_path(@brand.id) %></p>
+
 <%= form_for @brand, html: {class: 'form-horizontal'} do |form| %>
 
   <%= render partial: '/brands/form', object: form %>
@@ -13,3 +15,5 @@
 <% end %>
 
  <%= link_to "Destroy Account",  brand_path(@brand.id), method: :delete, data: { confirm: 'Are you sure? Everything will be gone?' }%>
+
+
