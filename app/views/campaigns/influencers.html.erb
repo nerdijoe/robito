@@ -1,16 +1,13 @@
-<div class="container">
 
-  <h2>Campaign Influencers</h2>
+<h2>Campaign Influencers</h2>
 
-  <h3>Pending Requests</h3>
+<h3>Pending Requests</h3>
 
-  <% @requests = @campaign.requests.pending %>
-  <%= render partial: '/shared/influencers', object: @requests %>
+<% @requests = @campaign.requests.pending %>
+<%= render partial: '/shared/influencers', object: @requests %>
 
 
-  <h3>Accepted Requests</h3>
+<h3>Accepted Requests</h3>
 
-  <% @requests = @campaign.requests.ongoing %>
-  <%= render partial: '/shared/influencers', object: @requests %>
-
-</div>
+<% @requests = @campaign.requests.ongoing %>
+<%= render partial: '/shared/influencers', object: @requests %>

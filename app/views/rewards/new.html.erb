@@ -1,6 +1,8 @@
+
 <h3>Hello this is The New Rewards Page </h3>
 
 <%= form_for [@campaign, @reward], html: {class: 'form-horizontal'} do |form| %>
+
 
 <% if @reward.errors.any? %>
 <h2> Errors:</h2>
@@ -48,13 +50,12 @@
 </div>
  
 
-<div calss="form-group">
-  <div class="col-sm-offset-2 col-sm-10">
-    <%= form.submit %>
+
+  <div calss="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <%= form.submit %>
+    </div>
   </div>
-</div>
 
 <% end %>
 
-
- 

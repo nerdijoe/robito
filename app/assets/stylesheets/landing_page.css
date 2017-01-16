@@ -1,0 +1,301 @@
+/*.overall-container {
+  height: 100%;
+}*/
+
+.navbar{
+  margin-bottom: -50px;
+  position: fixed;
+  width: 100%;
+}
+
+.navbar-default{
+  z-index: 1;
+  border: 0px;
+  background-color: rgba(0, 226, 255, 0.55);
+}
+
+.navbar-default .navbar-nav>li>a {
+  color: black;
+  font-size: 15px;
+
+}
+
+.navbar-nav {
+    float: right;
+}
+
+.img-container {
+  margin-bottom: 80px;
+  background-image: url("girl-coverphoto8.jpg");
+  background-position: -90px;
+  min-height: 500px;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/*.header-image {
+  position: relative;
+  height: auto;
+  transform: translateZ(0);
+  top: -90px;
+  width: 100%;
+}*/
+
+.about-container {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  width: 100%;
+  height: 300px;
+  background-color: #eef6ff;
+  top: -100px;
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 96%, 0 100%);
+  clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+}
+
+.about-text {
+  text-align: center;
+  font-size: 35px;
+  font-family: 'Alegreya Sans SC', sans-serif;
+
+}
+
+.fa-gift {
+  font-size: 70px;
+  text-shadow: 2px 2px 2px;
+  padding-left: 800px;
+}
+
+.fa-rocket {
+  position: relative;
+  top: -75px;
+  font-size: 65px;
+  text-shadow: 2px 2px 2px;
+  text-align: center;
+
+}
+
+.fa-money {
+  position: relative;
+  font-size: 70px;
+  text-shadow: 2px 2px 2px;
+  padding-right: 800px;
+  top: -135px;
+
+}
+
+.reward-text {
+  position: relative;
+  padding-left: 800px;
+  top: -85px;
+  font-size: 15px;
+  font-family: 'Quicksand', sans-serif;
+
+
+}
+
+.money-text {
+  position: relative;
+  padding-right: 800px;
+  top: -116px;
+  font-size: 15px;
+  font-family: 'Quicksand', sans-serif;
+
+
+}
+
+.rocket-text {
+  position: relative;
+  top: -148px;
+  font-size: 15px;
+  font-family: 'Quicksand', sans-serif;
+
+
+}
+
+.second-container {
+  border-style: dotted;
+  border-width: thin;
+  position: relative;
+  background-color: #a7b7c9;
+  width: 50%;
+  height: 690px;
+  top: -100px;
+}
+
+.third-container {
+  border-style: dotted;
+  border-width: thin;
+  float: right;
+  position: relative;
+  background-color: #c9d7e7;
+  width: 50%;
+  height: 700px;
+  top: -100px;
+
+
+}
+
+.aboutus-container {
+  position: relative;
+  width: 100%;
+  height: 400px;
+  background-color: #eef6ff;
+  bottom: -600px;
+}
+
+.model1-container {
+  position: relative;
+  top: -80px;
+  float: right;
+  width: 650px;
+  height: 650px;
+  background-image: url("insta1.jpg");
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  box-shadow: 10px 0 10px 10px, 10px 10px 10px;
+}
+
+.model2-container {
+  position: relative;
+  top: -80px;
+  float: left;
+  width: 650px;
+  height: 650px;
+  background-image: url("insta2.jpg");
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  box-shadow: 10px 10px 10px;
+}
+
+.text-box1 {
+  position: relative;
+  border-radius: 5px;
+  opacity: 0.5px;
+  top: 50px;
+  left: 50px;
+  width: 500px;
+  height: 600px;
+  background-color: rgba(0,0,0,.075);
+}
+
+.text-box2 {
+  position: relative;
+  border-radius: 5px;
+  opacity: 0.5px;
+  top: 50px;
+  left: 50px;
+  width: 500px;
+  height: 600px;
+  background-color: rgba(0,0,0,.075);
+}
+
+.head-text {
+  text-align: center;
+  font-size: 30px;
+  font-family: 'Alegreya Sans SC', sans-serif;
+
+}
+
+.sub-text {
+  font-size: 20px;
+  text-align: center;
+  width: 400px;
+  margin: auto;
+  font-family: 'Quicksand', sans-serif;
+
+}
+
+.whatwedo-container {
+  background-image: url("whatwedo.png");
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-position: center;
+  position: relative;
+  width: 100%;
+  height: 700px;
+  background-color: #6fd2d2;
+  bottom: -600px;
+}
+
+.work-text{
+  position: relative;
+  font-size: 100px;
+}
+
+.about-text {
+  position: relative;
+  top: -200spx;
+  left: -550px;
+  font-size: 30px;
+  font-family: 'Alegreya Sans SC', sans-serif;
+}
+
+.about-description {
+  position: relative;
+  text-align: center;
+  font-family: 'Quicksand', sans-serif;
+  bottom: -270px;
+}
+
+.footer {
+  position: relative;
+  bottom: -600px;
+  width: 100%;
+  height: 50px;
+  background-color: #53b1ee;
+}
+
+.company {
+  position: relative;
+  font-family: 'Quantico', sans-serif;
+  font-size: 25px;
+  padding-left: 50px;
+}
+
+.est {
+  position: relative;
+  padding-bottom: -150px;
+  bottom: 20px;
+  font-family: 'Quicksand', sans-serif;
+  padding-left: 50px;
+}
+
+.media-logo {
+  width: 300px;
+  height: 40px;
+  position: relative;
+  float: right;
+  bottom: 70px;
+}
+
+
+.fa-facebook-square {
+  left: 50px;
+  bottom: -5px;
+
+  position: relative;
+  font-size: 30px;
+}
+
+.fa-instagram {
+  font-size: 30px;
+  bottom: -5px;
+  position: relative;
+  left: 70px;
+}
+
+.fa-youtube {
+    font-size: 30px;
+    bottom: -5px;
+    position: relative;
+    left: 90px;
+
+}

@@ -1,3 +1,4 @@
+
 <%= form_for [current_user.influencer, @campaign.requests.find_by(influencer_id: current_user.influencer.id)], html: {class: 'form-horizontal'} do |form| %>
 
 <div class="field">

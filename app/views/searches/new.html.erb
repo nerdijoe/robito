@@ -1,22 +1,15 @@
-<div class="container">
+  <h2>Search Influencers</h2>
 
-<h2>Search Influencers</h2>
+  <%= form_for @search, html: {class: 'form-horizontal'} do |form| %>
 
-<%= form_for @search, html: {class: 'form-horizontal'} do |form| %>
+  <%= render partial: '/searches/form', object: form %>
 
-<%= render partial: '/searches/form', object: form %>
-
-  <div class="form-group">
-    <div class="col-sm-offset-2 col-sm-10">
-      <%= form.submit 'Search' %>
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-10">
+        <%= form.submit 'Search' %>
+      </div>
     </div>
-  </div>
 
-<% end %>
+  <% end %>
 
-
-
-<%= link_to 'Back', brands_path %>
-
-
-</div>
+  <%= link_to 'Back', brands_path %>

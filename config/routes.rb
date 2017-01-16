@@ -9,6 +9,8 @@ Rails.application.routes.draw do
     post 'users/roles' => 'roles#create'
   end
 
+  root 'landing_page#index'
+
   resources :users, only: [:index, :show]
 
   resources :brands, only: [:index, :show, :edit, :update, :destroy] do
@@ -31,7 +33,8 @@ Rails.application.routes.draw do
 
   get "/campaigns/:id/influencers" => "campaigns#influencers", as: 'see_influencers'
 
-  root 'welcome#index'
+#   root 'welcome#index'
+
   get 'welcome/index'
 
   get 'welcome/user_recent_media' => 'welcome#user_recent_media', as: :user_recent_media
