@@ -2,24 +2,9 @@
 <h2>Influencers#index</h2>
 <p> <%= link_to "My Profile", influencer_path(current_user.influencer) %> </p>
 
-<% @influencers.each do |i| %>
-  <p><%= i.user.id %></p>
-  <p><%= link_to i.user.email, influencer_path(i) %></p>
-  <p><%= i.user.type %></p>
-
-  <% if i.user.identities.present? %>
-    <% i.user.identities.each do |u| %>
-      <p><%= u.provider %></p>
-      <p><%= u.nickname %></p>
-    <% end %>
-  <% end %>
-
-  <p> ---------------</p>
-
-<% end %>
 
 
-<h2>Your Campaigns:</h2>
+<h2>All Campaigns:</h2>
 
 <% @campaigns.each_with_index do |c| %>
 
@@ -34,3 +19,13 @@
   <p> <%= link_to 'See Details', influencer_campaign_path(influencer_id: current_user.influencer.id, id: c.id) %> </p>
   <p>-------</p>
 <% end %>
+
+<h2>Pending Campaigns:</h2>
+
+<% @requests = @pending_requests %>
+<%= render partial: '/shared/influencer_index_show_campaign', object: @requests %>
+
+<h2>Ongoing Campaigns:</h2>
+
+<% @requests = @ongoing_requests %>
+<%= render partial: '/shared/influencer_index_show_campaign', object: @requests %>
