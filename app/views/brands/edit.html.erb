@@ -1,8 +1,6 @@
-<div class="container">
+<h3>Brand Profile Edit</h3>
 
-   <h3>Brand Profile Edit</h3>
-
-  <%= form_for @brand, html: {class: 'form-horizontal'} do |form| %>
+<%= form_for @brand, html: {class: 'form-horizontal'} do |form| %>
 
   <%= render partial: '/brands/form', object: form %>
 
@@ -12,8 +10,6 @@
     </div>
   </div>
 
-    <% end %>
+<% end %>
 
-   <%= link_to "Destroy Account",  brand_path(@brand.id), method: :delete, data: { confirm: 'Are you sure? Everything will be gone?' }%>
-
-</div>
+ <%= link_to "Destroy Account",  brand_path(@brand.id), method: :delete, data: { confirm: 'Are you sure? Everything will be gone?' }%>

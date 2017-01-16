@@ -1,16 +1,13 @@
-<div class="container">
 
-  <h3> This is Index page og Reward </h3>
+<h3> This is Index page og Reward </h3>
 
-  <% @reward.each do |u| %>
+<% @reward.each do |u| %>
 
-  <tr>
-    <td>Target     : <%= u.target %></br></td>
-    <td>Description: <%= u.description%></br></td>
-    <td>Post Date  : <%= u.post_date%></br></td>
-    <td>DeadLine   : <%= u.deadline%></br></td>
-    <p>================<p>
-  </tr>
-  <% end %>
-
-</div>
+<tr>
+  <td>Target     : <%= u.target %></br></td>
+  <td>Description: <%= u.description%></br></td>
+  <td>Post Date  : <%= u.post_date%></br></td>
+  <td>DeadLine   : <%= u.deadline%></br></td>
+  <p>================<p>
+</tr>
+<% end %>

@@ -1,23 +1,19 @@
+<h3> Campaign Edit </h3>
+
 <div class="container">
+  <div class="row">
 
-  <h3> Campaign Edit </h3>
+    <%= form_for [current_user.brand, @campaign], html: {class: 'form-horizontal'} do |form| %>
 
-  <div class="container">
-    <div class="row">
+    <%= render partial: '/campaigns/form', object: form %>
 
-      <%= form_for [current_user.brand, @campaign], html: {class: 'form-horizontal'} do |form| %>
-
-      <%= render partial: '/campaigns/form', object: form %>
-
-      <div class="form-group">
-        <div class="col-sm-offset-2 col-sm-10">
-          <%= form.submit 'Save Changes', class: "btn btn-primary" %>
-        </div>
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-10">
+        <%= form.submit 'Save Changes', class: "btn btn-primary" %>
       </div>
-
-      <% end %>
-
     </div>
-  </div>
 
+    <% end %>
+
+  </div>
 </div>
