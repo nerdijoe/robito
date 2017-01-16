@@ -5,8 +5,15 @@ class CampaignsController < ApplicationController
 		# @campaign = Campaign.where(brand_id: params[:brand_id])
 		@campaign = Campaign.find(params[:id])
 
-		@influencers = Influencer.all
+		# @influencers = Influencer.all
 		# @influencers = Influencer.where(location: @campaign.location)
+
+		@influencers = Influencer.all.order(created_at: :asc)
+
+    @influencers = @influencers.location(@campaign.location) if @campaign.location.present?
+    # @influencers = @influencers.age(@campaign.age) if @campaign.age.present?
+
+
 		@rewards = @campaign.rewards
 
 	end

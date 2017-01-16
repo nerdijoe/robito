@@ -59,14 +59,12 @@
     <br><br><br>
   <% end %>
 
-<h2>Influencers</h2>
+<h2>Influencers <span class="badge"><%= @influencers.count %></span></h2>
 
 <% @influencers.each do |i| %>
-  <p><%= i.user.role %></p>
-
   <% if i.user.identities.present? %>
     <% insta = i.user.identities.first %>
-      <p><%= image_tag insta.image %></p>
+      <p><%= link_to (image_tag insta.image), influencer_path(i) %></p>
 
       <p><%= insta.name %></p>
       <p><%= insta.nickname %></p>
@@ -74,7 +72,12 @@
 
   <p>Influencer id: <%= i.id %>  </p>
   <p>User id:<%= i.user.id %></p>
-  <p><%= link_to i.user.email, influencer_path(i) %></p>
+  <p> <strong>My Location: </strong> <%= i.location %> </p>
+  <p> <strong>Audience Age: </strong> <%= i.age %> </p>
+  <p> <strong>Audience Gender: </strong> <%= i.gender %> </p>
+  <p> <strong>Interests: </strong> <%= i.interests %> </p>
+
+
   <% if @campaign.requests.where(influencer_id: i.id).present? %>
     <%= link_to "Cancel Request", campaign_request_path(campaign_id: @campaign, influencer_id: i.id), method: :delete  %>
   <% else %>
