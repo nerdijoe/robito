@@ -19,6 +19,7 @@ class SearchesController < ApplicationController
     @influencers = @influencers.search_by_keyword_all(@search.keyword) if @search.keyword.present?
     @influencers = @influencers.location(@search.location) if @search.location.present?
     @influencers = @influencers.age(@search.age) if @search.age.present?
+
     @influencers = @influencers.gender(@search.gender) if @search.gender.present?
     @influencers = @influencers.interests(@search.interests) if @search.interests.present?
     

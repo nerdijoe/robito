@@ -5,19 +5,22 @@
 
 
 <% if @reward.errors.any? %>
-<h2> Errors:</h2>
-<ul>
-<% @reward.errors.full_messages.each do |message| %>
-<li><%= message %></li>
+    <div class="field_with_errors">
+      <h2><%= pluralize(@reward.errors.count, "error") %> prohibited this reward from being saved:</h2>
+        <ul>
+        <% @reward.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
 <% end %>
-</ul>
-<% end %>
-
+ 
 
 <div class="form-group">
   <%= form.label :target, 'Target', class:'col-sm-2 control-label' %>
     <div class="col-sm-10">
     <%= form.text_field :target %>
+
+
   </div>
 </div>
 

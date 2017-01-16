@@ -29,7 +29,6 @@ class WelcomeController < ApplicationController
 
   def influencers
     @influencers = User.where(type: "Influencer")
-    byebug
-  end
+   end
 
 end

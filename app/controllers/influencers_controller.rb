@@ -42,7 +42,17 @@ class InfluencersController < ApplicationController
     end
 
   end
+  
+  def destroy
+   @influencer = Influencer.find(params[:id])
+   if @influencer.destroy
+    current_user.zero!
+    redirect_to root_path, notice: "Successfully account DELETED"
+  else
+    redirect_to influencer_path(current_user.influencer), notice: "Unuccessfully account Deleted"
 
+  end 
+  end
   private
   def influencer_params
     params.require(:influencer).permit(:product_category, :location, :age, :gender, :interests )

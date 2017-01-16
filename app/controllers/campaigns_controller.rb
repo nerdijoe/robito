@@ -24,8 +24,7 @@ class CampaignsController < ApplicationController
 	def index
 		# @user = User.find_by_id(params[:user_id])
 		@campaign = Campaign.where(brand_id: current_user.brand.id)
-		# byebug
-		# @user = User.find_by_id(params[:user_id])
+ 		# @user = User.find_by_id(params[:user_id])
 		# @campaign = Campaign.user
 	end
 
@@ -40,14 +39,14 @@ class CampaignsController < ApplicationController
 		# @campaign = current_user.campaigns.new(campaigns_params)
 		@campaign = Campaign.new(campaigns_params)
 		@campaign.brand_id = current_user.brand.id
-		# byebug
-		if @campaign.save
+ 		if @campaign.save
 			redirect_to brands_path
 			flash[:notice] = "Successfully Added a new campaign"
  		else
  			redirect_to new_brand_campaign_path(current_user.brand)
-			# byebug
-			flash[:notice] = "Error"
+ 			flash[:notice] = "Error"
+		 	flash[:notice] = "Product Name, Email, Company Name: can't be blank."
+
 		end
 	end
 
@@ -60,8 +59,7 @@ class CampaignsController < ApplicationController
 		@campaign = Campaign.find(params[:id])
 		if @campaign.update(campaigns_params_edit)
 			# redirect_to user_campaigns_path(current_user)
-			# byebug
-			redirect_to brand_campaign_path(id: params[:id]), notice: "Successfully updated your campaign"
+ 			redirect_to brand_campaign_path(id: params[:id]), notice: "Successfully updated your campaign"
 		else
 			byebug
 			redirect_to root_path, notice: "Error"
