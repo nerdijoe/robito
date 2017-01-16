@@ -1,5 +1,5 @@
 class BrandsController < ApplicationController
-
+  layout "application"
 
   def index
     @user = current_user

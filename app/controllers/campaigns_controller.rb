@@ -1,4 +1,5 @@
 class CampaignsController < ApplicationController
+  	layout "application"
 
 
 	def show
