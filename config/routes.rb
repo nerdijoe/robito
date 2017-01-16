@@ -17,7 +17,7 @@ Rails.application.routes.draw do
     resources :campaigns
   end
 
-  resources :influencers, only: [:index, :show, :edit, :update] do
+  resources :influencers, only: [:index, :show, :edit, :update, :destroy] do
     resources :campaigns, only: [:show]
     resources :requests, only: [:update]
   end
