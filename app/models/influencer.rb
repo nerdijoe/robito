@@ -23,7 +23,7 @@ class Influencer < ActiveRecord::Base
   pg_search_scope :search_by_keyword_all, :against => [:product_category, :location, :age, :gender, :interests], :using => { :tsearch => {:any_word => true}  }
 
 
-  def search_male
-
+  def get_insta
+    self.user.identities.first
   end
 end

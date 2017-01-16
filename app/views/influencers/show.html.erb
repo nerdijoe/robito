@@ -6,25 +6,21 @@
     <% end %>
   </p>
 
+  <p>Debugging- Userid: <%= @influencer.user.id %>, Influencerid: <%= @influencer.id %></p>
+  <% identity = @influencer.get_insta %>
 
   <p>  <img src='<%= @client.user.profile_picture %>'> </p>
-  <p><strong><%= @client.user.full_name %></strong></p>
-  <p>Userid: <%= @influencer.user.id %>, Influencerid: <%= @influencer.id %></p>
-  <p><%= @influencer.user.role %></p>
-  <p>
-    <% if @influencer.user.identities.present? %>
-      <% @influencer.user.identities.each do |i| %>
-        <p><%= i.provider %></p>
-        <p><%= i.nickname %></p>
-      <% end %>
-    <% end %>
-  </p>
+  <p>Username:<strong> <%= identity.nickname %> </strong></p>
+  <p>Name: <%= @client.user.full_name %> </p>
+  <p> Number of media: <%= @user_info.counts[:media] %> </p>
 
+  <p> Followers: <%= @user_info.counts[:followed_by] %> people </p>
+  <p> Follows:   <%= @user_info.counts[:follows] %> people </p>
 
   <p>
-    <strong>My Product Category: </strong>
+    <strong>Bio: </strong>
     <pre>
-      <%= @influencer.product_category %>
+      <%= @user_info.bio %>
     </pre>
   </p>
 
@@ -59,26 +55,19 @@
   </p>
 
 
-
-  <p>
-  <h3>#<%= @tag %></h3>
-  <% if @found_post.present? %>
-    <p> <%= image_tag @found_post.images.low_resolution.url %> </p>
-    <p> <%= @found_post.tags %></p>
-    <p> Likes: <%= @found_post.likes.fetch(:count) %></p>
-  <% end %>
-  </p>
-  <% a = false %>
+  <% a = true %>
   <% if a %>
     <% for media_item in @client.user_recent_media %>
         <div style='float:left;'>
           <img src='<%= media_item.images.low_resolution.url %>'>
           <br/>
-          <%= media_item.tags %>
-          <a href='/media_like/<%= media_item.id %>'>Like</a>
-          <a href='/media_unlike/<%= media_item.id %>'>Un-Like</a>
-          <br/>
-          Likes: <%= media_item.likes[:count] %>
+          <p>
+            <% media_item.tags.each do |t| %>
+              <strong>#<%= t %></strong>
+            <% end %>
+
+          </p>
+          <p>Likes: <%= media_item.likes[:count] %> </p>
         </div>
     <% end %>
   <% end %>
