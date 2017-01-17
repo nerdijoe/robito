@@ -12,22 +12,15 @@
     <p> Likes: <%= @found_post.likes.fetch(:count) %> </p>
     <p> Post date: <%= Time.at(@found_post.created_time.to_i).to_date %></p>
 
-    <% percent = @found_post.likes.fetch(:count)/100 %>
-    <div class="set-size charts-container">
+    <% target = @campaign.rewards.first.target %>
+    <% percent = ((@found_post.likes.fetch(:count).to_i)/target.to_f) * 100 %>
 
-      <div class="pie-wrapper pie-wrapper--solid progress-#{percent}">
-        <span class="label"><%= percent %><span class="smaller">%</span></span>
+    <div class="progress">
+      <div class="progress-bar" role="progressbar" aria-valuenow="<%= percent %>" aria-valuemin="0" aria-valuemax="100" style="width:<%= percent %>%;">
+        <%= percent %>%
       </div>
-
-      <div class="pie-wrapper progress-30">
-        <span class="label">30<span class="smaller">%</span></span>
-        <div class="pie">
-          <div class="left-side half-circle"></div>
-          <div class="right-side half-circle"></div>
-        </div>
-      </div>
-
     </div>
+
 
     <% if @found_post.likes.fetch(:count) >= 50  %>
       <!-- show "get rewards" button -->
