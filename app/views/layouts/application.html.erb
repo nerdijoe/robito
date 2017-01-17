@@ -9,6 +9,8 @@
   <link href="https://fonts.googleapis.com/css?family=Alegreya+Sans+SC" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Quantico" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Copse" rel="stylesheet">
+
 
 
 
@@ -45,7 +47,7 @@
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
           <li class="home">
-            <a href="#"  > Home </a>
+            <%= link_to "Home", root_path %>
           </li>
 
           <li class="influencer">
@@ -57,7 +59,11 @@
           </li>
 
           <li class="signin">
+            <% if signed_in? %>
+            <%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
+            <% else %>
             <%= link_to "Sign In", new_user_session_path %>
+            <% end %>
           </li>
 
       </div><!-- /.navbar-collapse -->
@@ -65,7 +71,7 @@
   </nav>
 
 
- <div class="container">
+ <!-- <div class="container">
   <% if signed_in? %>
     <%= link_to "Home", root_path %>  <%= link_to "Signout", destroy_user_session_path, method: :delete %>
   <% end %>
@@ -73,9 +79,9 @@
   <% flash.each do |name, msg| %>
     <%= content_tag :div, msg, class: "alert alert-info" %>
   <% end %>
- </div>
+ </div> -->
 
-  <div class="container">
+  <div>
      <%= yield %>
   </div>
 

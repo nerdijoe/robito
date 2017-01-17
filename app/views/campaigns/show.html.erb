@@ -1,123 +1,178 @@
-<div class="row">
-  <div class="col-md-12">
-      <% if current_user.brand.present? %>
-        <div class="btn-group_pull-left">
-          <%= link_to 'Edit', edit_brand_campaign_path(brand_id: current_user.brand.id, id: @campaign.id), class: "btn btn-default" %>
-          <%= link_to "Delete", brand_campaign_path(brand_id: current_user.brand.id), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default" %>
-        </div>
-      <% end %>
-      <h1> <%= @campaign.id %> </h1>
-    </div>
-</div>
-<div class="row">
-  <div class="col-md-12">
-    <div class="thumbnail">
-      <div class="campaign">
-        <% @campaign.image.each do |photo| %>
-          <%= image_tag photo.url(:thumb) %>
+<div class="bg_img">
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+        <% if current_user.brand.present? %>
         <% end %>
       </div>
-    </div>
   </div>
-</div>
-
-
-<div class="row">
-  <div class="about_product">
+  <div class="row">
     <div class="col-md-6">
-      <div class="left-caption">
-        <p>Product name : <%=  @campaign.product_name %></p>
-        <p>Product Category : <%=  @campaign.product_category %></p>
-        <p>Location : <%=  @campaign.location %></p>
-        <p>Target Age : <%=  @campaign.age %></p>
-      </div>
-  </div>
-  <div class="col-md-6">
-    <div class="right-caption">
-      <p>Target Gender : <%=  @campaign.gender %></p>
-      <p>Interests : <%=  @campaign.interests %></p>
-    </div>
-  </div>
-</div>
-
-<div class="row">
-  <div class="col-md-12">
-    <div class="description">
-      <p><%=  @campaign.description %></p>
-    </div>
-  </div>
-</div>
-
-
-
-
-
-
-
-
-
-
-                        <div class="row">
-                            <div class="col-md-12">
-                              <div class="influencer-container">
-                              <% @influencers.each do |i| %>
-                                <p><%= i.user.role %></p>
-
-                                <% if i.user.identities.present? %>
-                                  <% insta = i.user.identities.first %>
-                                    <p><%= image_tag insta.image %></p>
-
-                                    <p><%= insta.name %></p>
-                                    <p><%= insta.nickname %></p>
-                                    <%end%>
-                                    <%end%>
-                            </div>
-                        </div>
-
-                        <hr>
-
-                        <div class="row">
-                            <div class="col-md-12">
-                                <span class="glyphicon glyphicon-star"></span>
-                                <span class="glyphicon glyphicon-star"></span>
-                                <span class="glyphicon glyphicon-star"></span>
-                                <span class="glyphicon glyphicon-star"></span>
-                                <span class="glyphicon glyphicon-star-empty"></span>
-                                Anonymous
-                                <span class="pull-right">12 days ago</span>
-                                <p>I've alredy ordered another one!</p>
-                            </div>
-                        </div>
-
-                        <hr>
-
-                        <div class="row">
-                            <div class="col-md-12">
-                                <span class="glyphicon glyphicon-star"></span>
-                                <span class="glyphicon glyphicon-star"></span>
-                                <span class="glyphicon glyphicon-star"></span>
-                                <span class="glyphicon glyphicon-star"></span>
-                                <span class="glyphicon glyphicon-star-empty"></span>
-                                Anonymous
-                                <span class="pull-right">15 days ago</span>
-                                <p>I've seen some better than this, but not at this price. I definitely recommend this item.</p>
-                            </div>
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
+      <div class="camp-thumbnail">
+        <div class="campaign">
+          <% @campaign.image.each do |photo| %>
+            <%= image_tag photo.url(:thumb) %>
+          <% end %>
         </div>
+      </div>
+    </div>
+      <div class="col-md-6">
+        <div class="about_product-container">
+          <div class="about-caption">
+            <div class="about-textbox">
+              <p> <i class="fa fa-info" aria-hidden="true"></i> Product name : <%=  @campaign.product_name %></p>
+              <hr class="hrrr">
+              <p> <i class="fa fa-tag" aria-hidden="true"></i> Product Category : <%=  @campaign.product_category %></p>
+              <hr class="hrrr">
+              <p> <i class="fa fa-compass" aria-hidden="true"></i> Location : <%=  @campaign.location %></p>
+              <hr class="hrrr">
+              <p> <i class="fa fa-user-circle-o" aria-hidden="true"></i> Target Age : <%=  @campaign.age %></p>
+              <hr class="hrrr">
+              <p> <i class="fa fa-venus-mars" aria-hidden="true"></i>  Target Gender : <%=  @campaign.gender %></p>
+              <hr class="hrrr">
+              <p> <i class="fa fa-bookmark-o" aria-hidden="true"></i> Interests : <%=  @campaign.interests %></p>
+              <hr class="hrrr">
+                <p> <i class="fa fa-comment-o" aria-hidden="true"></i> Description : <%=  @campaign.description %></p>
+          </div>
+          <div class="btn-group_pull-left">
+            <%= link_to 'Edit', edit_brand_campaign_path(brand_id: current_user.brand.id, id: @campaign.id), class: "btn-text" %>
+          </div>
+          <div class="btn-group_pull-left">
+            <%= link_to "Delete", brand_campaign_path(brand_id: current_user.brand.id), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn-text" %>
+          </div>
+        </div>
+          <%= link_to 'Create Reward', new_campaign_reward_path(@campaign.id), class: "btn-info" %>
+        </div>
+      </div>
+    </div>
+  </div>
 
-<h2>brand#show</h2>
-
-<p> <%= link_to "Search Influencers", new_search_path %> </p>
+  <hr class="hrrrr">
 
 
-  <p><%= @campaign.id %></p>
+
+    <div class="row">
+    <div class="reward-head">
+      <h1><i class="fa fa-gift" aria-hidden="true"></i></h1>
+    </div>
+  </div>
+    <div class="row">
+      <div class="reward-container">
+        <div class="col-md-6">
+          <div class="right-reward">
+          <% @rewards.each do |t| %>
+          <i class="fa fa-bullseye" aria-hidden="true"></i> Target : <%= t.target %></br>
+            <hr class="hrr">
+            <i class="fa fa-check-square-o" aria-hidden="true"></i> Prize         : <%= t.prize %></br>
+            <hr class="hrr">
+            <i class="fa fa-comment-o" aria-hidden="true"></i> Description   : <%= t.description %></br>
+            <%end%>
+          </div>
+        </div>
+            <div class="col-md-6">
+              <div class="left-reward">
+              <% @rewards.each do |t| %>
+              <i class="fa fa-calendar" aria-hidden="true"></i> Post Date     : <%= t.post_date %></br>
+              <hr class="hrr">
+              <i class="fa fa-calendar" aria-hidden="true"></i> Dead Line Date: <%= t.deadline %></br>
+              <%end%>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <hr class="hrrrr">
+
+    <div class="row">
+      <div class="desire-text">
+        <h2><i class="fa fa-users" aria-hidden="true"></i></h2>
+      </div>
+    </div>
+    <!-- <div class="row">
+      <div class="col-md-12">
+        <div class="influencer-container">
+          <% @influencers.each do |i| %>
+              <% if i.user.identities.present? %>
+                <% insta = i.user.identities.first %>
+                <p><%= image_tag insta.image %></p>
+                <p><%= insta.name %></p>
+                <p><%= insta.nickname %></p>
+              <%end%>
+            <%end%>
+          </div>
+        </div>
+      <hr>
+    </div> -->
+</div>
+</div>
+</div>
+
+
+
+<div class="col-xs-12">
+  <div class="influencer-container">
+  <div class="carousel slide" id="myCarousel">
+        <div class="carousel-inner">
+            <div class="item active">
+                    <ul class="thumbnails">
+                      <% @influencers.each do |i| %>
+                      <% if i.user.identities.present? %>
+                        <li class="col-sm-3">
+                						<div class="fff">
+
+                  								<div class="thumbnail">
+                                    <% insta = i.user.identities.first %>
+                  									<a href="#"><%= image_tag insta.image %></a>
+                  								</div>
+              								<div class="caption">
+                                <div class="insta-name">
+              									<h4><%= insta.nickname %></h4>
+                              </div>
+                                <%= link_to "View Profile", influencer_path(i), class: "insta-btn" %>
+                                <% if @campaign.requests.where(influencer_id: i.id).present? %>
+                                  <%= link_to "Cancel Request", campaign_request_path(campaign_id: @campaign, influencer_id: i.id), method: :delete, class: "insta-btn" %>
+                                <% else %>
+                                  <%= link_to "Pick Me", campaign_requests_path(campaign_id: @campaign, influencer_id: i.id), method: :post, class: "insta-btn"  %>
+                                <% end %>
+
+              								</div>
+                            </div>
+                        </li>
+                        <%end%>
+                        <%end%>
+                      </ul>
+                  </div>
+              </div>
+            </div>
+            <nav>
+              <ul class="control-box pager">
+                <li><a data-slide="prev" href="#myCarousel" class=""><i class="glyphicon glyphicon-chevron-left"></i></a></li>
+                <li><a data-slide="next" href="#myCarousel" class=""><i class="glyphicon glyphicon-chevron-right"></i></li>
+                </ul>
+              </nav>
+        </div>
+        <div class="search-box">
+        <p> <i class="fa fa-search" aria-hidden="true"></i> <%= link_to "Search For More Influencers", new_search_path %> </p>
+      </div>
+
+
+
+
+
+	   <!-- /.control-box -->
+
+    </div><!-- /#myCarousel -->
+
+</div><!-- /.col-xs-12 -->
+
+</div>
+
+<!-- <h2>brand#show</h2> -->
+
+<!-- <p> <%= link_to "Search Influencers", new_search_path %> </p> -->
+
+
+  <!-- <p><%= @campaign.id %></p>
   <!-- <p>Image: </p>
   <div class="campaign">
     <% @campaign.image.each do |photo| %>
@@ -125,7 +180,7 @@
     <% end %>
   </div> -->
 
-  <p>Product name : <%=  @campaign.product_name %></p>
+  <!-- <p>Product name : <%=  @campaign.product_name %></p>
   <p>Description : <%=  @campaign.description %></p>
   <p>Product Category : <%=  @campaign.product_category %></p>
   <p>Location : <%=  @campaign.location %></p>
@@ -138,9 +193,9 @@
         <%= link_to 'Edit', edit_brand_campaign_path(brand_id: current_user.brand.id, id: @campaign.id), class: "btn btn-default" %>
         <%= link_to "Delete", brand_campaign_path(brand_id: current_user.brand.id), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default" %>
       </div>
-  <% end %>
+  <% end %>  -->
 
-  <% if current_user.influencer.present? %>
+  <!-- <% if current_user.influencer.present? %>
     <% request = @campaign.requests.find_by(influencer_id: current_user.influencer.id) %>
 
     <%= render "/requests/update_status" if request.status == 'pending' %>
@@ -154,9 +209,9 @@
   <h3>Rewards</h3>
   <%= link_to 'Create Reward', new_campaign_reward_path(@campaign.id), class: "btn btn-info" %>
 
-  <br><br>
+  <br><br> -->
 
-  <% @rewards.each do |t| %>
+  <!-- <% @rewards.each do |t| %>
 
     Target : <%= t.target %></br>
     Prize         : <%= t.prize %></br>
@@ -170,9 +225,9 @@
     </div>
 
     <br><br><br>
-  <% end %>
+  <% end %> -->
 
-<h2>Influencers</h2>
+<!-- <h2>Influencers</h2>
 
 <% @influencers.each do |i| %>
   <p><%= i.user.role %></p>
@@ -197,4 +252,4 @@
 
 <% end %>
 
-<% end %>
+<% end %> -->
