@@ -1408,6 +1408,11 @@ a.bg-danger:hover,
 a.bg-danger:focus {
   background-color: #e4b9b9;
 }
+<<<<<<< HEAD:app/assets/stylesheets/bootstrap.css
+
+
+=======
+>>>>>>> master:vendor/assets/stylesheets/bootstrap.css
 .page-header {
   padding-bottom: 9px;
   margin: 40px 0 20px;
