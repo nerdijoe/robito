@@ -1,0 +1,26 @@
+<p><%= @campaign.id %></p>
+<p>Image: </p>
+<div class="campaign">
+  <% @campaign.image.each do |photo| %>
+     <%= image_tag photo.url(:thumb) %>
+  <% end %>
+</div>
+
+<p>Product name <%=  @campaign.product_name %></p>
+<p>Description <%=  @campaign.description %></p>
+<p>Product Category <%=  @campaign.product_category %></p>
+<p>Location <%=  @campaign.location %></p>
+<p>Target Age <%=  @campaign.age %></p>
+<p>Target Gender <%=  @campaign.gender %></p>
+<p>Interests <%=  @campaign.interests %></p>
+<p>Hash Tag <%=  @campaign.tag %></p>
+
+<h3>Rewards</h3>
+<% @campaign.rewards.each do |t| %>
+
+  Target : <%= t.target %></br>
+  Prize         : <%= t.prize %></br>
+  description   : <%= t.description %></br>
+  Post Date     : <%= t.post_date %></br>
+  Dead Line Date: <%= t.deadline %></br>
+<% end %>

@@ -9,6 +9,8 @@
   <link href="https://fonts.googleapis.com/css?family=Alegreya+Sans+SC" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Quantico" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Copse" rel="stylesheet">
+
 
 
 
@@ -45,7 +47,7 @@
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
           <li class="home">
-            <a href="#"  > Home </a>
+            <%= link_to "Home", root_path %>
           </li>
 
           <li class="influencer">
@@ -57,12 +59,17 @@
           </li>
 
           <li class="signin">
+            <% if signed_in? %>
+            <%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
+            <% else %>
             <%= link_to "Sign In", new_user_session_path %>
+            <% end %>
           </li>
 
       </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
   </nav>
+
 
 
  <div class="container">
@@ -76,9 +83,9 @@
   <% end %>
  </div>
 
-  <div class="container">
+  <div>
      <%= yield %>
-  </div>
+</div>
 
 
 </body>

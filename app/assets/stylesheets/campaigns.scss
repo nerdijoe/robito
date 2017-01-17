@@ -1,3 +1,201 @@
 // Place all the styles related to the campaigns controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.btn-group_pull-left {
+  margin-top: 20px;
+  float: right;
+}
+
+
+
+
+.about-textbox {
+  padding-top: 20px;
+  padding-left: 20px;
+  font-family: 'Copse', serif;
+  width: 650px;
+  height: 320px;
+  margin-left: 10px;
+  font-size: 16px;
+}
+
+.about_product-container {
+  box-shadow: 0.1px 0.1px 0.1px;
+  background-color: rgb(93, 201, 255);
+  border-radius: 2px;
+  margin-left: -100px;
+  height: 350px;
+  width: 700px;
+
+}
+
+.reward-container {
+  box-shadow: 0.1px 0.1px 0.1px;
+  border-color: #eeeeee;
+  border-style: solid;
+  border-width: 1px;
+  padding-left: 150px;
+  font-family: 'Copse', serif;
+  background-color: rgba(242, 176, 37, 0.86);
+  margin-left: 12px;
+  margin-right: 12px;
+  height: 150px;
+  border-radius: 2px;;
+  margin-bottom: 50px;
+}
+
+.desire-text {
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+
+
+.camp-thumbnail {
+
+  // box-shadow: 3px 3px 3px #8c6f3c;
+  width: 400px;
+  color: #e6e3e3;
+  border: 1px;
+  border-style: solid;
+  height: 400px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+
+
+.description_text-box {
+  height: 90px;
+}
+
+.hrr {
+  margin-bottom: 1px;
+  border-top: 1px solid rgba(238, 238, 238, 0);
+
+}
+
+.hrrr {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  border-top: 1px solid rgba(238, 238, 238, 0);
+}
+
+.hrrrr {
+  margin-top: 10px;
+  margin-bottom: 5px;
+  border-top: 1px solid #dadada ;
+}
+
+.right-reward {
+  margin-top: 8px;
+  font-size: 14px;
+}
+
+.left-reward {
+  margin-top: 8px;
+  font-size: 14px;
+}
+
+.reward-head {
+  text-align: center;
+  font-weight: 800px;
+}
+
+.influencer-container {
+  box-shadow: 0.1px 0.1px 0.1px;
+  background-color: #f36d52;
+  border-radius: 2px;
+  height: 300px;
+}
+
+li { list-style-type:none;}
+
+::selection { background: #ff5e99; color: #FFFFFF; text-shadow: 0; }
+::-moz-selection { background: #ff5e99; color: #FFFFFF; }
+
+.fa-users {
+  color: #ff5d00;
+}
+
+.btn-group_pull-left {
+  -webkit-border-radius: 4;
+  -moz-border-radius: 4;
+  border-radius: 3px;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 10px;
+  background: #4098ed;
+  padding: 4px 20px 4px 20px;
+  position: relative;
+  text-decoration: none;
+  float: right;
+  bottom: 12px;
+}
+
+.btn-group_pull-left:hover {
+  background: #97c5f2;
+  text-decoration: none;
+}
+
+.btn-text {
+  color: white;
+}
+
+.btn-info {
+  -webkit-border-radius: 4;
+  -moz-border-radius: 4;
+  border-radius: 4px;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 15px;
+  background: #34d960;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+  position: relative;
+  top: 55px;
+}
+
+.insta-btn {
+  position: relative;
+  left: 40px;
+  -webkit-border-radius: 4;
+-moz-border-radius: 4;
+border-radius: 4px;
+font-family: Arial;
+color: #000000;
+font-size: 14px;
+background: #ffe121;
+padding: 3px 20px 3px 20px;
+text-decoration: none;
+}
+
+.insta-btn:hover {
+  background: #f5d1ab;
+  text-decoration: none;
+}
+
+.insta-name {
+  text-align: center;
+}
+
+.search-box {
+  font-size: 30px;
+  top: 40px;
+  position: relative;
+  left: 490px;
+  width: 30%;
+  text-align: center;
+  -webkit-border-radius: 4;
+  -moz-border-radius: 4;
+  border-radius: 4px;
+  font-family: Arial;
+  color: #000000;
+  font-size: 14px;
+  background: #ff7473;
+  padding: 5px 30px 5px 30px;
+  text-decoration: none
+}
