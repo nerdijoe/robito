@@ -1,21 +1,33 @@
-<h3> Campaign Edit </h3>
 
 <p><%= link_to "Back", brand_campaign_path(brand_id: current_user.brand.id, id: @campaign.id) %></p>
 
-<div class="container">
+<div class="col-md-8 col-md-offset-2" id="edit_page">
   <div class="row">
-
-    <%= form_for [current_user.brand, @campaign], html: {class: 'form-horizontal'} do |form| %>
-
-    <%= render partial: '/campaigns/form', object: form %>
-
-    <div class="form-group">
-      <div class="col-sm-offset-2 col-sm-10">
-        <%= form.submit 'Save Changes', class: "btn btn-primary" %>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h1>Edit Your Campaign</h1>
       </div>
-    </div>
+      <div class="panel-body">
+        <div class="current_image">
+          <strong class="center">Current Image</strong>
+            <% @campaign.image.each do |photo| %>
+              <%= image_tag photo.url(:thumb) %>
+            <% end %>
+        </div>
 
-    <% end %>
+        <%= form_for [current_user.brand, @campaign], html: {class: 'form-horizontal'} do |form| %>
+
+        <%= render partial: '/campaigns/form', object: form %>
+
+        <div class="form-group">
+          <div class="col-sm-offset-2 col-sm-10">
+            <%= form.submit 'Save Changes', class: "btn btn-primary" %>
+          </div>
+        </div>
+
+        <% end %>
 
   </div>
+</div>
+</div>
 </div>
