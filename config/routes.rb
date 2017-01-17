@@ -9,7 +9,9 @@ Rails.application.routes.draw do
     post 'users/roles' => 'roles#create'
   end
 
-  root 'landing_page#index'
+  # root 'landing_page#index'
+
+  root 'creatives#index'
 
   resources :users, only: [:index, :show]
 
