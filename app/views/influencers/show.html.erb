@@ -21,25 +21,12 @@
                 <ul class="nav" id="main-menu">
                     <li>
                         <div class="user-img-div">
-                            <img src='<%= @client.user.profile_picture %>' class="img-thumbnail" />
 
                             <div class="inner-text">
-                               <p><strong><%= @client.user.full_name %></strong></p>
-                               <p>Userid: <%= @influencer.user.id %>, Influencerid: <%= @influencer.id %></p>
-                               <p><%= @influencer.user.role %></p>
-                               <p>
-                                 <% if @influencer.user.identities.present? %>
-                                   <% @influencer.user.identities.each do |i| %>
-                                     <p><%= i.provider %></p>
-                                     <p><%= i.nickname %></p>
-                                   <% end %>
-                                 <% end %>
-                               </p> 
-
                               <p>Debugging- Userid: <%= @influencer.user.id %>, Influencerid: <%= @influencer.id %></p>
                               <% identity = @influencer.get_insta %>
 
-                              <p>  <img src='<%= @client.user.profile_picture %>'> </p>
+                              <p>  <img src='<%= @client.user.profile_picture %>' class="img-thumbnail"> </p>
                               <p>Username:<strong> <%= identity.nickname %> </strong></p>
                               <p>Name: <%= @client.user.full_name %> </p>
                               <p> Number of media: <%= @user_info.counts[:media] %> </p>
@@ -106,7 +93,7 @@
                 </div>
                 <!-- /. ROW  -->
 
-               
+
 
 
                 <div class="row">
@@ -125,7 +112,7 @@
                         </div>
                         <br />
                         <!-- 16:9 aspect ratio -->
-                    
+
                     </div>
                     <div class="col-md-4">
                         <div class="panel panel-info">
@@ -207,7 +194,8 @@
 
           </p>
           <p>Likes: <%= media_item.likes[:count] %> </p>
-
+    <% end %>
+  <% end %>
         </div>
     </div>
  </div>
