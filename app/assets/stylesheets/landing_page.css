@@ -64,9 +64,8 @@
 }
 
 .fa-gift {
-  font-size: 70px;
-  text-shadow: 2px 2px 2px;
-  padding-left: 800px;
+  color: rgba(242, 176, 37, 0.86);
+  font-size: 40px;
 }
 
 .fa-rocket {
