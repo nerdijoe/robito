@@ -3,7 +3,7 @@ class Influencer < ActiveRecord::Base
   # has_many :campaigns, foreign_key: "influencer_id"
   belongs_to :user
 
-  has_many :requests
+  has_many :requests, dependent: :destroy
   has_many :campaigns, through: :requests
 
   enum product_category: { 'Fashion' => 0, 'Beauty Products'=> 2, 'Food' => 3, 'Other' => 4 }
@@ -14,9 +14,16 @@ class Influencer < ActiveRecord::Base
 
   scope :location,    -> (city) { where(location: city) }
   scope :age,         -> (age) { where(age: age) }
+  scope :gender,         -> (gender) { where(gender: gender) }
+  scope :interests,         -> (interests) { where("interests like ? ", "%#{interests}%") }
 
   include PgSearch
   pg_search_scope :search_by_keyword, :against => [:product_category, :location, :age, :gender, :interests]
 
+  pg_search_scope :search_by_keyword_all, :against => [:product_category, :location, :age, :gender, :interests], :using => { :tsearch => {:any_word => true}  }
 
+
+  def get_insta
+    self.user.identities.first
+  end
 end

@@ -1,0 +1,30 @@
+
+<% @requests.each do |i| %>
+
+  <% if i.influencer.user.identities.present? %>
+    <% insta = i.influencer.user.identities.first %>
+
+    <p><%= image_tag insta.image %></p>
+
+    <p>influencer_id: <%= i.influencer_id %></p>
+
+    <p><%= insta.name %></p>
+    <p><%= insta.nickname %></p>
+
+    <!-- show the influencer post that matches the campaign hashtag -->
+
+    <% if i.ongoing? %>
+    <p> <%= link_to 'See Progress', see_influencers_posts_path(id: i.campaign_id, influencer_id: i.influencer_id), :class => "btn btn-success" %> </p>
+
+    <% end %>
+
+
+  <% else %>
+    <p>influencer_id: <%= i.influencer_id %></p>
+
+    <p> This user doesn't have an instagram account </p>
+
+  <% end %>
+
+
+<% end %>

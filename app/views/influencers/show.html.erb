@@ -1,84 +1,217 @@
-  <h2>Influencer Profile</h2>
+<div class="container-fluid">
+    <div id="wrapper">
+        
+        <nav class="navbar-default navbar-side" role="navigation">
+            <div class="sidebar-collapse">
+                <ul class="nav" id="main-menu">
+                    <li>
+                        <div class="user-img-div">
 
-  <p>
-    <% if current_user.influencer.present? %>
-    <%= link_to "Edit Profile", edit_influencer_path(current_user.influencer) if current_user.influencer.id == @influencer.id%>
-    <% end %>
-  </p>
+                            <div class="inner-text">
+                              <p>Debugging- Userid: <%= @influencer.user.id %>, Influencerid: <%= @influencer.id %></p>
+                              <% identity = @influencer.get_insta %>
+
+                              <p>  <img src='<%= @client.user.profile_picture %>' class="img-thumbnail"> </p>
+                              <p>Username:<strong> <%= identity.nickname %> </strong></p>
+                              <p>Name: <%= @client.user.full_name %> </p>
+
+                            </div>
+                        </div>
+                        <% if current_user.influencer.present? %>
+                         <% if current_user.influencer.id == @influencer.id %>
+                            <%= link_to edit_influencer_path(current_user.influencer) do %>
+                            <li class="side_bar"><i class="fa fa-address-card-o"></i> Edit Profile</li>
+                             <% end %>
+                          <% end %>
+                        <% end %>
+                    </li>        
+                </ul>
+            </div>
+       </nav>
+        
+
+        <div id="page-wrapper">
+            <div id="page-inner">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1 class="page-head-line">My Profile</h1>
+                        <h1 class="page-subhead-line">Welcome to my page, hope that you find it useful. </h1>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="main-box mb-red">
+                            <a href="#">
+                                <h3> Posts </h3>
+                                <h1 class="font_size"><%= @user_info.counts[:media] %></h1>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="main-box mb-dull">
+                            <a href="#">
+                                <h3> Followers </h3>
+                                <h1 class="font_size"><%= @user_info.counts[:followed_by] %></h1>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="main-box mb-pink">
+                            <a href="#">
+                                <h3>Follows </h3>
+                                <h1 class="font_size"><%= @user_info.counts[:follows] %></h1>
+                            </a>
+                        </div>
+                    </div>
+                </div>
 
 
-  <p>  <img src='<%= @client.user.profile_picture %>'> </p>
-  <p><strong><%= @client.user.full_name %></strong></p>
-  <p>Userid: <%= @influencer.user.id %>, Influencerid: <%= @influencer.id %></p>
-  <p><%= @influencer.user.role %></p>
-  <p>
-    <% if @influencer.user.identities.present? %>
-      <% @influencer.user.identities.each do |i| %>
-        <p><%= i.provider %></p>
-        <p><%= i.nickname %></p>
-      <% end %>
-    <% end %>
-  </p>
+                <div class="row">
+
+                    <div class="col-md-8">
+
+                        <div class="list-group">
+                       
+                             <h4 class="list-heading">Bio:</h4>
+                                <p style="line-height: 30px;">
+                                    <pre>
+                                      <%= @user_info.bio %>
+                                    </pre>
+                                </p>
+
+                                <p>
+                                  <strong class="list-headings">My Product Category: </strong>
+                                  <div class="box">
+                                    <%= @influencer.product_category %>
+                                  </div>
+                                </p>
+
+                                <p>
+                                  <strong class="list-headings">My Location: </strong>
+                                  <div class="box">
+                                    <%= @influencer.location %>
+                                  </div>
+                                </p>
 
 
-  <p>
-    <strong>My Product Category: </strong>
-    <pre>
-      <%= @influencer.product_category %>
-    </pre>
-  </p>
+                                <p>
+                                  <strong class="list-headings">Audience Age: </strong>
+                                  <div class="box">
+                                    <%= @influencer.age %>
+                                  </div>
+                                </p>
+
+                                <p>
+                                  <strong class="list-headings">Audience Gender: </strong>
+                                  <div class="box">
+                                    <%= @influencer.gender %>
+                                  </div>
+                                </p>
+
+                                <p>
+                                  <strong class="list-headings">My Interests: </strong>
+                                  <div class="box">
+                                    <%= @influencer.interests %>
+                                  </div>
+                                </p>
+                            </a>
+                       </div>
+                        <br />
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="panel panel-info">
+                            <div class="panel-heading">
+                                <i class="fa fa-bell fa-fw"></i>Notifications Panel
+                            </div>
+
+                            <div class="panel-body">
+                                <div class="list-group">
 
 
-  <p>
-    <strong>My Location: </strong>
-    <pre>
-      <%= @influencer.location %>
-    </pre>
-  </p>
+                                    <a href="#" class="list-group-item">
+                                        <i class="fa fa-twitter fa-fw"></i>3 New Followers
+                                    <span class="pull-right text-muted small"><em>12 minutes ago</em>
+                                    </span>
+                                    </a>
+                                    <a href="#" class="list-group-item">
+                                        <i class="fa fa-envelope fa-fw"></i>Message Sent
+                                    <span class="pull-right text-muted small"><em>27 minutes ago</em>
+                                    </span>
+                                    </a>
+                                    <a href="#" class="list-group-item">
+                                        <i class="fa fa-tasks fa-fw"></i>New Task
+                                    <span class="pull-right text-muted small"><em>43 minutes ago</em>
+                                    </span>
+                                    </a>
+                                    <a href="#" class="list-group-item">
+                                        <i class="fa fa-upload fa-fw"></i>Server Rebooted
+                                    <span class="pull-right text-muted small"><em>11:32 AM</em>
+                                    </span>
+                                    </a>
+                                    <a href="#" class="list-group-item">
+                                        <i class="fa fa-bolt fa-fw"></i>Server Crashed!
+                                    <span class="pull-right text-muted small"><em>11:13 AM</em>
+                                    </span>
+                                    </a>
+                                    <a href="#" class="list-group-item">
+                                        <i class="fa fa-warning fa-fw"></i>Server Not Responding
+                                    <span class="pull-right text-muted small"><em>10:57 AM</em>
+                                    </span>
+                                    </a>
 
+                                    <a href="#" class="list-group-item">
+                                        <i class="fa fa-bolt fa-fw"></i>Server Crashed!
+                                    <span class="pull-right text-muted small"><em>11:13 AM</em>
+                                    </span>
+                                    </a>
+                                    <a href="#" class="list-group-item">
+                                        <i class="fa fa-warning fa-fw"></i>Server Not Responding
+                                    <span class="pull-right text-muted small"><em>10:57 AM</em>
+                                    </span>
+                                    </a>
+                                    <a href="#" class="list-group-item">
+                                        <i class="fa fa-shopping-cart fa-fw"></i>New Order Placed
+                                    <span class="pull-right text-muted small"><em>9:49 AM</em>
+                                    </span>
+                                    </a>
+                                </div>
+                                <!-- /.list-group -->
+                                <a href="#" class="btn btn-info btn-block">View All Alerts</a>
+                            </div>
 
-  <p>
-    <strong>Audience Age: </strong>
-    <pre>
-      <%= @influencer.age %>
-    </pre>
-  </p>
+                        </div>
+                    </div>
+                </div>
+                <hr />
+                <div class="container-fluid">
+                <div class="row no-gutter">
+                <div class="col-md-6">
 
-  <p>
-    <strong>Audience Gender: </strong>
-    <pre>
-      <%= @influencer.gender %>
-    </pre>
-  </p>
+                  <% a = true %>
+                  <% if a %>
+                    <% for media_item in @client.user_recent_media.first(6) %>
+                        <div style='float:left;'>
+                          <img src='<%= media_item.images.low_resolution.url %>'>
+                          <br/>
+                          <p>
+                            <% media_item.tags.each do |t| %>
+                              <strong>#<%= t %></strong>
+                            <% end %>
 
-  <p>
-    <strong>My Interests: </strong>
-    <pre>
-      <%= @influencer.interests %>
-    </pre>
-  </p>
-
-
-
-  <p>
-  <h3>#<%= @tag %></h3>
-  <% if @found_post.present? %>
-    <p> <%= image_tag @found_post.images.low_resolution.url %> </p>
-    <p> <%= @found_post.tags %></p>
-    <p> Likes: <%= @found_post.likes.fetch(:count) %></p>
-  <% end %>
-  </p>
-  <% a = false %>
-  <% if a %>
-    <% for media_item in @client.user_recent_media %>
-        <div style='float:left;'>
-          <img src='<%= media_item.images.low_resolution.url %>'>
-          <br/>
-          <%= media_item.tags %>
-          <a href='/media_like/<%= media_item.id %>'>Like</a>
-          <a href='/media_unlike/<%= media_item.id %>'>Un-Like</a>
-          <br/>
-          Likes: <%= media_item.likes[:count] %>
+                          </p>
+                          <p>Likes: <%= media_item.likes[:count] %> </p>
+                        </div>
+                    <% end %>
+                  <% end %>
+                </div>
+                </div>
+                </div>
+            </div>
         </div>
-    <% end %>
-  <% end %>
+      </div>
+    </div>
+</div>
+
+

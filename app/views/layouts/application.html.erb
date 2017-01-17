@@ -71,7 +71,9 @@
   </nav>
 
 
- <!-- <div class="container">
+
+ <div class="container">
+
   <% if signed_in? %>
     <%= link_to "Home", root_path %>  <%= link_to "Signout", destroy_user_session_path, method: :delete %>
   <% end %>
@@ -79,11 +81,12 @@
   <% flash.each do |name, msg| %>
     <%= content_tag :div, msg, class: "alert alert-info" %>
   <% end %>
- </div> -->
+ </div>
 
   <div>
      <%= yield %>
-  </div>
+</div>
+
 
 </body>
 

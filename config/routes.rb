@@ -9,7 +9,9 @@ Rails.application.routes.draw do
     post 'users/roles' => 'roles#create'
   end
 
-  root 'landing_page#index'
+  # root 'landing_page#index'
+
+  root 'creatives#index'
 
   resources :users, only: [:index, :show]
 
@@ -17,7 +19,7 @@ Rails.application.routes.draw do
     resources :campaigns
   end
 
-  resources :influencers, only: [:index, :show, :edit, :update] do
+  resources :influencers, only: [:index, :show, :edit, :update, :destroy] do
     resources :campaigns, only: [:show]
     resources :requests, only: [:update]
   end
@@ -32,6 +34,7 @@ Rails.application.routes.draw do
   resources :searches, only: [:new, :create, :show]
 
   get "/campaigns/:id/influencers" => "campaigns#influencers", as: 'see_influencers'
+  get "/campaigns/:id/influencers/:influencer_id" => "campaigns#influencersposts", as: 'see_influencers_posts'
 
 #   root 'welcome#index'
 

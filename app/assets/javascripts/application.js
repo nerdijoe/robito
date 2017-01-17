@@ -14,4 +14,8 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
- 
+
+@import "jquery-1.10.2";
+@import "bootstrap";
+@import "jquery-metisMenu";
+@import "custom";
