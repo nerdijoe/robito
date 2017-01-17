@@ -2,7 +2,6 @@ class WelcomeController < ApplicationController
   before_action :authenticate_user!
 
   def index
-
     if current_user.zero?
       redirect_to users_roles_new_path
     elsif current_user.brand.present?
@@ -29,7 +28,6 @@ class WelcomeController < ApplicationController
 
   def influencers
     @influencers = User.where(type: "Influencer")
-    byebug
   end
 
 end

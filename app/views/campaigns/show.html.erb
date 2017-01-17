@@ -1,7 +1,10 @@
 
-<h2>brand#show</h2>
+
+<h2>Campaign#show</h2>
 
 <p> <%= link_to "Search Influencers", new_search_path %> </p>
+</br>
+<p> <%= link_to "Back", root_path %></p>
 
 
   <p><%= @campaign.id %></p>
@@ -19,12 +22,17 @@
   <p>Target Age <%=  @campaign.age %></p>
   <p>Target Gender <%=  @campaign.gender %></p>
   <p>Interests <%=  @campaign.interests %></p>
+  <p>Hash Tag <%=  @campaign.tag %></p>
 
   <% if current_user.brand.present? %>
+    <p> <%= link_to 'See Influencers', see_influencers_path(@campaign.id) %>  </p>
+
       <div class="btn-group pull-left">
         <%= link_to 'Edit', edit_brand_campaign_path(brand_id: current_user.brand.id, id: @campaign.id), class: "btn btn-default" %>
         <%= link_to "Delete", brand_campaign_path(brand_id: current_user.brand.id), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default" %>
       </div>
+
+
   <% end %>
 
   <% if current_user.influencer.present? %>
@@ -59,14 +67,13 @@
     <br><br><br>
   <% end %>
 
-<h2>Influencers</h2>
+<h2>Influencers <span class="badge"><%= @influencers.count %></span></h2>
 
 <% @influencers.each do |i| %>
-  <p><%= i.user.role %></p>
 
   <% if i.user.identities.present? %>
     <% insta = i.user.identities.first %>
-      <p><%= image_tag insta.image %></p>
+      <p><%= link_to (image_tag insta.image), influencer_path(i) %></p>
 
       <p><%= insta.name %></p>
       <p><%= insta.nickname %></p>
@@ -74,14 +81,28 @@
 
   <p>Influencer id: <%= i.id %>  </p>
   <p>User id:<%= i.user.id %></p>
-  <p><%= link_to i.user.email, influencer_path(i) %></p>
+  <p> <strong>My Location: </strong> <%= i.location %> </p>
+  <p> <strong>Audience Age: </strong> <%= i.age %> </p>
+  <p> <strong>Audience Gender: </strong> <%= i.gender %> </p>
+  <p> <strong>Interests: </strong> <%= i.interests %> </p>
+
+
   <% if @campaign.requests.where(influencer_id: i.id).present? %>
-    <%= link_to "Cancel Request", campaign_request_path(campaign_id: @campaign, influencer_id: i.id), method: :delete  %>
+      <% status = @campaign.check_status(i.id) %>
+      <% if status == 'pending'%>
+        <%= link_to "Cancel Request", campaign_request_path(campaign_id: @campaign, influencer_id: i.id), method: :delete, class: "btn btn-warning"  %>
+      <% elsif status == 'ongoing' %>
+          <%= link_to 'Ongoing', see_influencers_posts_path(influencer_id: i.id), :class => "btn btn-success" %>
+      <% elsif status == 'rejected' %>
+        <p> Influencer has rejected your request </p>
+      <% else %>
+        <p> Campaign is ended </p>
+      <% end %>
+
   <% else %>
-    <%= link_to "Pick Me", campaign_requests_path(campaign_id: @campaign, influencer_id: i.id), method: :post  %>
+    <%= link_to "Pick Me", campaign_requests_path(campaign_id: @campaign, influencer_id: i.id), method: :post, class: "btn btn-default" %>
   <% end %>
   <p> ---------------</p>
-
-<% end %>
+  <% end %>
 
 <% end %>

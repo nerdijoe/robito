@@ -36,6 +36,24 @@
                                  <% end %>
                                </p> 
 
+                              <p>Debugging- Userid: <%= @influencer.user.id %>, Influencerid: <%= @influencer.id %></p>
+                              <% identity = @influencer.get_insta %>
+
+                              <p>  <img src='<%= @client.user.profile_picture %>'> </p>
+                              <p>Username:<strong> <%= identity.nickname %> </strong></p>
+                              <p>Name: <%= @client.user.full_name %> </p>
+                              <p> Number of media: <%= @user_info.counts[:media] %> </p>
+
+                              <p> Followers: <%= @user_info.counts[:followed_by] %> people </p>
+                              <p> Follows:   <%= @user_info.counts[:follows] %> people </p>
+
+                            <p>
+                              <strong>Bio: </strong>
+                              <pre>
+                                <%= @user_info.bio %>
+                              </pre>
+                            </p>
+
                                <p class="edit_page">
                                  <% if current_user.influencer.present? %>
                                  <%= link_to "Edit Profile", edit_influencer_path(current_user.influencer) if current_user.influencer.id == @influencer.id%>
@@ -62,6 +80,7 @@
                     <div class="col-md-12">
                         <h1 class="page-head-line">My Profile</h1>
                         <h1 class="page-subhead-line">Welcome to my page, hope that you find it useful. </h1>
+
 
                     </div>
                 </div>
@@ -116,6 +135,7 @@
 
                             <div class="panel-body">
                                 <div class="list-group">
+
 
                                     <a href="#" class="list-group-item">
                                         <i class="fa fa-twitter fa-fw"></i>3 New Followers
@@ -173,6 +193,21 @@
                 </div>
                 <hr />
             </div>
+
+  <% a = true %>
+  <% if a %>
+    <% for media_item in @client.user_recent_media %>
+        <div style='float:left;'>
+          <img src='<%= media_item.images.low_resolution.url %>'>
+          <br/>
+          <p>
+            <% media_item.tags.each do |t| %>
+              <strong>#<%= t %></strong>
+            <% end %>
+
+          </p>
+          <p>Likes: <%= media_item.likes[:count] %> </p>
+
         </div>
     </div>
  </div>
