@@ -1,0 +1,203 @@
+@import url(http://fonts.googleapis.com/css?family=Lato:700);
+
+.size(@w, @h) {
+  height: @h;
+  width: @w;
+}
+
+// --
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+
+.set-size {
+  font-size: 10em;
+}
+
+.charts-container:after {
+  clear: both;
+  content: "";
+  display: table;
+}
+
+@bg: #34495e;
+@size: 1em;
+
+.pie-wrapper {
+  .size(@size, @size);
+  float: left;
+  margin: 15px;
+  position: relative;
+
+  &:nth-child(3n+1) {
+    clear: both;
+  }
+
+  .pie {
+    .size(100%, 100%);
+    clip: rect(0, @size, @size, @size / 2);
+    left: 0;
+    position: absolute;
+    top: 0;
+
+    .half-circle {
+      .size(100%, 100%);
+      border: @size / 10 solid #3498db;
+      border-radius: 50%;
+      clip: rect(0, @size / 2, @size, 0);
+      left: 0;
+      position: absolute;
+      top: 0;
+    }
+  }
+
+  .label {
+    @font-size: @size / 4;
+    @font-size-redo: @size * 4;
+
+    background: @bg;
+    border-radius: 50%;
+    bottom: @font-size-redo / 10;
+    color: #ecf0f1;
+    cursor: default;
+    display: block;
+    font-size: @font-size;
+    left: @font-size-redo / 10;
+    line-height: @font-size-redo * .65;
+    position: absolute;
+    right: @font-size-redo / 10;
+    text-align: center;
+    top: @font-size-redo / 10;
+
+    .smaller {
+      color: #bdc3c7;
+      font-size: .45em;
+      padding-bottom: 20px;
+      vertical-align: super;
+    }
+  }
+
+  .shadow {
+    .size(100%, 100%);
+    border: @size / 10 solid #bdc3c7;
+    border-radius: 50%;
+  }
+
+  &.style-2 {
+    .label {
+      background: none;
+      color: #7f8c8d;
+
+      .smaller {
+        color: #bdc3c7;
+      }
+    }
+  }
+
+  &.progress-30 {
+    .draw-progress(30, #3498db);
+  }
+
+  &.progress-60 {
+    .draw-progress(60, #9b59b6);
+  }
+
+  &.progress-90 {
+    .draw-progress(90, #e67e22);
+  }
+
+  &.progress-45 {
+    .draw-progress(45, #1abc9c);
+  }
+
+  &.progress-75 {
+    .draw-progress(75, #8e44ad);
+  }
+
+  &.progress-95 {
+    .draw-progress(95, #e74c3c);
+  }
+}
+
+.pie-wrapper--solid {
+  border-radius: 50%;
+  overflow: hidden;
+
+  &:before {
+    border-radius: 0 100% 100% 0 / 50%;
+    content: '';
+    display: block;
+    height: 100%;
+    margin-left: 50%;
+    transform-origin: left;
+  }
+
+  .label {
+    background: transparent;
+  }
+
+  &.progress-65 {
+    .draw-progress--solid(65, #e67e22, @bg);
+  }
+
+  &.progress-25 {
+    .draw-progress--solid(25, #9b59b6, @bg);
+  }
+
+  &.progress-88 {
+    .draw-progress--solid(88, #3498db, @bg);
+  }
+}
+
+// --
+.draw-progress(@progress, @color) when (@progress <= 50) {
+  .pie {
+    .right-side {
+      display: none;
+    }
+  }
+}
+
+.draw-progress(@progress, @color) when (@progress > 50) {
+  .pie {
+    clip: rect(auto, auto, auto, auto);
+
+    .right-side {
+      transform: rotate(180deg);
+    }
+  }
+}
+
+.draw-progress(@progress, @color) {
+  .pie {
+    .half-circle {
+      border-color: @color;
+    }
+
+    .left-side {
+      @rotate: @progress * 3.6;
+      transform: rotate(~'@{rotate}deg');
+    }
+  }
+}
+
+.draw-progress--solid(@progress, @color, @bg) when (@progress <= 50) {
+  &:before {
+    background: @bg;
+    transform: rotate((100 - (50 - @progress)) / 100 * 360deg * -1);
+  }
+}
+
+.draw-progress--solid(@progress, @color, @bg) when (@progress > 50) {
+  &:before {
+    background: @color;
+    transform: rotate((100 - @progress) / 100 * 360deg);
+  }
+}
+
+.draw-progress--solid(@progress, @color, @bg) {
+  background: linear-gradient(to right, @color 50%, @bg 50%);
+}
