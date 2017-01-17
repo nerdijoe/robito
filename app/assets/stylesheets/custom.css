@@ -6,11 +6,11 @@
 
     100% To use For Personal And Commercial Use.
     IN EXCHANGE JUST GIVE US CREDITS AND TELL YOUR FRIENDS ABOUT US
-   
+
     ========================================================  */
 
 /*==============================================
-    MAIN BOX  STYLES    
+    MAIN BOX  STYLES
     =============================================*/
 .main-box {
     text-align:center;
@@ -40,7 +40,7 @@
         text-transform:uppercase;
     }
 /*==============================================
-    CHAT WINDOW  STYLES    
+    CHAT WINDOW  STYLES
     =============================================*/
 
 .chat-widget-main {
@@ -57,7 +57,7 @@
     border-top-color: #6792d5;
     border-width: 15px;
     margin-left: -15px;
-   
+
 }
 
 .chat-widget-left {
@@ -70,7 +70,7 @@
     position: relative;
     border: 1px solid #6792d5;
     font-size:14px;
-   
+
 }
 .chat-widget-right:after {
     top: 100%;
@@ -93,7 +93,7 @@
     position: relative;
     border: 1px solid #d51111;
     font-size:14px;
-    
+
 }
 
 .chat-widget-name-left {
@@ -113,7 +113,7 @@
     text-align:right;
     font-weight:900;
     padding-bottom:20px;
-    
+
 
 }
 
@@ -190,8 +190,8 @@ background-color: #929292;
     =====================================================*/
 
 #port-folio {
-    padding-top: 10px; 
-    padding-bottom: 100px; 
+    padding-top: 10px;
+    padding-bottom: 100px;
 }
 .portfolio-item {
     border:1px solid #000;
@@ -204,11 +204,11 @@ background-color: #929292;
     }
 
 .portfolio-item .overlay {
-   
+
   background-color: #000;
   text-align: center;
   padding-bottom:30px;
-  
+
 }
 
 /*==========================================
@@ -238,9 +238,8 @@ ul#filters {
 		-webkit-box-sizing: border-box;
 		-moz-box-sizing: border-box;
 		-o-box-sizing: border-box;
-		width: 100%;		
+		width: 100%;
         opacity:.2;
 		float:left;
 		overflow:hidden;
 	}
-	
