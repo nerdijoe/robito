@@ -1,5 +1,4 @@
 <div class="bg_img">
-<div class="container">
   <div class="row">
     <div class="col-md-12">
         <% if current_user.brand.present? %>
@@ -44,7 +43,6 @@
           <%= link_to 'Create Reward', new_campaign_reward_path(@campaign.id), class: "btn-info" %>
         </div>
       </div>
-    </div>
   </div>
 
   <hr class="hrrrr">
@@ -183,7 +181,7 @@
   </div> -->
 
 
-  <!-- 
+  <!--
   <p>Product name <%=  @campaign.product_name %></p>
   <p>Description <%=  @campaign.description %></p>
   <p>Product Category <%=  @campaign.product_category %></p>

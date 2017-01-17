@@ -85,6 +85,7 @@
 }
 
 .hrrrr {
+  max-width: 1500px;
   margin-top: 10px;
   margin-bottom: 5px;
   border-top: 1px solid #dadada ;
@@ -129,11 +130,11 @@ li { list-style-type:none;}
   color: #ffffff;
   font-size: 10px;
   background: #4098ed;
-  padding: 4px 20px 4px 20px;
+  padding: 1px 20px 1px 20px;
   position: relative;
   text-decoration: none;
   float: right;
-  bottom: 12px;
+  bottom: 20px;
 }
 
 .btn-group_pull-left:hover {
