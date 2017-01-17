@@ -4,10 +4,11 @@
             <h1>Connecting Brands and Influencers</h1>
             <hr>
             <h2>
-                Your one stop solution for Your Brand with Our Influencer
+                Market Your Brand Through Instagram Influencers
             </h2>
             <br>
-            <%= link_to "Sign in via Instagram", user_instagram_omniauth_authorize_path, class: "btn btn-primary btn-xl page-scroll" %>
+            <%= link_to user_instagram_omniauth_authorize_path, class: "btn btn-primary btn-xl page-scroll"  do %>
+	  <i class="fa fa-instagram"></i>  Sign in with Instagram <% end %>
         </div>
     </div>
 </header>
