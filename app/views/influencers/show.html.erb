@@ -1,59 +1,198 @@
-  <h2>Influencer Profile</h2>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+<script
+ src="https://code.jquery.com/jquery-3.1.1.js"
+ integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA="
+ crossorigin="anonymous"></script>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Responsive Bootstrap Advance Admin Template</title>
+    <!-- GOOGLE FONTS-->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+</head>
+<body>
+<div class="container-fluid">
+    <div id="wrapper">
+        <!-- /. NAV TOP  -->
+        <nav class="navbar-default navbar-side" role="navigation">
+            <div class="sidebar-collapse">
+                <ul class="nav" id="main-menu">
+                    <li>
+                        <div class="user-img-div">
+                            <img src='<%= @client.user.profile_picture %>' class="img-thumbnail" />
 
-  <p>
-    <% if current_user.influencer.present? %>
-    <%= link_to "Edit Profile", edit_influencer_path(current_user.influencer) if current_user.influencer.id == @influencer.id%>
-    <% end %>
-  </p>
+                            <div class="inner-text">
+                               <p><strong><%= @client.user.full_name %></strong></p>
+                               <p>Userid: <%= @influencer.user.id %>, Influencerid: <%= @influencer.id %></p>
+                               <p><%= @influencer.user.role %></p>
+                               <p>
+                                 <% if @influencer.user.identities.present? %>
+                                   <% @influencer.user.identities.each do |i| %>
+                                     <p><%= i.provider %></p>
+                                     <p><%= i.nickname %></p>
+                                   <% end %>
+                                 <% end %>
+                               </p> 
 
-  <p>Debugging- Userid: <%= @influencer.user.id %>, Influencerid: <%= @influencer.id %></p>
-  <% identity = @influencer.get_insta %>
+                              <p>Debugging- Userid: <%= @influencer.user.id %>, Influencerid: <%= @influencer.id %></p>
+                              <% identity = @influencer.get_insta %>
 
-  <p>  <img src='<%= @client.user.profile_picture %>'> </p>
-  <p>Username:<strong> <%= identity.nickname %> </strong></p>
-  <p>Name: <%= @client.user.full_name %> </p>
-  <p> Number of media: <%= @user_info.counts[:media] %> </p>
+                              <p>  <img src='<%= @client.user.profile_picture %>'> </p>
+                              <p>Username:<strong> <%= identity.nickname %> </strong></p>
+                              <p>Name: <%= @client.user.full_name %> </p>
+                              <p> Number of media: <%= @user_info.counts[:media] %> </p>
 
-  <p> Followers: <%= @user_info.counts[:followed_by] %> people </p>
-  <p> Follows:   <%= @user_info.counts[:follows] %> people </p>
+                              <p> Followers: <%= @user_info.counts[:followed_by] %> people </p>
+                              <p> Follows:   <%= @user_info.counts[:follows] %> people </p>
 
-  <p>
-    <strong>Bio: </strong>
-    <pre>
-      <%= @user_info.bio %>
-    </pre>
-  </p>
+                            <p>
+                              <strong>Bio: </strong>
+                              <pre>
+                                <%= @user_info.bio %>
+                              </pre>
+                            </p>
+
+                               <p class="edit_page">
+                                 <% if current_user.influencer.present? %>
+                                 <%= link_to "Edit Profile", edit_influencer_path(current_user.influencer) if current_user.influencer.id == @influencer.id%>
+                                 <% end %>
+                               </p>
+
+                            </div>
+                        </div>
+                      <li>
+                        <a href="gallery.html" class="side_bar"><i class="fa fa-anchor "></i>My Profile</a>
+                    </li>
+                     <li>
+                        <a href="error.html" class="side_bar"><i class="fa fa-plus "></i>Create Campaign</a>
+                    </li>
+                </ul>
+
+            </div>
+
+        </nav>
+        <!-- /. NAV SIDE  -->
+        <div id="page-wrapper">
+            <div id="page-inner">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1 class="page-head-line">My Profile</h1>
+                        <h1 class="page-subhead-line">Welcome to my page, hope that you find it useful. </h1>
 
 
-  <p>
-    <strong>My Location: </strong>
-    <pre>
-      <%= @influencer.location %>
-    </pre>
-  </p>
+                    </div>
+                </div>
+                <!-- /. ROW  -->
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="main-box mb-red">
+                            <a href="#">
+                                <i class="fa fa-bolt fa-5x"></i>
+                                <h5>On-Going</h5>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="main-box mb-pink">
+                            <a href="#">
+                                <i class="fa fa-dollar fa-5x"></i>
+                                <h5>Pending</h5>
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- /. ROW  -->
+
+               
 
 
-  <p>
-    <strong>Audience Age: </strong>
-    <pre>
-      <%= @influencer.age %>
-    </pre>
-  </p>
+                <div class="row">
 
-  <p>
-    <strong>Audience Gender: </strong>
-    <pre>
-      <%= @influencer.gender %>
-    </pre>
-  </p>
+                    <div class="col-md-8">
+                        <div class="list-group">
+                            <a href="#" class="list-group-item active">
+                                <h4 class="list-group-item-heading">LIST GROUP HEADING</h4>
+                                <p class="list-group-item-text" style="line-height: 30px;">
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                </p>
+                            </a>
+                        </div>
+                        <br />
+                        <!-- 16:9 aspect ratio -->
+                    
+                    </div>
+                    <div class="col-md-4">
+                        <div class="panel panel-info">
+                            <div class="panel-heading">
+                                <i class="fa fa-bell fa-fw"></i>Notifications Panel
+                            </div>
 
-  <p>
-    <strong>My Interests: </strong>
-    <pre>
-      <%= @influencer.interests %>
-    </pre>
-  </p>
+                            <div class="panel-body">
+                                <div class="list-group">
 
+
+                                    <a href="#" class="list-group-item">
+                                        <i class="fa fa-twitter fa-fw"></i>3 New Followers
+                                    <span class="pull-right text-muted small"><em>12 minutes ago</em>
+                                    </span>
+                                    </a>
+                                    <a href="#" class="list-group-item">
+                                        <i class="fa fa-envelope fa-fw"></i>Message Sent
+                                    <span class="pull-right text-muted small"><em>27 minutes ago</em>
+                                    </span>
+                                    </a>
+                                    <a href="#" class="list-group-item">
+                                        <i class="fa fa-tasks fa-fw"></i>New Task
+                                    <span class="pull-right text-muted small"><em>43 minutes ago</em>
+                                    </span>
+                                    </a>
+                                    <a href="#" class="list-group-item">
+                                        <i class="fa fa-upload fa-fw"></i>Server Rebooted
+                                    <span class="pull-right text-muted small"><em>11:32 AM</em>
+                                    </span>
+                                    </a>
+                                    <a href="#" class="list-group-item">
+                                        <i class="fa fa-bolt fa-fw"></i>Server Crashed!
+                                    <span class="pull-right text-muted small"><em>11:13 AM</em>
+                                    </span>
+                                    </a>
+                                    <a href="#" class="list-group-item">
+                                        <i class="fa fa-warning fa-fw"></i>Server Not Responding
+                                    <span class="pull-right text-muted small"><em>10:57 AM</em>
+                                    </span>
+                                    </a>
+
+                                    <a href="#" class="list-group-item">
+                                        <i class="fa fa-bolt fa-fw"></i>Server Crashed!
+                                    <span class="pull-right text-muted small"><em>11:13 AM</em>
+                                    </span>
+                                    </a>
+                                    <a href="#" class="list-group-item">
+                                        <i class="fa fa-warning fa-fw"></i>Server Not Responding
+                                    <span class="pull-right text-muted small"><em>10:57 AM</em>
+                                    </span>
+                                    </a>
+                                    <a href="#" class="list-group-item">
+                                        <i class="fa fa-shopping-cart fa-fw"></i>New Order Placed
+                                    <span class="pull-right text-muted small"><em>9:49 AM</em>
+                                    </span>
+                                    </a>
+                                </div>
+                                <!-- /.list-group -->
+                                <a href="#" class="btn btn-info btn-block">View All Alerts</a>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <hr />
+            </div>
 
   <% a = true %>
   <% if a %>
@@ -68,6 +207,9 @@
 
           </p>
           <p>Likes: <%= media_item.likes[:count] %> </p>
+
         </div>
-    <% end %>
-  <% end %>
+    </div>
+ </div>
+</body>
+</html>
