@@ -58,4 +58,30 @@
   <% request = @campaign.requests.find_by(influencer_id: current_user.influencer.id) %>
 
   <%= render "/requests/update_status_v2" if request.status == 'pending' %>
+
+
+  <% if request.status == 'ongoing' %>
+
+    <div class="row" id="pin_show">
+      <div class="col-md-8 col-md-offset-2">
+        <div class="panel panel-default">
+
+          <div class="panel-footer">
+            <div class="row">
+
+              <div class="col-md-12 text-center">
+                <div class="btn-group">
+                  <%= link_to 'See Progress', see_influencers_posts_path(influencer_id: current_user.influencer.id), :class => "btn btn-success" %>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+
+
+  <% end %>
 <% end %>

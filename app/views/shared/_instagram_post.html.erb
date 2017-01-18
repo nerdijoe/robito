@@ -53,7 +53,9 @@
           </div>
           <div class="col-md-6">
             <div class="btn-group pull-right">
-              <%= link_to "Get Rewards", influenc_reward_path, class: "btn btn-warning" %>
+              <% if current_user.influencer.present? %>
+                <%= link_to "Get Rewards", influenc_reward_path, class: "btn btn-warning" %>
+              <% end %>
             </div>
           </div>
         </div>
