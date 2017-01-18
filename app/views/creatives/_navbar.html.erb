@@ -33,7 +33,8 @@
 
               <% else %>
                 <li>
-                  <%= link_to user_instagram_omniauth_authorize_path, class: "page-scroll"  do %><i class="fa fa-instagram"></i>  Sign in with Instagram <% end %>
+                  <%= link_to "Sign in with Instagram", user_instagram_omniauth_authorize_path, class: "page-scroll" %>
+                
                 </li>
                 <li>
                   <%= link_to "Sign In", new_user_session_path, class: "page-scroll" %>

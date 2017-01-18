@@ -163,12 +163,7 @@
                         <div style='float:left;'>
                           <img src='<%= media_item.images.low_resolution.url %>'>
                           <br/>
-                          <p>
-                            <% media_item.tags.each do |t| %>
-                              <strong>#<%= t %></strong>
-                            <% end %>
-
-                          </p>
+                      
                           <p>Likes: <%= media_item.likes[:count] %> </p>
                         </div>
                     <% end %>
