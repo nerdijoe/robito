@@ -1,33 +1,249 @@
 <h2>Brand Profile</h2>
 
-<p> <%= link_to "Back", root_path %></p>
 
-<p><%= @brand.user.id %></p>
-<p><%= @brand.user.email %></p>
-<p><%= @brand.user.type %></p>
+<div class="container-fluid">
+    <div id="wrapper">
+        
+        <nav class="navbar-default navbar-side" role="navigation">
+            <div class="sidebar-collapse">
+                <ul class="nav" id="main-menu">
+                    <li>
+                        <div class="user-img-div">
 
-<p><%= @brand.brand_name %></p>
-<p><%= @brand.description %></p>
-<p><%= @brandcompany_name %></p>
-<p><%= @brand.email %></p>
-<p><%= @brand.phone_number %></p>
-<p><%= @brand.address %></p>
-<p><%= @brand.link %></p>
+                            <div class="inner-text">
+                              <p>Name:<strong><%= @brand.user.id %></strong></p>
+                              <p>Email: <%= @brand.user.email %></p>
+                              <p>Type: <%= @brand.user.type %></p>
 
-<div class="brand">
-  <% @brand.image.each do |photo| %>
-   	<%= image_tag photo.url(:thumb) %>
-  		<% end %>
- 			</div>
 
-<%= link_to "Edit Profile",  edit_brand_path(@brand.id)%>
+                            </div>
+                        </div>
+                   		 <%= link_to "Edit Profile",  edit_brand_path(@brand.id)%>
+                    </li>        
+                </ul>
+            </div>
+       </nav>
+        
 
-<p>
-  <% if @brand.user.identities.present? %>
-    <% @brand.user.identities.each do |i| %>
-      <p><%= i.provider %></p>
-      <p><%= i.nickname %></p>
-    <% end %>
-  <% end %>
-</p>
+        <div id="page-wrapper">
+            <div id="page-inner">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1 class="page-head-line">My Profile</h1>
+                        <h1 class="page-subhead-line">Welcome to my page, hope that you find it useful. </h1>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="main-box mb-red">
+                            <a href="#">
+                                <h3> On Going </h3>
+                                <h1 class="font_size"></h1>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="main-box mb-dull">
+                            <a href="#">
+                                <h3> Pending </h3>
+                                <h1 class="font_size"></h1>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="row">
+
+                    <div class="col-md-8">
+
+                        <div class="list-group">
+                       
+                             <h4 class="list-heading">Descriptions:</h4>
+                                <p style="line-height: 30px;">
+                                    <pre>
+                                      <p><%= @brand.description %></p>
+                                    </pre>
+                                </p>
+
+                                <p>
+                                  <strong class="list-headings">My Product Category: </strong>
+                                  <div class="box">
+                                    <p><%= @brand.brand_name %></p>
+
+                                  </div>
+                                </p>
+
+                                <p>
+                                  <strong class="list-headings">Brand Company Name: </strong>
+                                  <div class="box">
+                                    <p><%= @brandcompany_name %></p>
+                                  </div>
+                                </p>
+
+
+                                <p>
+                                  <strong class="list-headings">Email: </strong>
+                                  <div class="box">
+                                    <p><%= @brand.email %></p>
+                                  </div>
+                                </p>
+
+                                <p>
+                                  <strong class="list-headings">Phone Number: </strong>
+                                  <div class="box">
+                                    <p><%= @brand.phone_number %></p>
+                                  </div>
+                                </p>
+
+                                <p>
+                                  <strong class="list-headings">Address: </strong>
+                                  <div class="box">
+                                   <p><%= @brand.address %></p>
+                                  </div>
+                                </p>
+
+                                <p>
+                                  <strong class="list-headings">Link: </strong>
+                                  <div class="box">
+                                   <p><%= @brand.link %></p>
+                                  </div>
+                                </p>
+                            </a>
+                       </div>
+                        <br />
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="panel panel-info">
+                            <div class="panel-heading">
+                                <i class="fa fa-bell fa-fw"></i>Notifications Panel
+                            </div>
+
+                            <div class="panel-body">
+                                <div class="list-group">
+
+
+                                    <a href="#" class="list-group-item">
+                                        <i class="fa fa-twitter fa-fw"></i>3 New Followers
+                                    <span class="pull-right text-muted small"><em>12 minutes ago</em>
+                                    </span>
+                                    </a>
+                                    <a href="#" class="list-group-item">
+                                        <i class="fa fa-envelope fa-fw"></i>Message Sent
+                                    <span class="pull-right text-muted small"><em>27 minutes ago</em>
+                                    </span>
+                                    </a>
+                                    <a href="#" class="list-group-item">
+                                        <i class="fa fa-tasks fa-fw"></i>New Task
+                                    <span class="pull-right text-muted small"><em>43 minutes ago</em>
+                                    </span>
+                                    </a>
+                                    <a href="#" class="list-group-item">
+                                        <i class="fa fa-upload fa-fw"></i>Server Rebooted
+                                    <span class="pull-right text-muted small"><em>11:32 AM</em>
+                                    </span>
+                                    </a>
+                                    <a href="#" class="list-group-item">
+                                        <i class="fa fa-bolt fa-fw"></i>Server Crashed!
+                                    <span class="pull-right text-muted small"><em>11:13 AM</em>
+                                    </span>
+                                    </a>
+                                    <a href="#" class="list-group-item">
+                                        <i class="fa fa-warning fa-fw"></i>Server Not Responding
+                                    <span class="pull-right text-muted small"><em>10:57 AM</em>
+                                    </span>
+                                    </a>
+
+                                    <a href="#" class="list-group-item">
+                                        <i class="fa fa-bolt fa-fw"></i>Server Crashed!
+                                    <span class="pull-right text-muted small"><em>11:13 AM</em>
+                                    </span>
+                                    </a>
+                                    <a href="#" class="list-group-item">
+                                        <i class="fa fa-warning fa-fw"></i>Server Not Responding
+                                    <span class="pull-right text-muted small"><em>10:57 AM</em>
+                                    </span>
+                                    </a>
+                                    <a href="#" class="list-group-item">
+                                        <i class="fa fa-shopping-cart fa-fw"></i>New Order Placed
+                                    <span class="pull-right text-muted small"><em>9:49 AM</em>
+                                    </span>
+                                    </a>
+                                </div>
+                                <!-- /.list-group -->
+                                <a href="#" class="btn btn-info btn-block">View All Alerts</a>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <hr />
+              
+            </div>
+        </div>
+      </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

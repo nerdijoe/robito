@@ -288,3 +288,7 @@ body {
 .list-headings {
     font-size: 18px;
 }
+
+.submit_btn {
+    text-align: center;
+}
