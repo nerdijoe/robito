@@ -101,7 +101,6 @@ class CampaignsController < ApplicationController
 
 			if m.tags.include?(@tag)
 				@found_post = m
-				# byebug
 				return
 			end
 		end

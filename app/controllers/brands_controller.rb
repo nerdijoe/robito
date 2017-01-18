@@ -11,9 +11,7 @@ class BrandsController < ApplicationController
   end
 
   def create
-    # byebug
     Brand.create()
-    # byebug
   end
 
   def edit

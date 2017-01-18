@@ -7,7 +7,7 @@ class InfluencersController < ApplicationController
 
     @pending_requests = current_user.influencer.requests.pending
     @ongoing_requests = current_user.influencer.requests.ongoing
-    
+
     # @reward_requests = current_user.influencer.requests.reward
   end
 
@@ -18,7 +18,6 @@ class InfluencersController < ApplicationController
     @user_info = @client.user
     @recent = @client.user_recent_media
 
-    # byebug
     # find a post with specified hastag
     @tag = "relaxing"
     # @found_post = nil
@@ -26,7 +25,7 @@ class InfluencersController < ApplicationController
 
       if m.tags.include?(@tag)
         @found_post = m
-        # byebug
+        
         return
       end
     end
