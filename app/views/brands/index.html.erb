@@ -12,62 +12,53 @@
   </div>
 
 
+  <% @campaigns.each_with_index do |c| %>
+  <% @campaign = c %>
   <div class="page-container">
-  <div class="row">
-    <div class="your-campaign-box">
-    <h4>Your Campaigns <span class="badge"><%= @campaigns.count %></span></h4>
-  </div>
-    <div class="col-md-12">
-      <div class="head-overall-container">
-        <% @campaigns.each_with_index do |c| %>
-            <% @campaign = c %>
-            <%= render partial: '/shared/brand_index_show_campaigns', object: @campaign %>
-        <%end%>
-      </div>
-    </div>
-  </div>
-
-  <hr class="hrrrr">
-
-  <div class="row">
-    <div class="your-campaign-box">
-    <% @campaigns.each_with_index do |c| %>
-    <% @requests = c.requests.pending %>
-    <h4>Pending <span class="badge"><%= @requests.count %></span></h4>
-  </div>
-      <div class="col-md-3">
-        <div class="mid-overall-container">
-          <div class="insta-img-container">
-          <%= render partial: '/shared/brand_index_show_influencers', object: @requests %>
-          <%end%>
+        <div class="row">
+          <div class="your-campaign-box">
+          <h4>Your Campaigns <span class="badge"><%= @campaigns.count %></span></h4>
         </div>
+          <div class="col-md-12">
+            <div class="head-overall-container">
+                  <%= render partial: '/shared/brand_index_show_campaigns', object: @campaign %>
+                </div>
+          </div>
+        </div>
+
+        <hr class="hrrrr">
+
+        <div class="row">
+          <div class="your-campaign-box">
+            <% @requests = c.requests.pending %>
+            <h4>Pending <span class="badge"><%= @requests.count %></span></h4>
+        </div>
+            <div class="col-md-3">
+              <div class="mid-overall-container">
+                <div class="insta-img-container">
+                  <% @requests = c.requests.pending %>
+                <%= render partial: '/shared/brand_index_show_influencers', object: @requests %>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <hr class="hrrrr">
+
+        <div class="row">
+          <div class="your-campaign-box">
+            <% @requests = c.requests.ongoing %>
+          <h4>Ongoing <span class="badge"><%= @requests.count %></span></h4>
+        </div>
+          <div class="col-md-3">
+            <div class="end-overall-container">
+              <div class="insta-img-container">
+                <% @requests = c.requests.ongoing %>
+              <%= render partial: '/shared/brand_index_show_influencers', object: @requests %>
+              </div>
+            </div>
+          </div>
       </div>
+      <hr class="hrrrr">
+      <%end%>
     </div>
-  </div>
-
-  <hr class="hrrrr">
-
-  <div class="row">
-    <div class="your-campaign-box">
-    <% @campaigns.each_with_index do |c| %>
-    <% @requests = c.requests.ongoing %>
-    <h4>Ongoing <span class="badge"><%= @requests.count %></span></h4>
-  </div>
-    <div class="col-md-3">
-      <div class="end-overall-container">
-        <div class="insta-img-container">
-        <%= render partial: '/shared/brand_index_show_influencers', object: @requests %>
-        <%end%>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-
-
-
-<!-- <h2>Brand Index</h2> -->
-
-<!-- <p> <%= link_to "Create a Campaign", new_brand_campaign_path(current_user.brand) %> </p> -->
-<!-- <p> <%= link_to "My Profile", brand_path(current_user.brand) %> </p> -->
