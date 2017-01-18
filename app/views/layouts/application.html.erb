@@ -19,65 +19,33 @@
 
 
 
-  <title>Robito</title>
+  <title>JOIINT</title>
   <link href='https://fonts.googleapis.com/css?family=Alegreya+Sans+SC' rel='stylesheet' type='text/css'>
   <link href='https://fonts.googleapis.com/css?family=Quantico' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+
+
+  <%= stylesheet_link_tag 'creative/manifest.css', media: 'all' %>
+  <%= javascript_include_tag 'creative/manifest.js' %>
+
   <%= csrf_meta_tags %>
 </head>
 <body>
   <nav class="navbar navbar-default">
     <div class="container-fluid">
-      <!-- Brand and toggle get grouped for better mobile display -->
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <%= image_tag("joiintlogo.png", :size => "200x50" ) %>
-
-        <!-- <a class="navbar-brand" href= 'root_path'</a> -->
-      </div>
-
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <ul class="nav navbar-nav">
-          <li class="home">
-            <%= link_to "Home", root_path %>
-          </li>
-
-          <li class="influencer">
-            <a href="#" >About Us </a>
-          </li>
-
-          <li class="faq">
-            <a href="#" >FAQ </a>
-          </li>
-
-          <li class="signin">
-            <% if signed_in? %>
-            <%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
-            <% else %>
-            <%= link_to "Sign In", new_user_session_path %>
-            <% end %>
-          </li>
 
       </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
   </nav>
 
+  <%= render 'creatives/navbar' %>
 
 
  <div class="container">
-
-  <!-- <% if signed_in? %>
-    <%= link_to "Home", root_path %>  <%= link_to "Signout", destroy_user_session_path, method: :delete %>
-  <% end %> -->
-
   <% flash.each do |name, msg| %>
     <%= content_tag :div, msg, class: "alert alert-info" %>
   <% end %>
@@ -93,7 +61,7 @@
 <footer>
   <div class="footer">
     <p class="company"> Joiint Inc. </p>
-    <p class="est"> Establised in 2017. All rights reserved </p>
+    <p class="est"> Established in 2017. All rights reserved </p>
     <div class="media-logo">
       <i class="fa fa-facebook-square" aria-hidden="true"></i>
       <i class="fa fa-instagram" aria-hidden="true"></i>

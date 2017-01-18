@@ -1,65 +1,78 @@
+<body class="rewards_body">
 
-<h3>Hello this is The New Rewards Page </h3>
-<p><%= link_to "Back", brand_campaign_path(brand_id: current_user.brand.id, id: @campaign.id) %></p>
+  <p><%= link_to "Back", brand_campaign_path(brand_id: current_user.brand.id, id: @campaign.id) %></p>
 
-<%= form_for [@campaign, @reward], html: {class: 'form-horizontal'} do |form| %>
+  <div class="col-md-8 col-md-offset-2">
+    <div class="row">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h1>Create Rewards</h1>
+        </div>
+
+        <%= form_for [@campaign, @reward], html: {class: 'form-horizontal'} do |form| %>
+
+        <div class="panel-body">
+
+          <% if @reward.errors.any? %>
+              <div class="field_with_errors">
+                <h2><%= pluralize(@reward.errors.count, "error") %> prohibited this reward from being saved:</h2>
+                  <ul>
+                  <% @reward.errors.full_messages.each do |message| %>
+                  <li><%= message %></li>
+                <% end %>
+              </ul>
+          <% end %>
+         
+
+          <div class="form-group">
+            <%= form.label :target, 'Target', class:'col-sm-2 control-label' %>
+              <div class="col-sm-10">
+              <%= form.text_field :target %>
 
 
-<% if @reward.errors.any? %>
-    <div class="field_with_errors">
-      <h2><%= pluralize(@reward.errors.count, "error") %> prohibited this reward from being saved:</h2>
-        <ul>
-        <% @reward.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-    </ul>
-<% end %>
- 
+            </div>
+          </div>
 
-<div class="form-group">
-  <%= form.label :target, 'Target', class:'col-sm-2 control-label' %>
-    <div class="col-sm-10">
-    <%= form.text_field :target %>
+          <div class="form-group">
+          	<%= form.label :prize, 'Prize', class:'col-sm-2 control-label' %>
+              <div class="col-sm-10">
+              <%= form.text_field :prize %>
+            </div>
+           </div>
 
+          <div class="form-group">    
+            <%= form.label :post_date, 'Post date', class:'col-sm-2 control-label' %>    
+              <div class="col-sm-10">      
+              <%= form.date_select :post_date , class: 'form-control'%>    
+            </div>  
+          </div>
 
-  </div>
-</div>
+            <div class="form-group">    
+              <%= form.label :deadline, 'Dead Line', class:'col-sm-2 control-label' %>    
+                <div class="col-sm-10">      
+                <%= form.date_select :deadline , class: 'form-control'%>    
+              </div>  
+            </div>
 
-<div class="form-group">
-	<%= form.label :prize, 'Prize', class:'col-sm-2 control-label' %>
-    <div class="col-sm-10">
-    <%= form.text_field :prize %>
+          <div class="form-group">
+          	<%= form.label :description, 'Description', class:'col-sm-2 control-label' %>
+              <div class="col-sm-10">
+              <%= form.text_field :description %>
+            </div>
+          </div>
+           
+
+            <div calss="form-group">
+              <div class="col-sm-offset-2 col-sm-10">
+                <%= form.submit %>
+              </div>
+            </div>
+
+          <% end %>
+        </div>
+      </div>
+    </div>
   </div>
  </div>
 
-<div class="form-group">    
-  <%= form.label :post_date, 'Post date', class:'col-sm-2 control-label' %>    
-    <div class="col-sm-10">      
-    <%= form.date_select :post_date , class: 'form-control'%>    
-  </div>  
-</div>
-
-  <div class="form-group">    
-    <%= form.label :deadline, 'Dead Line', class:'col-sm-2 control-label' %>    
-      <div class="col-sm-10">      
-      <%= form.date_select :deadline , class: 'form-control'%>    
-    </div>  
-  </div>
-
-<div class="form-group">
-	<%= form.label :description, 'Description', class:'col-sm-2 control-label' %>
-    <div class="col-sm-10">
-    <%= form.text_field :description %>
-  </div>
-</div>
- 
-
-
-  <div calss="form-group">
-    <div class="col-sm-offset-2 col-sm-10">
-      <%= form.submit %>
-    </div>
-  </div>
-
-<% end %>
-
+</body>

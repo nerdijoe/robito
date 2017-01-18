@@ -6,6 +6,7 @@
 .body {
 
    background-image: url("http://onestepforwards.com/wp-content/uploads/2016/04/header_background_30.jpeg");
+   background-repeat: no-repeat;
 }
 
 .header {
@@ -150,7 +151,6 @@ element.style {
 *:before, *:after {
    box-sizing: border-box;
 }
-
 
 
 

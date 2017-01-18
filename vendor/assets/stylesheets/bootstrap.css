@@ -5247,6 +5247,7 @@ a.thumbnail.active {
 .list-group-item {
   position: relative;
   display: block;
+  height: 72px;
   padding: 10px 15px;
   margin-bottom: -1px;
   background-color: #fff;

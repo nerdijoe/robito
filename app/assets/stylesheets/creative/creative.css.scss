@@ -79,17 +79,17 @@ aside {
 .navbar-default {
     border-color: rgba(34,34,34,.05);
     font-family: 'Open Sans','Helvetica Neue',Arial,sans-serif;
-    background-color: #fff;
+    background-color: #000000; //#fff;
     -webkit-transition: all .35s;
     -moz-transition: all .35s;
     transition: all .35s;
 }
 
 .navbar-default .navbar-header .navbar-brand {
-    text-transform: uppercase;
-    font-family: 'Open Sans','Helvetica Neue',Arial,sans-serif;
-    font-weight: 700;
-    color: #ff7473;
+    //text-transform: uppercase;
+    //font-family: 'Open Sans','Helvetica Neue',Arial,sans-serif;
+    //font-weight: 700;
+    //color: #ff7473;
 }
 
 .navbar-default .navbar-header .navbar-brand:hover,
@@ -99,10 +99,10 @@ aside {
 
 .navbar-default .nav > li>a,
 .navbar-default .nav>li>a:focus {
-    text-transform: uppercase;
-    font-size: 13px;
-    font-weight: 700;
-    color: #222;
+    //text-transform: uppercase;
+    //font-size: 13px;
+    //font-weight: 700;
+    //color: #222;
 }
 
 .navbar-default .nav > li>a:hover,
@@ -113,18 +113,18 @@ aside {
 .navbar-default .nav > li.active>a,
 .navbar-default .nav>li.active>a:focus {
     color: #ff7473!important;
-    background-color: transparent;
+    background-color: #000000; //transparent;
 }
 
 .navbar-default .nav > li.active>a:hover,
 .navbar-default .nav>li.active>a:focus:hover {
-    background-color: transparent;
+    background-color: #000000; //transparent;
 }
 
 @media(min-width:768px) {
     .navbar-default {
         border-color: rgba(255,255,255,.3);
-        background-color: transparent;
+        background-color: #000000; //transparent rudy
     }
 
     .navbar-default .navbar-header .navbar-brand {
@@ -133,7 +133,9 @@ aside {
 
     .navbar-default .navbar-header .navbar-brand:hover,
     .navbar-default .navbar-header .navbar-brand:focus {
+        //color: #000000; //#fff;
         color: #fff;
+
     }
 
     .navbar-default .nav > li>a,
@@ -143,17 +145,18 @@ aside {
 
     .navbar-default .nav > li>a:hover,
     .navbar-default .nav>li>a:focus:hover {
+        //color: #000000; //#fff;
         color: #fff;
     }
 
     .navbar-default.affix {
         border-color: rgba(34,34,34,.05);
-        background-color: #fff;
+        background-color: #000000; //#fff;
     }
 
     .navbar-default.affix .navbar-header .navbar-brand {
-        font-size: 14px;
-        color: #ff7473;
+        //font-size: 14px;
+        //color: #ff7473;
     }
 
     .navbar-default.affix .navbar-header .navbar-brand:hover,
@@ -163,12 +166,12 @@ aside {
 
     .navbar-default.affix .nav > li>a,
     .navbar-default.affix .nav>li>a:focus {
-        color: #222;
+        //color: #222;
     }
 
     .navbar-default.affix .nav > li>a:hover,
     .navbar-default.affix .nav>li>a:focus:hover {
-        color: #ff7473;
+        //color: #ff7473;
     }
 }
 
@@ -229,6 +232,10 @@ header .header-content .header-content-inner p {
         margin-right: auto;
         margin-left: auto;
         max-width: 1000px;
+        //rudy
+        padding-top: 50px;
+        padding-bottom: 50px;
+        background-color: rgba(0, 0, 0, 0.0);
     }
 
     header .header-content .header-content-inner p {
