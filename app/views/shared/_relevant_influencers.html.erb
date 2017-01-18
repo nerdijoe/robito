@@ -69,7 +69,8 @@
                   <% elsif status == 'ongoing' %>
                       <%= link_to 'Ongoing', see_influencers_posts_path(influencer_id: i.id), :class => "btn btn-success" %>
                   <% elsif status == 'rejected' %>
-                    <p> Influencer has rejected your request </p>
+                    <br><br>
+                    <p><strong> Influencer has rejected your request </strong></p>
                   <% else %>
                     <p> Campaign is ended </p>
                   <% end %>
