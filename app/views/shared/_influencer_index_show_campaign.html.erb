@@ -1,21 +1,42 @@
 
 <% @requests.each do |i| %>
   <% @campaign = i.campaign %>
-  <p><%= @campaign.id %></p>
-  <p>Image: </p>
   <div class="campaign">
     <% @campaign.image.each do |photo| %>
+    <div class="col-md-6">
+    <div class="campaign-thumb-container">
        <%= image_tag photo.url(:thumb) %>
     <% end %>
   </div>
+  </div>
 
-  <p>Product name <%=  @campaign.product_name %></p>
-  <p>Description <%=  @campaign.description %></p>
-  <p>Product Category <%=  @campaign.product_category %></p>
-  <p>Location <%=  @campaign.location %></p>
-  <p>Target Age <%=  @campaign.age %></p>
-  <p>Target Gender <%=  @campaign.gender %></p>
-  <p>Interests <%=  @campaign.interests %></p>
-  <p>Hash Tag <%=  @campaign.tag %></p>
+  <div class="col-md-3">
+    <div class="campaign_text_info-container">
+      <div class="your-campaign-box">
+  <p><strong>Product name : </strong> <%=  @campaign.product_name %></p>
+  <hr class="hrrrr">
+  <p><strong>Description : </strong> <%=  @campaign.description %></p>
+  <hr class="hrrrr">
+  <p><strong>Product Category : </strong> <%=  @campaign.product_category %></p>
+  <hr class="hrrrr">
+  <p><strong>Location : </strong> <%=  @campaign.location %></p>
+</div>
+</div>
+</div>
+<div class="col-md-3">
+  <div class="campaign_text_info-container">
+    <div class="your-campaign-box">
+  <p><strong>Target Age : </strong> <%=  @campaign.age %></p>
+  <hr class="hrrrr">
+  <p><strong>Target Gender : </strong> <%=  @campaign.gender %></p>
+  <hr class="hrrrr">
+  <p><strong>Interests : </strong> <%=  @campaign.interests %></p>
+  <hr class="hrrrr">
+  <p><strong>Hash Tag : </strong> <%=  @campaign.tag %></p>
+  <hr class="hrrrr">
+
 
 <% end %>
+</div>
+</div>
+</div>
