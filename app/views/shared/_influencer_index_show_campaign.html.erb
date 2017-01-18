@@ -1,5 +1,9 @@
-
 <% @requests.each do |i| %>
+<div class="row">
+  <div class="col-md-12">
+    <div class="influencer-pending-container">
+
+
   <% @campaign = i.campaign %>
   <div class="campaign">
     <% @campaign.image.each do |photo| %>
@@ -7,36 +11,43 @@
     <div class="campaign-thumb-container">
        <%= image_tag photo.url(:thumb) %>
     <% end %>
+    </div>
+  </div>
+
+    <div class="col-md-3">
+      <div class="campaign_text_info-container">
+        <div class="your-campaign-box">
+    <p><strong>Product name : </strong> <%=  @campaign.product_name %></p>
+    <hr class="hrrrr">
+    <p><strong>Description : </strong> <%=  @campaign.description %></p>
+    <hr class="hrrrr">
+    <p><strong>Product Category : </strong> <%=  @campaign.product_category %></p>
+    <hr class="hrrrr">
+    <p><strong>Location : </strong> <%=  @campaign.location %></p>
+  </div>
   </div>
   </div>
 
   <div class="col-md-3">
     <div class="campaign_text_info-container">
       <div class="your-campaign-box">
-  <p><strong>Product name : </strong> <%=  @campaign.product_name %></p>
-  <hr class="hrrrr">
-  <p><strong>Description : </strong> <%=  @campaign.description %></p>
-  <hr class="hrrrr">
-  <p><strong>Product Category : </strong> <%=  @campaign.product_category %></p>
-  <hr class="hrrrr">
-  <p><strong>Location : </strong> <%=  @campaign.location %></p>
-</div>
-</div>
-</div>
-<div class="col-md-3">
-  <div class="campaign_text_info-container">
-    <div class="your-campaign-box">
-  <p><strong>Target Age : </strong> <%=  @campaign.age %></p>
-  <hr class="hrrrr">
-  <p><strong>Target Gender : </strong> <%=  @campaign.gender %></p>
-  <hr class="hrrrr">
-  <p><strong>Interests : </strong> <%=  @campaign.interests %></p>
-  <hr class="hrrrr">
-  <p><strong>Hash Tag : </strong> <%=  @campaign.tag %></p>
-  <hr class="hrrrr">
+    <p><strong>Target Age : </strong> <%=  @campaign.age %></p>
+    <hr class="hrrrr">
+    <p><strong>Target Gender : </strong> <%=  @campaign.gender %></p>
+    <hr class="hrrrr">
+    <p><strong>Interests : </strong> <%=  @campaign.interests %></p>
+    <hr class="hrrrr">
+    <p><strong>Hash Tag : </strong> <%=  @campaign.tag %></p>
+    <hr class="hrrrr">
+  </div>
+  </div>
+  </div>
+</div> <!-- end of class campaign -->
 
+  <p> <%= link_to 'See Details', influencer_campaign_path(influencer_id: current_user.influencer.id, id: @campaign.id), class:"btn btn-primary" %> </p>
+
+</div>
+</div>
+</div>
 
 <% end %>
-</div>
-</div>
-</div>
