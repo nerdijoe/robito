@@ -21,7 +21,7 @@ class RewardsController < ApplicationController
 		@reward = @campaign.rewards.new(rewards_params)
 
 		if @reward.save
-			redirect_to root_path, notice: "Successfully created reward"
+			redirect_to brand_campaign_path(current_user,@campaign.id), notice: "Successfully created reward"
 		else
 			redirect_to new_campaign_reward_path(@campaign.id)
 			 flash[:notice] = "Target: can't be blank. \n Prize: at lest 2 latter."
