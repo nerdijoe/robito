@@ -26,7 +26,7 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
       @user = User.create( email: temp_email || "" , password: temp_password)
       # @user = User.create( email: @identity.email || "" )
-      # byebug
+      
       @identity.update_attribute( :user_id, @user.id )
     end
 
