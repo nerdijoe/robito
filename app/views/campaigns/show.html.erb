@@ -1,4 +1,3 @@
-<div class="bg_img">
   <div class="row">
     <div class="col-md-12">
         <% if current_user.brand.present? %>
@@ -31,8 +30,11 @@
               <hr class="hrrr">
               <p> <i class="fa fa-bookmark-o" aria-hidden="true"></i> Interests : <%=  @campaign.interests %></p>
               <hr class="hrrr">
-                <p> <i class="fa fa-comment-o" aria-hidden="true"></i> Description : <%=  @campaign.description %></p>
+              <p> # Hash Tag : <%=  @campaign.tag %></p>
+              <hr class="hrrr">
+              <p> <i class="fa fa-comment-o" aria-hidden="true"></i> Description : <%=  @campaign.description %></p>
           </div>
+          <% if current_user.brand.present? %>
           <div class="btn-group_pull-left">
             <%= link_to 'Edit', edit_brand_campaign_path(brand_id: current_user.brand.id, id: @campaign.id), class: "btn-text" %>
           </div>
@@ -41,9 +43,11 @@
           </div>
         </div>
           <%= link_to 'Create Reward', new_campaign_reward_path(@campaign.id), class: "btn-info" %>
+          <%end%>
         </div>
       </div>
   </div>
+
 
   <hr class="hrrrr">
 
@@ -82,32 +86,12 @@
     <hr class="hrrrr">
 
 
-    <div class="row">
-      <div class="desire-text">
-        <h2><i class="fa fa-users" aria-hidden="true"></i></h2>
-      </div>
-    </div>
-    <!-- <div class="row">
-      <div class="col-md-12">
-        <div class="influencer-container">
-          <% @influencers.each do |i| %>
-              <% if i.user.identities.present? %>
-                <% insta = i.user.identities.first %>
-                <p><%= image_tag insta.image %></p>
-                <p><%= insta.name %></p>
-                <p><%= insta.nickname %></p>
-              <%end%>
-            <%end%>
-          </div>
-        </div>
-      <hr>
-    </div> -->
+<% if current_user.brand.present? %>
+<div class="row">
+  <div class="desire-text">
+    <h2><i class="fa fa-users" aria-hidden="true"></i></h2>
+  </div>
 </div>
-</div>
-</div>
-
-
-
 <div class="col-xs-12">
   <div class="influencer-container">
   <div class="carousel slide" id="myCarousel">
@@ -127,13 +111,20 @@
                                 <div class="insta-name">
               									<h4><%= insta.nickname %></h4>
                               </div>
-                                <%= link_to "View Profile", influencer_path(i), class: "insta-btn" %>
-                                <% if @campaign.requests.where(influencer_id: i.id).present? %>
-                                  <%= link_to "Cancel Request", campaign_request_path(campaign_id: @campaign, influencer_id: i.id), method: :delete, class: "insta-btn" %>
-                                <% else %>
-                                  <%= link_to "Pick Me", campaign_requests_path(campaign_id: @campaign, influencer_id: i.id), method: :post, class: "insta-btn"  %>
-                                <% end %>
-
+                              <% if @campaign.requests.where(influencer_id: i.id).present? %>
+                                  <% status = @campaign.check_status(i.id) %>
+                                  <% if status == 'pending'%>
+                                    <%= link_to "Cancel Request", campaign_request_path(campaign_id: @campaign, influencer_id: i.id), method: :delete, class: "btn btn-warning"  %>
+                                  <% elsif status == 'ongoing' %>
+                                      <%= link_to 'Ongoing', see_influencers_posts_path(influencer_id: i.id), :class => "btn btn-success" %>
+                                  <% elsif status == 'rejected' %>
+                                    <p> Influencer has rejected your request </p>
+                                  <% else %>
+                                    <p> Campaign is ended </p>
+                                  <% end %>
+                              <% else %>
+                                <%= link_to "Pick Me", campaign_requests_path(campaign_id: @campaign, influencer_id: i.id), method: :post, class: "btn btn-default" %>
+                              <% end %>
               								</div>
                             </div>
                         </li>
@@ -153,19 +144,16 @@
         <div class="search-box">
         <p> <i class="fa fa-search" aria-hidden="true"></i> <%= link_to "Search For More Influencers", new_search_path %> </p>
       </div>
-
-
-
-
-
-	   <!-- /.control-box -->
-
     </div><!-- /#myCarousel -->
+  <%end%>
 
+ <% if current_user.influencer.present? %>
+  <% request = @campaign.requests.find_by(influencer_id: current_user.influencer.id) %>
 
-</div><!-- /.col-xs-12 -->
+  <%= render "/requests/update_status" if request.status == 'pending' %>
 
-</div>
+  <p> Status: <%= @campaign.requests.find_by(influencer_id: current_user.influencer.id).status %> </p>
+  <% end %>
 
 <!-- <h2>brand#show</h2> -->
 
@@ -203,13 +191,6 @@
   <% end %>  -->
 
 
-  <!-- <% if current_user.influencer.present? %>
-    <% request = @campaign.requests.find_by(influencer_id: current_user.influencer.id) %>
-
-    <%= render "/requests/update_status" if request.status == 'pending' %>
-
-    <p> Status: <%= @campaign.requests.find_by(influencer_id: current_user.influencer.id).status %> </p>
-  <% end %>
 
 <br><br>
 

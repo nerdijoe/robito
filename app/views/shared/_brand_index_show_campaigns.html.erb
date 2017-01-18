@@ -1,12 +1,26 @@
-
-  <div class="campaign">
-    <% @campaign.image.each do |photo| %>
+<div class="row">
+  <div class="col-md-6">
+    <div class="campaign-thumb-container">
+      <% @campaign.image.each do |photo| %>
       <div class="campaign">
         <%= link_to (image_tag photo.url(:thumb)), brand_campaign_path(brand_id: current_user.brand.id, id: @campaign.id) %>
-      </div>
+    </div>
     <% end %>
+    </div>
   </div>
-
-  <p>Product name <%=  @campaign.product_name %></p>
-  <p>Hash Tag <strong>#<%=  @campaign.tag %></strong></p>
-  <p> <%= link_to 'See Details', brand_campaign_path(brand_id: current_user.brand.id, id: @campaign.id) %> </p>
+  <div class="col-md-6">
+    <div class="campaign_text_info-container">
+      <div class="text-info-box">
+  <tr>
+    <p>Product name : <%=  @campaign.product_name %></p>
+    <hr class="hrrrr">
+    <p>Hash Tag <strong>#<%=  @campaign.tag %></strong></p>
+    <hr class="hrrrr">
+    <p>Product Category : <%=  @campaign.product_category %></p>
+    <hr class="hrrrr">
+    <p>Location : <%=  @campaign.location %></p>
+  </div>
+  </div>
+    <p> <%= link_to 'See Details', brand_campaign_path(brand_id: current_user.brand.id, id: @campaign.id), class:"see-detail-btn" %> </p>
+  </div>
+</div>
