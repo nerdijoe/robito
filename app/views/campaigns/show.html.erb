@@ -58,5 +58,4 @@
   <% request = @campaign.requests.find_by(influencer_id: current_user.influencer.id) %>
 
   <%= render "/requests/update_status_v2" if request.status == 'pending' %>
-<%= link_to "Get Rewards", influenc_reward_path, class: "btn btn-default" %>
 <% end %>
