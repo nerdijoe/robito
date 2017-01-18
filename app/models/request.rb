@@ -4,4 +4,6 @@ class Request < ActiveRecord::Base
 
   enum status: [ :pending , :ongoing, :ended, :rejected ]
   enum reward: [ :reward_yes, :reward_no]
+
+
 end
