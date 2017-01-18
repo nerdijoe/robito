@@ -1,40 +1,9 @@
 
-  <h2>Campaign Progress</h2>
+<h2 class="text-center">Campaign Progress</h2>
+<%= render partial: '/shared/campaign_details_again', object: @campaign %>
 
-  <%= render partial: '/shared/campaign_details', object: @campaign %>
+<%= render partial: '/shared/rewards_details', object: @campaign %>
 
-
-  <p>
-  <h3>#<%= @tag %></h3>
-  <% if @found_post.present? %>
-    <p> <%= image_tag @found_post.images.low_resolution.url %> </p>
-    <p> <%= @found_post.tags %></p>
-    <p> Likes: <%= @found_post.likes.fetch(:count) %> </p>
-    <p> Post date: <%= Time.at(@found_post.created_time.to_i).to_date %></p>
-
-    <% target = @campaign.rewards.first.target %>
-    <% percent = ((@found_post.likes.fetch(:count).to_i)/target.to_f) * 100 %>
-
-    <div class="progress">
-      <div class="progress-bar" role="progressbar" aria-valuenow="<%= percent %>" aria-valuemin="0" aria-valuemax="100" style="width:<%= percent %>%;">
-        <%= percent %>%
-      </div>
-    </div>
-
-
-    <% if @found_post.likes.fetch(:count) >= 50  %>
-      <!-- show "get rewards" button -->
-      <!-- if influencer have already got the reward -->
-          <p>
-            You have claimed this reward.
-          </p>
-      <!-- else -->
-
-      <%= link_to "Get Rewards", root_path, class: "btn btn-default" %>
-
-      <!-- end -->
-    <% else %>
-      <%= link_to "Get Rewards", root_path, class: "btn btn-default", disabled: "disabled" %>
-    <% end %>
-  <% end %>
-  </p>
+<% if @found_post.present? %>
+  <%= render partial: '/shared/instagram_post', object: @found_post %>
+<% end %>
