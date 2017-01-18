@@ -6,5 +6,31 @@
 
 <% if @found_post.present? %>
   <%= render partial: '/shared/instagram_post', object: @found_post %>
-<% end %>
 
+<% else %>
+  <div class="row" id="pin_show">
+    <div class="col-md-8 col-md-offset-2">
+      <div class="panel panel-default">
+
+        <div class="panel-footer">
+          <div class="row">
+
+            <div class="col-md-12 text-center">
+              <div class="btn-group">
+                <% if current_user.brand.present? %>
+                <h3> Influencer has not posted anything. </h3>
+
+                <% else %>
+                <h3> You have not posted for this campaign. </h3>
+                <% end %>
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+<% end %>
