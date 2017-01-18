@@ -14,13 +14,13 @@
   <tr>
     <p>Product name : <%=  @campaign.product_name %></p>
     <hr class="hrrrr">
-    <p>Hash Tag <strong>#<%=  @campaign.tag %></strong></p>
+    <p>Hash Tag : #<%=  @campaign.tag %></p>
     <hr class="hrrrr">
     <p>Product Category : <%=  @campaign.product_category %></p>
     <hr class="hrrrr">
     <p>Location : <%=  @campaign.location %></p>
   </div>
   </div>
-    <p> <%= link_to 'See Details', brand_campaign_path(brand_id: current_user.brand.id, id: @campaign.id), class:"see-detail-btn" %> </p>
+    <p> <%= link_to 'Details', brand_campaign_path(brand_id: current_user.brand.id, id: @campaign.id), class:"see-detail-btn btn btn-primary" %> </p>
   </div>
 </div>

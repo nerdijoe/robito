@@ -2,22 +2,33 @@
     <div class="profile-button-container">
       <div class="col-md-6">
       </div>
-      <div class="col-md-3">
-        <p> <%= link_to "Create a Campaign", new_brand_campaign_path(current_user.brand), class:"test-campaign-btn-right" %> </p>
+      <div class="col-md-6 text-right">
+        <%= link_to "My Profile", brand_path(current_user.brand), class:"btn btn-primary" %>
+
+        <%= link_to "Create a Campaign", new_brand_campaign_path(current_user.brand), class:"btn btn-primary" %>
+
       </div>
-      <div class="col-md-3">
-        <p>  <%= link_to "My Profile", brand_path(current_user.brand), class:"test-campaign-btn-left" %> </p>
-      </div>
+
     </div>
   </div>
 
 
-  <% @campaigns.each_with_index do |c| %>
+  <div class="page-container">
+    <div class="row">
+      <div class="your-campaign-box">
+        <button class="btn btn-primary" type="button">
+          Your Campaigns <span class="badge"><%= @campaigns.count %></span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <% @campaigns.each_with_index do |c, ci| %>
   <% @campaign = c %>
   <div class="page-container">
         <div class="row">
           <div class="your-campaign-box">
-          <h4>Your Campaigns <span class="badge"><%= @campaigns.count %></span></h4>
+          <h4><strong>Campaign #<%= ci+1 %></strong></h4>
         </div>
           <div class="col-md-12">
             <div class="head-overall-container">
