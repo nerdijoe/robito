@@ -1,0 +1,63 @@
+
+
+
+<div class="row" id="pin_show">
+  <div class="col-md-8 col-md-offset-2">
+    <div class="panel panel-default">
+
+      <div class="panel-heading pin_image">
+        <%= image_tag @found_post.images.standard_resolution.url %>
+      </div>
+      <div class="panel-body">
+        <% target = @campaign.rewards.first.target %>
+        <% likes =  @found_post.likes.fetch(:count) %>
+        <h2> #<%= @tag %> </h2>
+        <h3> Likes: <%= likes  %> </h3>
+
+        <p class="description">
+
+          <table class="table table-hover">
+            <tbody>
+                  <tr>
+                    <td>Tags</td>
+                    <td>
+                      <% @found_post.tags.each do |tag| %>
+                        <strong>#<%= tag %> </strong>
+                      <% end %>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Post Date</td>
+                    <td><%= Time.at(@found_post.created_time.to_i).to_date %></td>
+                  </tr>
+
+                </tbody>
+          </table>
+
+          <% percent = ((@found_post.likes.fetch(:count).to_i)/target.to_f) * 100 %>
+
+          <h3>Target Completion (<%= likes %>/<%= target %>)</h3>
+          <div class="progress">
+            <div class="progress-bar" role="progressbar" aria-valuenow="<%= percent %>" aria-valuemin="0" aria-valuemax="100" style="width:<%= percent %>%;">
+              <%= percent %>%
+            </div>
+          </div>
+        </p>
+      </div>
+
+      <div class="panel-footer">
+        <div class="row">
+          <div class="col-md-6">
+            <p class="user">
+            </p>
+          </div>
+          <div class="col-md-6">
+            <div class="btn-group pull-right">
+              <%= link_to "Get Rewards", root_path, class: "btn btn-warning", disabled: "disabled" %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
