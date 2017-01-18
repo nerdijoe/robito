@@ -1,15 +1,31 @@
+<!DOCTYPE html>
+<html>
+<body class="body">
 
-<h3> Create New Campaign </h3>
-<p> <%= link_to "Back", root_path %></p>
+  <p> <%= link_to "Back", root_path %></p>
 
- <%= form_for [current_user.brand, @campaign], html: {class: 'form-horizontal'} do |form| %>
+  <div class="col-md-8 col-md-offset-2">
+    <div class="row">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h2>Create A New Campaign</h2>
+        </div>
+        <div class="panel-body">
+         <%= form_for [current_user.brand, @campaign], html: {class: 'form-horizontal'} do |form| %>
 
-   <%= render partial: '/campaigns/form', object: form %>
+           <%= render partial: '/campaigns/form', object: form %>
 
-   <div class="form-group">
-     <div class="col-sm-offset-2 col-sm-10">
-       <%= form.submit 'Save Changes', class: "btn btn-primary" %>
-     </div>
-   </div>
+           <div class="form-group">
+             <div class="col-sm-offset-2 col-sm-10">
+               <%= form.submit 'Save Changes', class: "btn btn-primary" %>
+             </div>
+           </div>
 
- <% end %>
+         <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

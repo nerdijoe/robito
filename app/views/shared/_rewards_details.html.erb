@@ -1,0 +1,100 @@
+<% if current_user.brand.present? %>
+<div class="row" id="pin_show">
+  <div class="col-md-8 col-md-offset-2">
+    <div class="panel panel-default">
+
+
+      <div class="panel-footer">
+        <div class="row">
+          <div class="col-md-4">
+            <p class="user">
+
+            </p>
+          </div>
+          <div class="col-md-4 text-center">
+            <div class="btn-group">
+              <%= link_to 'Create Reward', new_campaign_reward_path(@campaign.id), class: "btn btn-warning" %>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <p class="user">
+
+            </p>
+          </div>
+        </div>
+      </div>
+
+
+
+    </div>
+  </div>
+</div>
+
+<% end %>
+
+<% @campaign.rewards.each_with_index do |t, i| %>
+
+<div class="row" id="pin_show">
+  <div class="col-md-8 col-md-offset-2">
+
+    <div class="panel panel-default">
+
+      <div class="panel-heading text-center">
+        <strong>Rewards <%= i+1 %></strong>
+      </div>
+      <div class="panel-body">
+
+        <p class="description">
+
+          <table class="table table-hover">
+            <tbody>
+                  <tr>
+                    <td>Target</td>
+                    <td> <%= t.target %></td>
+                  </tr>
+                  <tr>
+                    <td>Prize</td>
+                    <td><%=  t.prize %></td>
+                  </tr>
+                  <tr>
+                    <td>Description</td>
+                    <td><%= t.description  %></td>
+                  </tr>
+                  <tr>
+                    <td>Post Date</td>
+                    <td><%= t.post_date %></td>
+                  </tr>
+                  <tr>
+                    <td>Deadline date</td>
+                    <td><%=  t.deadline %></td>
+                  </tr>
+
+                </tbody>
+          </table>
+
+        </p>
+      </div>
+
+      <div class="panel-footer">
+        <div class="row">
+          <div class="col-md-6">
+            <p class="user">
+              Posted on
+              <%= @campaign.created_at.to_date %>
+            </p>
+          </div>
+          <div class="col-md-6">
+            <div class="btn-group pull-right">
+              <% if current_user.brand.present? %>
+                <%= link_to 'Edit', edit_campaign_reward_path(@campaign.id, t.id), class: "btn btn-default" %>
+                <%= link_to 'Destroy', campaign_reward_path(@campaign.id, t.id), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default" %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<% end %>

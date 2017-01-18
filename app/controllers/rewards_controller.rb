@@ -16,7 +16,7 @@ class RewardsController < ApplicationController
 
 	def create
 	    @campaign = Campaign.find params[:campaign_id]
-	    
+
 		# @reward = Reward.new(rewards_params)
 		@reward = @campaign.rewards.new(rewards_params)
 
@@ -26,8 +26,8 @@ class RewardsController < ApplicationController
 			redirect_to new_campaign_reward_path(@campaign.id)
 			 flash[:notice] = "Target: can't be blank. \n Prize: at lest 2 latter."
 
- 			 
-		end		
+
+		end
 	end
 
 	def edit
@@ -35,14 +35,13 @@ class RewardsController < ApplicationController
 		@reward = Reward.find(params[:id])
 	end
 
-	def update 
+	def update
 	 	@reward = Reward.find(params[:id])
 		if @reward.update(rewards_params_update)
 			redirect_to brand_campaign_path(id: @reward.campaign.id, brand_id: current_user.brand.id), notice: "Successfully updated"
-			flash[:notice] = "Successfully updated"
 		else
-			redirect_to brand_campaign_path(id: @reward.campaign.id, brand_id: current_user.brand.id), notice: "Error"
-	 		flash[:notice] = "Oops Error !!!!!"
+			redirect_to brand_campaign_path(id: @reward.campaign.id, brand_id: current_user.brand.id)
+	 		flash[:alert] = "Oops Error !!!!!"
 
 	end
 	end
@@ -65,5 +64,5 @@ class RewardsController < ApplicationController
  	def rewards_params
 		params.require(:reward).permit(:target, :prize, :description, :post_date, :deadline, :campaign_id)
  	end
- 
+
 end

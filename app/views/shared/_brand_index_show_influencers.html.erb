@@ -1,15 +1,20 @@
 
 <% @requests.each do |i| %>
 
+<div class="col-md-3">
+  <div class="end-overall-container">
+    <div class="insta-img-container">
+
+
+
   <% if i.influencer.user.identities.present? %>
     <% insta = i.influencer.user.identities.first %>
 
     <p><%= image_tag insta.image %></p>
 
-    <p>influencer_id: <%= i.influencer_id %></p>
 
-    <p><%= insta.name %></p>
-    <p><%= insta.nickname %></p>
+    <p> Name :<%= insta.name %></p>
+    <p> Username :<%= insta.nickname %></p>
 
     <!-- show the influencer post that matches the campaign hashtag -->
 
@@ -26,5 +31,9 @@
 
   <% end %>
 
+
+      </div>
+    </div>
+</div>
 
 <% end %>

@@ -8,7 +8,7 @@ class Campaign < ActiveRecord::Base
 
 	validates :product_name,
 	          :presence => {:message => "Product Name can't be blank." }
-	          
+
 	validates :company_name, :presence => true
 	validates :email, :presence => true
 
@@ -25,6 +25,12 @@ class Campaign < ActiveRecord::Base
 		self.requests.find_by(influencer_id: id)
 	end
 
-end
+	def count_pending
+		requests.where(status: 0).count
+	end
 
- 
+	def count_ongoing
+		requests.where(status: 1).count
+	end
+
+end

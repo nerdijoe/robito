@@ -1,33 +1,140 @@
 <h2>Brand Profile</h2>
 
-<p> <%= link_to "Back", root_path %></p>
 
-<p><%= @brand.user.id %></p>
-<p><%= @brand.user.email %></p>
-<p><%= @brand.user.type %></p>
+<div class="container-fluid">
+    <div id="wrapper">
 
-<p><%= @brand.brand_name %></p>
-<p><%= @brand.description %></p>
-<p><%= @brandcompany_name %></p>
-<p><%= @brand.email %></p>
-<p><%= @brand.phone_number %></p>
-<p><%= @brand.address %></p>
-<p><%= @brand.link %></p>
+        <nav class="navbar-default navbar-side" role="navigation">
+            <div class="sidebar-collapse">
+                <ul class="nav" id="main-menu">
+                    <li>
+                        <div class="user-img-div">
 
-<div class="brand">
-  <% @brand.image.each do |photo| %>
-   	<%= image_tag photo.url(:thumb) %>
-  		<% end %>
- 			</div>
+                            <div class="inner-text">
+                             <% if @brand.image.present? %>
+                              <p>  <img src='<%= @brand.image.first.url(:thumb) %>' class="img-thumbnail"> </p>
+                            <% else %>
+                              <p> <img src='https://www.barfoot.co.nz/images/noprofile-big.png' class="img-thumbnail"></p>
+                             <% end %>
+                            </div>
+                        </div>
+                   		 <%= link_to  edit_brand_path(@brand.id) do %>
+                          <li class="side_bar"><i class="fa fa-address-card-o"></i>Edit Profile</li>
+                        <% end %>
+                    </li>
+                </ul>
+            </div>
+       </nav>
 
-<%= link_to "Edit Profile",  edit_brand_path(@brand.id)%>
 
-<p>
-  <% if @brand.user.identities.present? %>
-    <% @brand.user.identities.each do |i| %>
-      <p><%= i.provider %></p>
-      <p><%= i.nickname %></p>
-    <% end %>
-  <% end %>
-</p>
+        <div id="page-wrapper">
+            <div id="page-inner">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h2 class="page-head-line">My Profile</h2>
+                    </div>
+                </div>
+                <br>
 
+                <div class="row">
+
+                    <div class="col-md-8">
+
+                        <div class="list-group">
+
+                       
+                              <h4 class="list-heading">Brand Name::</h4>
+                                 <div class="box"> 
+                                  <p style="line-height: 30px;">
+                                    <p><%= @brand.brand_name %></p>
+                                  </div>
+                                </p>
+
+                           
+                                <p>
+                                <strong class="list-headings">Descriptions: </strong>
+                                    <pre class="box">
+                                      <p><%= @brand.description %></p>
+                                    </pre>
+                                </p>
+
+                                <p>
+                                  <strong class="list-headings">Brand Company Name: </strong>
+                                  <div class="box">
+                                    <p><%= @brandcompany_name %></p>
+                                  </div>
+                                </p>
+
+                                <p>
+                                  <strong class="list-headings">Email: </strong>
+                                  <div class="box">
+                                    <p><%= @brand.email %></p>
+                                  </div>
+                                </p>
+
+                                <p>
+                                  <strong class="list-headings">Phone Number: </strong>
+                                  <div class="box">
+                                    <p><%= @brand.phone_number %></p>
+                                  </div>
+                                </p>
+                                
+                                <p>
+                                  <strong class="list-headings">Address: </strong>
+                                  <div class="box">
+                                   <p><%= @brand.address %></p>
+                                  </div>
+                                </p>
+
+                                <p>
+                                  <strong class="list-headings">Link: </strong>
+                                  <div class="box">
+                                   <p><%= @brand.link %></p>
+                                  </div>
+                                </p>
+                            </a>
+                       </div>
+                        <br />
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="panel panel-info">
+                            <div class="panel-heading">
+                                <i class="fa fa-bell fa-fw"></i>Notifications Panel
+                            </div>
+
+                            <div class="panel-body">
+                                <div class="list-group">
+
+
+                                    <a href="#" class="list-group-item">
+                                        <i class="fa fa-twitter fa-fw"></i>3 New Followers
+                                    <span class="pull-right text-muted small"><em>12 minutes ago</em>
+                                    </span>
+                                    </a>
+                                    <a href="#" class="list-group-item">
+                                        <i class="fa fa-envelope fa-fw"></i>Message Sent
+                                    <span class="pull-right text-muted small"><em>27 minutes ago</em>
+                                    </span>
+                                    </a>
+                                    <a href="#" class="list-group-item">
+                                        <i class="fa fa-tasks fa-fw"></i>New Notifications
+                                    <span class="pull-right text-muted small"><em>43 minutes ago</em>
+                                    </span>
+                                    </a>
+
+                                </div>
+                                <!-- /.list-group -->
+                                <a href="#" class="btn btn-info btn-block">View All Alerts</a>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+      </div>
+    </div>
+</div>

@@ -38,6 +38,12 @@ class AvatarUploader < CarrierWave::Uploader::Base
     process resize_to_fit: [300, 300]
     # process convert: 'png'
   end
+
+  version :medium do
+    process resize_to_limit: [800, 800]
+  end
+
+
   def filename
     super.chomp(File.extname(super)) + '.png' if original_filename.present?
   end

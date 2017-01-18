@@ -1,21 +1,6 @@
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
-<script
- src="https://code.jquery.com/jquery-3.1.1.js"
- integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA="
- crossorigin="anonymous"></script>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Responsive Bootstrap Advance Admin Template</title>
-    <!-- GOOGLE FONTS-->
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
-</head>
-<body>
 <div class="container-fluid">
     <div id="wrapper">
-        <!-- /. NAV TOP  -->
+
         <nav class="navbar-default navbar-side" role="navigation">
             <div class="sidebar-collapse">
                 <ul class="nav" id="main-menu">
@@ -23,97 +8,116 @@
                         <div class="user-img-div">
 
                             <div class="inner-text">
-                              <p>Debugging- Userid: <%= @influencer.user.id %>, Influencerid: <%= @influencer.id %></p>
                               <% identity = @influencer.get_insta %>
 
                               <p>  <img src='<%= @client.user.profile_picture %>' class="img-thumbnail"> </p>
                               <p>Username:<strong> <%= identity.nickname %> </strong></p>
                               <p>Name: <%= @client.user.full_name %> </p>
-                              <p> Number of media: <%= @user_info.counts[:media] %> </p>
-
-                              <p> Followers: <%= @user_info.counts[:followed_by] %> people </p>
-                              <p> Follows:   <%= @user_info.counts[:follows] %> people </p>
-
-                            <p>
-                              <strong>Bio: </strong>
-                              <pre>
-                                <%= @user_info.bio %>
-                              </pre>
-                            </p>
-
-                               <p class="edit_page">
-                                 <% if current_user.influencer.present? %>
-                                 <%= link_to "Edit Profile", edit_influencer_path(current_user.influencer) if current_user.influencer.id == @influencer.id%>
-                                 <% end %>
-                               </p>
 
                             </div>
                         </div>
-                      <li>
-                        <a href="gallery.html" class="side_bar"><i class="fa fa-anchor "></i>My Profile</a>
-                    </li>
-                     <li>
-                        <a href="error.html" class="side_bar"><i class="fa fa-plus "></i>Create Campaign</a>
+                        <% if current_user.influencer.present? %>
+                         <% if current_user.influencer.id == @influencer.id %>
+                            <%= link_to edit_influencer_path(current_user.influencer) do %>
+                            <li class="side_bar"><i class="fa fa-address-card-o"></i> Edit Profile</li>
+                             <% end %>
+                          <% end %>
+                        <% end %>
                     </li>
                 </ul>
-
             </div>
+       </nav>
 
-        </nav>
-        <!-- /. NAV SIDE  -->
+
         <div id="page-wrapper">
             <div id="page-inner">
                 <div class="row">
                     <div class="col-md-12">
-                        <h1 class="page-head-line">My Profile</h1>
-                        <h1 class="page-subhead-line">Welcome to my page, hope that you find it useful. </h1>
-
-
+                        <h2 class="page-head-line">My Profile</h2>
                     </div>
                 </div>
-                <!-- /. ROW  -->
+
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <div class="main-box mb-red">
                             <a href="#">
-                                <i class="fa fa-bolt fa-5x"></i>
-                                <h5>On-Going</h5>
+                                <h3> Posts </h3>
+                                <h1 class="font_size"><%= @user_info.counts[:media] %></h1>
                             </a>
                         </div>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-4">
+                        <div class="main-box mb-dull">
+                            <a href="#">
+                                <h3> Followers </h3>
+                                <h1 class="font_size"><%= @user_info.counts[:followed_by] %></h1>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
                         <div class="main-box mb-pink">
                             <a href="#">
-                                <i class="fa fa-dollar fa-5x"></i>
-                                <h5>Pending</h5>
+                                <h3>Follows </h3>
+                                <h1 class="font_size"><%= @user_info.counts[:follows] %></h1>
                             </a>
                         </div>
                     </div>
-
                 </div>
-                <!-- /. ROW  -->
-
-
 
 
                 <div class="row">
 
                     <div class="col-md-8">
+
                         <div class="list-group">
-                            <a href="#" class="list-group-item active">
-                                <h4 class="list-group-item-heading">LIST GROUP HEADING</h4>
-                                <p class="list-group-item-text" style="line-height: 30px;">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+
+                             <h4 class="list-heading">Bio:</h4>
+                                <p style="line-height: 30px;">
+                                    <pre>
+                                      <%= @user_info.bio %>
+                                    </pre>
+                                </p>
+
+                                <p>
+                                  <strong class="list-headings">My Product Category: </strong>
+                                  <div class="box">
+                                    <%= @influencer.product_category %>
+                                  </div>
+                                </p>
+
+                                <p>
+                                  <strong class="list-headings">My Location: </strong>
+                                  <div class="box">
+                                    <%= @influencer.location %>
+                                  </div>
+                                </p>
+
+
+                                <p>
+                                  <strong class="list-headings">Audience Age: </strong>
+                                  <div class="box">
+                                    <%= @influencer.age %>
+                                  </div>
+                                </p>
+
+                                <p>
+                                  <strong class="list-headings">Audience Gender: </strong>
+                                  <div class="box">
+                                    <%= @influencer.gender %>
+                                  </div>
+                                </p>
+
+                                <p>
+                                  <strong class="list-headings">My Interests: </strong>
+                                  <div class="box">
+                                    <%= @influencer.interests %>
+                                  </div>
                                 </p>
                             </a>
-                        </div>
+                       </div>
                         <br />
-                        <!-- 16:9 aspect ratio -->
-
                     </div>
+
                     <div class="col-md-4">
                         <div class="panel panel-info">
                             <div class="panel-heading">
@@ -135,41 +139,11 @@
                                     </span>
                                     </a>
                                     <a href="#" class="list-group-item">
-                                        <i class="fa fa-tasks fa-fw"></i>New Task
+                                        <i class="fa fa-tasks fa-fw"></i>New Notifications
                                     <span class="pull-right text-muted small"><em>43 minutes ago</em>
                                     </span>
                                     </a>
-                                    <a href="#" class="list-group-item">
-                                        <i class="fa fa-upload fa-fw"></i>Server Rebooted
-                                    <span class="pull-right text-muted small"><em>11:32 AM</em>
-                                    </span>
-                                    </a>
-                                    <a href="#" class="list-group-item">
-                                        <i class="fa fa-bolt fa-fw"></i>Server Crashed!
-                                    <span class="pull-right text-muted small"><em>11:13 AM</em>
-                                    </span>
-                                    </a>
-                                    <a href="#" class="list-group-item">
-                                        <i class="fa fa-warning fa-fw"></i>Server Not Responding
-                                    <span class="pull-right text-muted small"><em>10:57 AM</em>
-                                    </span>
-                                    </a>
 
-                                    <a href="#" class="list-group-item">
-                                        <i class="fa fa-bolt fa-fw"></i>Server Crashed!
-                                    <span class="pull-right text-muted small"><em>11:13 AM</em>
-                                    </span>
-                                    </a>
-                                    <a href="#" class="list-group-item">
-                                        <i class="fa fa-warning fa-fw"></i>Server Not Responding
-                                    <span class="pull-right text-muted small"><em>10:57 AM</em>
-                                    </span>
-                                    </a>
-                                    <a href="#" class="list-group-item">
-                                        <i class="fa fa-shopping-cart fa-fw"></i>New Order Placed
-                                    <span class="pull-right text-muted small"><em>9:49 AM</em>
-                                    </span>
-                                    </a>
                                 </div>
                                 <!-- /.list-group -->
                                 <a href="#" class="btn btn-info btn-block">View All Alerts</a>
@@ -179,7 +153,31 @@
                     </div>
                 </div>
                 <hr />
+                <div class="container-fluid">
+                <div class="row no-gutter">
+                <div class="col-md-6">
+
+                  <% a = true %>
+                  <% if a %>
+                    <% for media_item in @client.user_recent_media.first(6) %>
+                        <div style='float:left;'>
+                          <img src='<%= media_item.images.low_resolution.url %>'>
+                          <br/>
+                          <p>
+                            <% media_item.tags.each do |t| %>
+                              <strong>#<%= t %></strong>
+                            <% end %>
+
+                          </p>
+                          <p>Likes: <%= media_item.likes[:count] %> </p>
+                        </div>
+                    <% end %>
+                  <% end %>
+                </div>
+                </div>
+                </div>
             </div>
+<<<<<<< HEAD
 
   <% a = true %>
   <% if a %>
@@ -197,8 +195,9 @@
 
             <% end %>
   <% end %>
+=======
+>>>>>>> 95a3db90ddaf918988abb6e3a21e6bbd435f782c
         </div>
+      </div>
     </div>
- </div>
-</body>
-</html>
+</div>

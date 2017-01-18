@@ -1,0 +1,76 @@
+
+<div class="row" id="pin_show">
+  <div class="col-md-8 col-md-offset-2">
+    <div class="panel panel-default">
+
+      <div class="panel-heading pin_image">
+        <% @campaign.image.each do |photo| %>
+           <%= image_tag photo.medium.url %>
+        <% end %>
+      </div>
+      <div class="panel-body">
+        <h1> #<%=  @campaign.tag %> </h1>
+        <p class="description">
+
+          <table class="table table-hover">
+            <tbody>
+                  <tr>
+                    <td>Product Name</td>
+                    <td><%=  @campaign.product_name %></td>
+                  </tr>
+                  <tr>
+                    <td>Description</td>
+                    <td><%=  @campaign.description %></td>
+                  </tr>
+                  <tr>
+                    <td>Product Category</td>
+                    <td><%= @campaign.product_category %></td>
+                  </tr>
+                  <tr>
+                    <td>Location</td>
+                    <td><%=  @campaign.location %></td>
+                  </tr>
+                  <tr>
+                    <td>Target Age</td>
+                    <td><%=  @campaign.age %></td>
+                  </tr>
+                  <tr>
+                    <td>Target Gender</td>
+                    <td><%=  @campaign.gender %></td>
+                  </tr>
+                  <tr>
+                    <td>Interests</td>
+                    <td><%=  @campaign.interests %></td>
+                  </tr>
+                  <tr>
+                    <td>Hash Tag</td>
+                    <td>#<%=  @campaign.tag %></td>
+                  </tr>
+
+                </tbody>
+          </table>
+
+        </p>
+      </div>
+
+      <div class="panel-footer">
+        <div class="row">
+          <div class="col-md-6">
+            <p class="user">
+              Posted on
+              <%= @campaign.created_at.to_date %>
+            </p>
+          </div>
+          <div class="col-md-6">
+            <div class="btn-group pull-right">
+              <% if current_user.brand.present? %>
+                <%= link_to 'Edit', edit_brand_campaign_path(brand_id: current_user.brand.id, id: @campaign.id), class: "btn btn-default" %>
+                <%= link_to "Delete", brand_campaign_path(brand_id: current_user.brand.id), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default" %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
