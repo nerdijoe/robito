@@ -1,6 +1,12 @@
 
 <% @requests.each do |i| %>
 
+<div class="col-md-3">
+  <div class="end-overall-container">
+    <div class="insta-img-container">
+
+
+
   <% if i.influencer.user.identities.present? %>
     <% insta = i.influencer.user.identities.first %>
 
@@ -25,5 +31,9 @@
 
   <% end %>
 
+
+      </div>
+    </div>
+</div>
 
 <% end %>

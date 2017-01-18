@@ -1,6 +1,6 @@
 <div class="container-fluid">
     <div id="wrapper">
-        
+
         <nav class="navbar-default navbar-side" role="navigation">
             <div class="sidebar-collapse">
                 <ul class="nav" id="main-menu">
@@ -8,7 +8,6 @@
                         <div class="user-img-div">
 
                             <div class="inner-text">
-                              <p>Debugging- Userid: <%= @influencer.user.id %>, Influencerid: <%= @influencer.id %></p>
                               <% identity = @influencer.get_insta %>
 
                               <p>  <img src='<%= @client.user.profile_picture %>' class="img-thumbnail"> </p>
@@ -24,21 +23,20 @@
                              <% end %>
                           <% end %>
                         <% end %>
-                    </li>        
+                    </li>
                 </ul>
             </div>
        </nav>
-        
+
 
         <div id="page-wrapper">
             <div id="page-inner">
                 <div class="row">
                     <div class="col-md-12">
-                        <h1 class="page-head-line">My Profile</h1>
-                        <h1 class="page-subhead-line">Welcome to my page, hope that you find it useful. </h1>
+                        <h2 class="page-head-line">My Profile</h2>
                     </div>
                 </div>
-                
+
                 <div class="row">
                     <div class="col-md-4">
                         <div class="main-box mb-red">
@@ -72,7 +70,7 @@
                     <div class="col-md-8">
 
                         <div class="list-group">
-                       
+
                              <h4 class="list-heading">Bio:</h4>
                                 <p style="line-height: 30px;">
                                     <pre>
@@ -145,7 +143,7 @@
                                     <span class="pull-right text-muted small"><em>43 minutes ago</em>
                                     </span>
                                     </a>
-                                
+
                                 </div>
                                 <!-- /.list-group -->
                                 <a href="#" class="btn btn-info btn-block">View All Alerts</a>
@@ -183,5 +181,3 @@
       </div>
     </div>
 </div>
-
-

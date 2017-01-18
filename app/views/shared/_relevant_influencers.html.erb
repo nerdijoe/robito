@@ -1,0 +1,89 @@
+
+<% @influencers.each_with_index do |i, num| %>
+
+
+<div class="row" id="pin_show">
+  <div class="col-md-8 col-md-offset-2">
+
+    <div class="panel panel-default">
+
+      <div class="panel-heading text-center">
+        <strong>Influencer <%= num+1 %></strong>
+      </div>
+      <div class="panel-body">
+
+        <p class="description">
+          <% if i.user.identities.present? %>
+            <% insta = i.user.identities.first %>
+            <p><%= link_to (image_tag insta.image), influencer_path(i) %></p>
+
+            <table class="table table-hover">
+              <tbody>
+                    <tr>
+                      <td><strong>Username</strong></td>
+                      <td> <%= insta.nickname %></td>
+                    </tr>
+                    <tr>
+                      <td>Name</td>
+                      <td> <%= insta.name %></td>
+                    </tr>
+                    <tr>
+                      <td>My Location</td>
+                      <td> <%= i.location %></td>
+                    </tr>
+                    <tr>
+                      <td>Audience Age</td>
+                      <td><%=  i.age %></td>
+                    </tr>
+                    <tr>
+                      <td>Audience Gender</td>
+                      <td><%= i.gender  %></td>
+                    </tr>
+                    <tr>
+                      <td>Interests</td>
+                      <td><%= i.interests %></td>
+                    </tr>
+
+                  </tbody>
+            </table>
+
+          <% end %>
+          <!--end of i.user.indentities.present  -->
+        </p>
+      </div>
+
+      <div class="panel-footer">
+        <div class="row">
+          <div class="col-md-6">
+            <p class="user">
+
+            </p>
+          </div>
+          <div class="col-md-6">
+            <div class="btn-group pull-right">
+              <%= link_to "See Profile", influencer_path(i), class: "btn btn-default" %>
+              <% if @campaign.requests.where(influencer_id: i.id).present? %>
+                  <% status = @campaign.check_status(i.id) %>
+                  <% if status == 'pending'%>
+                    <%= link_to "Cancel Request", campaign_request_path(campaign_id: @campaign, influencer_id: i.id), method: :delete, class: "btn btn-danger"  %>
+                  <% elsif status == 'ongoing' %>
+                      <%= link_to 'Ongoing', see_influencers_posts_path(influencer_id: i.id), :class => "btn btn-success" %>
+                  <% elsif status == 'rejected' %>
+                    <br><br>
+                    <p><strong> Influencer has rejected your request </strong></p>
+                  <% else %>
+                    <p> Campaign is ended </p>
+                  <% end %>
+
+              <% else %>
+                <%= link_to "Pick Me", campaign_requests_path(campaign_id: @campaign, influencer_id: i.id), method: :post, class: "btn btn-warning" %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<% end %>

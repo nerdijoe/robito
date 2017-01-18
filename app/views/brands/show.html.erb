@@ -3,7 +3,7 @@
 
 <div class="container-fluid">
     <div id="wrapper">
-        
+
         <nav class="navbar-default navbar-side" role="navigation">
             <div class="sidebar-collapse">
                 <ul class="nav" id="main-menu">
@@ -11,27 +11,27 @@
                         <div class="user-img-div">
 
                             <div class="inner-text">
-                             <% if @brand.image.present? %>   
+                             <% if @brand.image.present? %>
                               <p>  <img src='<%= @brand.image.first.url(:thumb) %>' class="img-thumbnail"> </p>
                             <% else %>
                               <p> <img src='https://www.barfoot.co.nz/images/noprofile-big.png' class="img-thumbnail"></p>
-                             <% end %> 
+                             <% end %>
                             </div>
                         </div>
                    		 <%= link_to  edit_brand_path(@brand.id) do %>
                           <li class="side_bar"><i class="fa fa-address-card-o"></i>Edit Profile</li>
                         <% end %>
-                    </li>        
+                    </li>
                 </ul>
             </div>
        </nav>
-        
+
 
         <div id="page-wrapper">
             <div id="page-inner">
                 <div class="row">
                     <div class="col-md-12">
-                        <h1 class="page-head-line">My Profile</h1>
+                        <h2 class="page-head-line">My Profile</h2>
                     </div>
                 </div>
                 <br>
@@ -41,10 +41,10 @@
                     <div class="col-md-8">
 
                         <div class="list-group">
+
                        
                               <h4 class="list-heading">Brand Name::</h4>
                                 <p style="line-height: 30px;">
-                                  <div class="box">
                                     <p><%= @brand.brand_name %></p>
                                   </div>
                                 </p>
@@ -121,7 +121,7 @@
                                     <span class="pull-right text-muted small"><em>43 minutes ago</em>
                                     </span>
                                     </a>
-                                   
+
                                 </div>
                                 <!-- /.list-group -->
                                 <a href="#" class="btn btn-info btn-block">View All Alerts</a>
@@ -130,71 +130,10 @@
                         </div>
                     </div>
                 </div>
-                
-              
+
+
             </div>
         </div>
       </div>
     </div>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
