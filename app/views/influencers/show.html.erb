@@ -177,23 +177,7 @@
                 </div>
                 </div>
             </div>
-   <% a = true %>
-  <% if a %>
-    <% for media_item in @client.user_recent_media %>
-        <div style='float:left;'>
-          <img src='<%= media_item.images.low_resolution.url %>'>
-          <br/>
-          <p>
-            <% media_item.tags.each do |t| %>
-              <strong>#<%= t %></strong>
-            <% end %>
 
-          </p>
-          <p>Likes: <%= media_item.likes[:count] %> </p>
-
-            <% end %>
-  <% end %>
-          </div>
       </div>
     </div>
 </div>
