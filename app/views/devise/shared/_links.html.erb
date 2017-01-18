@@ -3,11 +3,11 @@
 <% end -%>
 
 <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
-  <%= link_to "Sign up", new_registration_path(resource_name) %><br />
+  <%= link_to "Sign up", new_registration_path(resource_name), class: "btn btn-primary" %><br />
 <% end -%>
 
 <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
-  <%= link_to "Forgot your password?", new_password_path(resource_name) %><br />
+  <%= link_to "Forgot your password?", new_password_path(resource_name), class: "btn btn-primary" %><br />
 <% end -%>
 
 <%- if devise_mapping.confirmable? && controller_name != 'confirmations' %>
@@ -21,7 +21,7 @@
 
 <%- if devise_mapping.omniauthable? %>  
   <%- resource_class.omniauth_providers.each do |provider| %>
-	 <a class="btn btn-lg <%= OmniAuth::Utils.camelize(provider).downcase %>-login-btn waves-effect waves-<%= OmniAuth::Utils.camelize(provider).downcase %>-login-blue" style="font-size: 15px" href="<%= omniauth_authorize_path(resource_name, provider) %>"><i class="fa fa-<%= OmniAuth::Utils.camelize(provider).downcase %>" aria-hidden="true"></i> <span style="padding-left: 5px;">Login with <%= OmniAuth::Utils.camelize(provider) %></span></a>
+	 <a class="btn btn-lg <%= OmniAuth::Utils.camelize(provider).downcase %>-login-btn waves-effect waves-<%= OmniAuth::Utils.camelize(provider).downcase %>-login-blue" style="font-size: 15px" href="<%= omniauth_authorize_path(resource_name, provider) %>"> <span style="padding-left: 5px;">Login with <%= OmniAuth::Utils.camelize(provider) %></span></a>
 	  <br><br>
   <% end %>
 <% end %>
