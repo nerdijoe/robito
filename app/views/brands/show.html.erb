@@ -11,14 +11,16 @@
                         <div class="user-img-div">
 
                             <div class="inner-text">
-                              <p>Name:<strong><%= @brand.user.id %></strong></p>
-                              <p>Email: <%= @brand.user.email %></p>
-                              <p>Type: <%= @brand.user.type %></p>
-
-
+                             <% if @brand.image.present? %>   
+                              <p>  <img src='<%= @brand.image.first.url(:thumb) %>' class="img-thumbnail"> </p>
+                            <% else %>
+                              <p> <img src='https://www.barfoot.co.nz/images/noprofile-big.png' class="img-thumbnail"></p>
+                             <% end %> 
                             </div>
                         </div>
-                   		 <%= link_to "Edit Profile",  edit_brand_path(@brand.id)%>
+                   		 <%= link_to  edit_brand_path(@brand.id) do %>
+                          <li class="side_bar"><i class="fa fa-address-card-o"></i>Edit Profile</li>
+                        <% end %>
                     </li>        
                 </ul>
             </div>
@@ -30,29 +32,9 @@
                 <div class="row">
                     <div class="col-md-12">
                         <h1 class="page-head-line">My Profile</h1>
-                        <h1 class="page-subhead-line">Welcome to my page, hope that you find it useful. </h1>
                     </div>
                 </div>
-                
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="main-box mb-red">
-                            <a href="#">
-                                <h3> On Going </h3>
-                                <h1 class="font_size"></h1>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="main-box mb-dull">
-                            <a href="#">
-                                <h3> Pending </h3>
-                                <h1 class="font_size"></h1>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
+                <br>
 
                 <div class="row">
 
@@ -136,41 +118,11 @@
                                     </span>
                                     </a>
                                     <a href="#" class="list-group-item">
-                                        <i class="fa fa-tasks fa-fw"></i>New Task
+                                        <i class="fa fa-tasks fa-fw"></i>New Notifications
                                     <span class="pull-right text-muted small"><em>43 minutes ago</em>
                                     </span>
                                     </a>
-                                    <a href="#" class="list-group-item">
-                                        <i class="fa fa-upload fa-fw"></i>Server Rebooted
-                                    <span class="pull-right text-muted small"><em>11:32 AM</em>
-                                    </span>
-                                    </a>
-                                    <a href="#" class="list-group-item">
-                                        <i class="fa fa-bolt fa-fw"></i>Server Crashed!
-                                    <span class="pull-right text-muted small"><em>11:13 AM</em>
-                                    </span>
-                                    </a>
-                                    <a href="#" class="list-group-item">
-                                        <i class="fa fa-warning fa-fw"></i>Server Not Responding
-                                    <span class="pull-right text-muted small"><em>10:57 AM</em>
-                                    </span>
-                                    </a>
-
-                                    <a href="#" class="list-group-item">
-                                        <i class="fa fa-bolt fa-fw"></i>Server Crashed!
-                                    <span class="pull-right text-muted small"><em>11:13 AM</em>
-                                    </span>
-                                    </a>
-                                    <a href="#" class="list-group-item">
-                                        <i class="fa fa-warning fa-fw"></i>Server Not Responding
-                                    <span class="pull-right text-muted small"><em>10:57 AM</em>
-                                    </span>
-                                    </a>
-                                    <a href="#" class="list-group-item">
-                                        <i class="fa fa-shopping-cart fa-fw"></i>New Order Placed
-                                    <span class="pull-right text-muted small"><em>9:49 AM</em>
-                                    </span>
-                                    </a>
+                                   
                                 </div>
                                 <!-- /.list-group -->
                                 <a href="#" class="btn btn-info btn-block">View All Alerts</a>
@@ -179,7 +131,7 @@
                         </div>
                     </div>
                 </div>
-                <hr />
+                
               
             </div>
         </div>
