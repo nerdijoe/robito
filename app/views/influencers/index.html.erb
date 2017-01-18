@@ -6,60 +6,40 @@
   </div>
 </div>
 
-  <div class="page-container">
-    <div class="row">
-      <div class="your-campaign-box">
+<div class="row">
+  <div class="your-campaign-box text-center">
+    <button class="btn btn-primary" type="button">
+      Campaigns <span class="badge"><%= @campaigns.count %></span>
+    </button>
+  </div>
+</div>
 
-        <button class="btn btn-primary" type="button">
-          All Campaigns <span class="badge"><%= @campaigns.count %></span>
-        </button>
 
-      </div>
-    </div>
-
-  <% @campaigns.each_with_index do |c| %>
-  <% c.image.each do |photo| %>
-      <div class="influencer-your-campaign-container">
-        <div class="col-md-6">
-          <div class="campaign-thumb-container">
-          <%= image_tag photo.url(:thumb) %>
-        </div>
-        </div>
-          <div class="col-md-6">
-            <div class="campaign_text_info-container">
-              <div class="your-campaign-box">
-            <p><strong>Product name : </strong> <%= c.product_name %></p>
-            <hr class="hrrrr">
-            <p><strong>Description : </strong> <%= c.description %></p>
-            <hr class="hrrrr">
-            <p><strong>Product Category : </strong><%= c.product_category %></p>
-            <hr class="hrrrr">
-            <p> <%= link_to 'See Details', influencer_campaign_path(influencer_id: current_user.influencer.id, id: c.id), class:"see-detail-btn-2 btn btn-primary" %> </p>
-          </div>
-          </div>
-        </div>
-      </div>
-  <%end%>
-  <%end%>
-
-  <div class="row">
-    <div class="your-campaign-box">
+<div class="row">
+  <div class="your-campaign-box text-center">
     <% @requests = @pending_requests %>
-    <h2>Pending Campaigns <span class="badge"><%= @requests.count %></span></h2>
+    <h2>Pending <span class="badge"><%= @requests.count %></span></h2>
   </div>
 </div>
 
-        <%= render partial: '/shared/influencer_index_show_campaign', object: @requests %>
+<% @requests.each do |i| %>
+  <% @campaign = i.campaign %>
+  <%= render partial: '/shared/influencer_index_show_campaign_v2', object: @campaign %>
+
+<% end %>
+
+<hr class="hrrrr">
 
 
-  <div class="row">
-    <div class="your-campaign-box">
+<div class="row">
+  <div class="your-campaign-box text-center">
     <% @requests = @ongoing_requests %>
-    <h2>Ongoing Campaigns <span class="badge"><%= @requests.count %></h2>
+    <h2>Ongoing <span class="badge"><%= @requests.count %></h2>
   </div>
 </div>
 
+<% @requests.each do |i| %>
+  <% @campaign = i.campaign %>
+  <%= render partial: '/shared/influencer_index_show_campaign_v2', object: @campaign %>
 
-        <%= render partial: '/shared/influencer_index_show_campaign', object: @requests %>
-
-</div> <!-- end of page container -->
+<% end %>
