@@ -1,31 +1,71 @@
+<div class="row">
+  <div class="col-md-10">
+  </div>
+  <div class="col-md-2">
+    <p> <%= link_to "My Profile", influencer_path(current_user.influencer), class:"test-campaign-btn-left" %> </p>
+  </div>
+</div>
 
-<h2>Influencers#index</h2>
-<p> <%= link_to "My Profile", influencer_path(current_user.influencer) %> </p>
-
-
-
-<h2>All Campaigns:</h2>
-
-<% @campaigns.each_with_index do |c| %>
-
-    <% c.image.each do |photo| %>
-      <div class="campaign">
-         <%= image_tag photo.url(:thumb) %>
+  <div class="page-container">
+    <div class="row">
+      <div class="your-campaign-box">
+        <h2>All Campaigns:</h2>
       </div>
-    <% end %>
-  <p>Product name: <%= c.product_name %></p>
-  <p>Description: <%= c.description %></p>
-  <p>Product Category<%= c.product_category %></p>
-  <p> <%= link_to 'See Details', influencer_campaign_path(influencer_id: current_user.influencer.id, id: c.id) %> </p>
-  <p>-------</p>
-<% end %>
+    </div>
 
-<h2>Pending Campaigns:</h2>
+  <% @campaigns.each_with_index do |c| %>
+  <% c.image.each do |photo| %>
+      <div class="influencer-your-campaign-container">
+        <div class="col-md-6">
+          <div class="campaign-thumb-container">
+          <%= image_tag photo.url(:thumb) %>
+        </div>
+        </div>
+          <div class="col-md-6">
+            <div class="campaign_text_info-container">
+              <div class="your-campaign-box">
+            <p><strong>Product name : </strong> <%= c.product_name %>></p>
+            <hr class="hrrrr">
+            <p><strong>Description : </strong> <%= c.description %></p>
+            <hr class="hrrrr">
+            <p><strong>Product Category : </strong><%= c.product_category %></p>
+            <hr class="hrrrr">
+            <p> <%= link_to 'See Details', influencer_campaign_path(influencer_id: current_user.influencer.id, id: c.id), class:"see-detail-btn-2" %> </p>
+          </div>
+          </div>
+        </div>
+      </div>
+  <%end%>
+  <%end%>
 
-<% @requests = @pending_requests %>
-<%= render partial: '/shared/influencer_index_show_campaign', object: @requests %>
+  <div class="row">
+    <div class="your-campaign-box">
+    <h2>Pending Campaigns:</h2>
+  </div>
+</div>
 
-<h2>Ongoing Campaigns:</h2>
 
-<% @requests = @ongoing_requests %>
-<%= render partial: '/shared/influencer_index_show_campaign', object: @requests %>
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="influencer-pending-container">
+        <% @requests = @pending_requests %>
+        <%= render partial: '/shared/influencer_index_show_campaign', object: @requests %>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="row">
+    <div class="your-campaign-box">
+    <h2>Ongoing Campaigns:</h2>
+  </div>
+</div>
+
+    <div class="col-md-12">
+      <div class="influencer-ongoing-container">
+        <% @requests = @ongoing_requests %>
+        <%= render partial: '/shared/influencer_index_show_campaign', object: @requests %>
+    </div>
+</div>
+</div>

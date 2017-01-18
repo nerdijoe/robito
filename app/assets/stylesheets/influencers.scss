@@ -6,3 +6,53 @@
 .profile_pic {
 	text-align: center;
 }
+
+.influencer-your-campaign-container {
+	border-right: 20px solid rgba(0, 192, 255, 0.84);
+	border-radius: 3px;
+	background-color: rgba(93, 201, 255, 0.59);
+	height: 320px;
+	margin-bottom: 50px;
+}
+
+.influencer-pending-container {
+	border-right: 20px solid rgb(237, 130, 52);
+	border-radius: 3px;
+	background-color: rgb(245, 171, 117);
+	height: 350px;
+	margin-bottom: 50px;
+}
+
+.influencer-ongoing-container {
+	border-right: 20px solid rgb(231, 127, 125);
+	border-radius: 3px;
+	background-color: rgba(169, 68, 66, 0.41);
+	height: 350px;
+	margin-bottom: 50px;
+}
+
+.campaign-thumb-container-2 {
+	border-width: 1px;
+  border-color: #1895af;
+  border-style: solid;
+  box-shadow: 0.5px 0.5px 0.5px;
+  width: 302px;
+  height: 302px;
+  position: relative;
+  top: 15px;
+  left: 5px;
+}
+
+.see-detail-btn-2 {
+	position: relative;
+	top: 40px;
+  -webkit-border-radius: 4;
+  -moz-border-radius: 4;
+  border-radius: 4px;
+  font-family: Arial;
+  color: #000000;
+  font-size: 14px;
+  background: #ff7473;
+  padding: 9px 40px 9px 40px;
+  text-decoration: none;
+}
