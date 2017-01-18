@@ -35,7 +35,7 @@ Rails.application.routes.draw do
 
   get "/campaigns/:id/influencers" => "campaigns#influencers", as: 'see_influencers'
   get "/campaigns/:id/influencers/:influencer_id" => "campaigns#influencersposts", as: 'see_influencers_posts'
-
+  get "/influenc/reward" => "influencers#reward"
 #   root 'welcome#index'
 
   get 'welcome/index'

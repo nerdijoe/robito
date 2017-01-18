@@ -7,6 +7,8 @@ class InfluencersController < ApplicationController
 
     @pending_requests = current_user.influencer.requests.pending
     @ongoing_requests = current_user.influencer.requests.ongoing
+    
+    # @reward_requests = current_user.influencer.requests.reward
   end
 
   def show
