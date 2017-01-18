@@ -16,7 +16,11 @@
           <% if signed_in? %>
           <ul class="nav navbar-nav navbar-left">
             <li>
-              <%= link_to "Home", root_path, class: 'page-scroll' %>
+              <% if current_user.brand.present? %>
+                <%= link_to "Brand Home", root_path, class: 'page-scroll' %>
+              <% else %>
+                <%= link_to "Influencer Home", root_path, class: 'page-scroll' %>
+              <% end %>
             </li>
           </ul>
           <% end %>
