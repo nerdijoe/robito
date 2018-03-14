@@ -1,4 +1,4 @@
-# Robito
+# Joiint (Robito)
 
 ## Usage
 
